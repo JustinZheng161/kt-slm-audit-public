@@ -87,3 +87,7 @@ python scripts/audit-repeat-observation-adequacy.py /path/to/source.csv --studen
 ## v26 manuscript positioning
 
 The v26 manuscript is intentionally positioned as a **case-study protocol** for prompt-interface auditing in the tested Qwen2.5-0.5B-Instruct and corrected ASSISTments setting. The repository does not claim that the protocol has been empirically validated across models, datasets, or the full skill distribution. The 1.000 explicit-field probe is treated as an expected accessibility diagnostic, not as evidence of semantic skill understanding or identity-independent learner-state representation. The unrun candidate architectures remain code artifacts only and are not reported as experimental results.
+
+## v27 manuscript revision
+
+The v27 manuscript retains the case-study protocol positioning and now repeats the exact generality limitation in Section 6: the protocol has not been empirically demonstrated beyond the tested Qwen checkpoint, corrected ASSISTments source, and high-frequency skill subset. The Introduction uses `design` and `workflow` where possible for readability, Section 2.7 now transitions explicitly to the auditing literature in Section 2.8, and the fixed-sample limitation plus necessary next step are organized within Section 6. No unsupported runtime or hardware claim is reported.
