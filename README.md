@@ -97,3 +97,15 @@ The v26 manuscript is intentionally positioned as a **case-study protocol** for 
 ## v27 manuscript revision
 
 The v27 manuscript retains the case-study protocol positioning and now repeats the exact generality limitation in Section 6: the protocol has not been empirically demonstrated beyond the tested Qwen checkpoint, corrected ASSISTments source, and high-frequency skill subset. The Introduction uses `design` and `workflow` where possible for readability, Section 2.7 now transitions explicitly to the auditing literature in Section 2.8, and the fixed-sample limitation plus necessary next step are organized within Section 6. No unsupported runtime or hardware claim is reported.
+
+## Nature-style figure reconstruction
+
+Figure 1–Figure 6 have been reconstructed with a unified Nature-style visual system using aggregate, de-identified results. The reproducible source is `scripts/reconstruct-figures-nature.py`; the aggregate input is `data/figure-data-nature-v30.json`; and the generated PNG, SVG and PDF files are under `figures/nature-v30/`. The script does not read raw learner events, student identifiers, hidden states, checkpoints or individual predictions.
+
+Run from the repository root:
+
+```bash
+python3 scripts/reconstruct-figures-nature.py
+```
+
+The output uses a restrained palette, compact sans-serif typography, thin axes, minimal grid lines, consistent panel spacing, and high-resolution 600-dpi PNG export. SVG and PDF exports are also generated for journal production workflows.
