@@ -12,6 +12,8 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.lines import Line2D
+from matplotlib.patches import Patch
 
 
 HERE = Path(__file__).resolve()
@@ -40,7 +42,7 @@ def load(name: str) -> dict:
 
 def save(fig: plt.Figure, name: str) -> None:
     FIGURES.mkdir(parents=True, exist_ok=True)
-    fig.savefig(FIGURES / name, dpi=300, bbox_inches="tight", facecolor="white")
+    fig.savefig(FIGURES / name, dpi=600, bbox_inches="tight", facecolor="white")
     fig.savefig(FIGURES / name.replace(".png", ".pdf"), bbox_inches="tight", facecolor="white")
     plt.close(fig)
 
@@ -82,7 +84,12 @@ def main() -> None:
         ax.text(bar.get_x() + bar.get_width() / 2, auc + upper + 0.006, f"{auc:.4f}", ha="center", va="bottom", fontsize=8)
     dkt_values = np.asarray([row["roc_auc"] for row in dkt_seed_rows])
     dkt_jitter = np.asarray([-0.075, 0.0, 0.075])
-    ax.scatter(2 + dkt_jitter, dkt_values, s=22, marker="o", facecolor="white", edgecolor="#17252D", linewidth=0.7, zorder=5, label="DKT seed estimates")
+    ax.scatter(2 + dkt_jitter, dkt_values, s=22, marker="o", facecolor="white", edgecolor="#17252D", linewidth=0.7, zorder=5)
+    ax.legend(handles=[
+        Patch(facecolor=COLORS["Adam"], edgecolor="#1A2730", label="Bars: single-run ROC-AUC"),
+        Line2D([0], [0], color="#1A2730", marker="|", markersize=12, linewidth=1.2, label="Error bars: bootstrap 95% interval"),
+        Line2D([0], [0], marker="o", markerfacecolor="white", markeredgecolor="#17252D", color="none", markersize=5, label="Open circles: all DKT seeds"),
+    ], frameon=False, loc="upper left", fontsize=6.4)
     fig.text(0.01, -0.06, "24,306 shared second-and-later test interactions; fixed 80/10/10 student split; 1,000 student-cluster bootstrap replicates. The DKT bar and error bar are for seed 20260822; the three open circles show all seed-level AUC estimates (SD reported in Table 1).", fontsize=6.2)
     save(fig, "fig1-student-disjoint-baselines.png")
 

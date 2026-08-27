@@ -68,6 +68,16 @@ The smoke test passes after installing `requirements.txt`. No performance number
 
 The public artifact set also reports a 5%/10%/20% synthetic training-label inversion sensitivity curve, a separate post hoc 20-epoch validation-selection extension, a literal three-seed observed min–max summary, a completed 200/500/full-history training-window sensitivity analysis, standardized paired seed-effect summaries, cross-skill BKT stability summaries, a 20-versus-100 fixed-iteration BKT sensitivity check, and a DKT–BKT student-cluster paired bootstrap. Cohen’s d_z values and observed-SD MDE references are descriptive post hoc scales only: they are neither a pre-specified SESOI nor equivalence analyses. The window analysis fixes the split, DKT-64 architecture, optimizer, batch size, eight-epoch cap, validation selection and complete-history test evaluation; its small observed mean differences do not establish global window-length invariance. The BKT audit reports only cross-skill quantiles and counts, never skill-level estimates. Neither supplemental analysis replaces the primary eight-epoch result. A prospective context-parity audit is supplied as code but is not reported as a result until it has been run on the controlled source. No external performance values are included here; cross-paper scores must not be subtracted from the above results or presented as a shared leaderboard.
 
+## Technical figure outputs
+
+Every aggregate-only figure in `figures/revision3/` is available as a PDF vector source. To generate the matching 600-dpi TIFF submission derivatives and an auditable file/DPI manifest, run:
+
+```bash
+python scripts/export_print_figures.py
+```
+
+The command writes TIFF files to `figures/revision3/tiff_600dpi/` and `revision7_figure_technical_manifest.json`. It does not access the controlled data root. Figure 1 has a legend that separately identifies single-run bars, student-cluster bootstrap error bars, and open circles for the three DKT seed estimates. Figure captions specify whether error bars are bootstrap intervals or descriptive across-seed SDs.
+
 ## Double-blind review mirror
 
 This is an identified development repository and must **not** be cited in a blinded manuscript. Before resubmission, create and independently inspect a fixed-commit, read-only anonymous mirror containing only code and aggregate-safe outputs; the complete identity-redaction, expiry, access and privacy checklist is in [ANONYMOUS-REVIEW-MIRROR.md](docs/ANONYMOUS-REVIEW-MIRROR.md). Until that external release gate is closed, `[ANONYMOUS_REVIEW_CODE_URL]` is an intentional placeholder, not an actual review link.
