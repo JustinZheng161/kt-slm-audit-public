@@ -52,11 +52,23 @@ The scripts write raw- or student-level artifacts only below the external contro
 | DKT-64 AdamW | 0.7654 | 3-seed SD 0.0011; Brier 0.1816; ECE10 0.0129 | Observed paired AUC difference is below this n=3 design’s resolution. |
 | DKT-96 AdamW + dropout | 0.7657 | 3-seed SD 0.0009; Brier 0.1814; ECE10 0.0089 | Joint configuration, not an isolated capacity test. |
 
+## Candidate model improvements
+
+Two protocol-compatible model candidates are provided under `models/optimized_dkt.py`. `LayerNormResidualDKT` adds post-recurrent normalization and a gated residual projection; `TemporalAttentionDKT` adds a padding-aware causal multi-head attention refinement. The designs are motivated by the stabilization and sequence-context principles used in residual Transformer architectures and by attention-based KT models such as AKT and simpleKT [1] [2]. They preserve the interaction-token interface, future-response target, student-disjoint split, and per-skill output head. They are candidates for a controlled follow-up, not silently substituted replacements for the archived DKT results.
+
+Run the shape and gradient smoke test with:
+
+```bash
+python tests/run_optimized_smoke.py
+```
+
+The smoke test passes after installing `requirements.txt`. No performance number for either candidate is reported until it has been trained and evaluated with the same fixed split and seeds.
+
 The public artifact set also reports a 5%/10%/20% synthetic training-label inversion sensitivity curve, a separate post hoc 20-epoch validation-selection extension, a literal three-seed observed min–max summary, and a completed 200/500/full-history training-window sensitivity analysis. The min–max is descriptive only; it is not a learner-cluster confidence interval, hypothesis test or equivalence analysis. The window analysis fixes the split, DKT-64 architecture, optimizer, batch size, eight-epoch cap, validation selection and complete-history test evaluation; its small observed mean differences do not establish global window-length invariance. Neither supplemental analysis replaces the primary eight-epoch result. A prospective context-parity audit is supplied as code but is not reported as a result until it has been run on the controlled source. No external performance values are included here; cross-paper scores must not be subtracted from the above results or presented as a shared leaderboard.
 
 ## Citation and source data
 
-Please cite the official ASSISTments data page and the data-system paper: M. Feng, N. T. Heffernan, and K. R. Koedinger, “Addressing the assessment challenge with an online system that tutors as it assesses,” *User Modeling and User-Adapted Interaction*, 2009. The documentation also cites pyKT and simpleKT for standardized-benchmark context.
+Please cite the official ASSISTments data page and the data-system paper: M. Feng, N. T. Heffernan, and K. R. Koedinger, “Addressing the assessment challenge with an online system that tutors as it assesses,” *User Modeling and User-Adapted Interaction*, 2009. The documentation also cites pyKT and simpleKT for standardized-benchmark context. The relevant sources are [pyKT](https://arxiv.org/html/2206.11460), [simpleKT](https://arxiv.org/html/2302.06881v2), [AKT](https://dl.acm.org/doi/10.1145/3394486.3403282), and [RouterKT](https://arxiv.org/html/2504.08989v1).
 
 ## License
 
