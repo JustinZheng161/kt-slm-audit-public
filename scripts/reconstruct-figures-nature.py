@@ -15,8 +15,8 @@ import numpy as np
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA = ROOT / "data" / "figure-data-nature-v30.json"
-OUT = ROOT / "figures" / "nature-v30"
+DATA = ROOT / "data" / "figure-data-nature-v31.json"
+OUT = ROOT / "figures" / "nature-v31"
 OUT.mkdir(parents=True, exist_ok=True)
 
 NAVY = "#1B4F72"
@@ -76,7 +76,7 @@ def fig1():
             ax.add_patch(FancyArrowPatch((x+0.9,1.63),(xs[i+1]-0.9,1.63), arrowstyle="-|>", mutation_scale=9, linewidth=0.7, color="#416A7A"))
     ax.text(5, 0.48, "The two diagnostic branches are reported separately; neither is a future-response KT benchmark.", ha="center", va="center", fontsize=7)
     ax.text(5, 2.65, "Static prompt-interface audit workflow", ha="center", va="center", fontsize=9, fontweight="bold")
-    finish(fig, "fig-1-static-prompt-audit-workflow")
+    finish(fig, "figure-01-static-prompt-interface-audit-workflow")
 
 
 def fig2(d):
@@ -92,7 +92,7 @@ def fig2(d):
     ax.text(1, d["true_label_accuracy"]+0.055, f'{d["true_label_accuracy"]:.3f}', ha="center", fontsize=7)
     clean_axes(ax)
     ax.legend(frameon=False, loc="upper left", handlelength=1.4)
-    finish(fig, "fig-2-qwen-probe-permutation-control")
+    finish(fig, "figure-02-qwen-probe-permutation-control")
 
 
 def fig3(d):
@@ -110,7 +110,7 @@ def fig3(d):
     cbar = fig.colorbar(im, ax=ax, fraction=0.045, pad=0.03); cbar.set_label("Records", rotation=90)
     cbar.outline.set_linewidth(0.4)
     clean_axes(ax, grid=False)
-    finish(fig, "fig-3-qwen-probe-confusion-matrix")
+    finish(fig, "figure-03-qwen-probe-confusion-matrix")
 
 
 def fig4(d):
@@ -126,7 +126,7 @@ def fig4(d):
         label = "p < 0.001" if p < 0.001 else f"p = {p:.3f}"
         ax.text(bar.get_x()+bar.get_width()/2, max(v+0.035, 0.535), label, ha="center", va="bottom", fontsize=6.2)
     clean_axes(ax); ax.legend(frameon=False, loc="upper right")
-    finish(fig, "fig-4-qwen-output-sensitivity")
+    finish(fig, "figure-04-qwen-output-sensitivity")
 
 
 def fig5(d):
@@ -142,7 +142,7 @@ def fig5(d):
     ax.set_xticks(range(3), labels); ax.set_ylim(0.94,1.012); ax.set_ylabel("Student-level fold accuracy")
     ax.set_title("Student-level five-fold pooling ablation")
     clean_axes(ax)
-    finish(fig, "fig-5-student-level-pooling-ablation")
+    finish(fig, "figure-05-student-level-pooling-ablation")
 
 
 def fig6(d):
@@ -157,7 +157,7 @@ def fig6(d):
     axes[0].legend(frameon=False,loc="upper left",bbox_to_anchor=(0,1.02),ncol=2)
     fig.suptitle("Deterministic first-N versus stratified-random sample composition", y=1.04, fontsize=9, fontweight="bold")
     fig.tight_layout()
-    finish(fig, "fig-6-sampling-distribution-comparison")
+    finish(fig, "figure-06-sampling-distribution-comparison")
 
 
 def main():

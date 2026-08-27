@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="410.58pt" height="125.28pt" viewBox="0 0 410.58 125.28" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-27T10:58:23.671891</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 125.28 
+L 410.58 125.28 
+L 410.58 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 11.1618 76.6848 
+L 74.5506 76.6848 
+Q 77.72004 76.6848 77.72004 73.728 
+L 77.72004 42.312 
+Q 77.72004 39.3552 74.5506 39.3552 
+L 11.1618 39.3552 
+Q 7.99236 39.3552 7.99236 42.312 
+L 7.99236 73.728 
+Q 7.99236 76.6848 11.1618 76.6848 
+z
+" clip-path="url(#p0a5f939900)" style="fill: #e8f0f4; stroke: #416a7a; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 80.509743 57.8352 
+Q 83.461414 57.8352 85.630461 57.8352 
+" clip-path="url(#p0a5f939900)" style="fill: none; stroke: #416a7a; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 82.030461 56.0352 
+L 85.630461 57.8352 
+L 82.030461 59.6352 
+z
+" clip-path="url(#p0a5f939900)" style="fill: #416a7a; stroke: #416a7a; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 92.3787 76.6848 
+L 155.7675 76.6848 
+Q 158.93694 76.6848 158.93694 73.728 
+L 158.93694 42.312 
+Q 158.93694 39.3552 155.7675 39.3552 
+L 92.3787 39.3552 
+Q 89.20926 39.3552 89.20926 42.312 
+L 89.20926 73.728 
+Q 89.20926 76.6848 92.3787 76.6848 
+z
+" clip-path="url(#p0a5f939900)" style="fill: #f5e9dd; stroke: #416a7a; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 161.726643 57.8352 
+Q 164.678314 57.8352 166.847361 57.8352 
+" clip-path="url(#p0a5f939900)" style="fill: none; stroke: #416a7a; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 163.247361 56.0352 
+L 166.847361 57.8352 
+L 163.247361 59.6352 
+z
+" clip-path="url(#p0a5f939900)" style="fill: #416a7a; stroke: #416a7a; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 173.5956 76.6848 
+L 236.9844 76.6848 
+Q 240.15384 76.6848 240.15384 73.728 
+L 240.15384 42.312 
+Q 240.15384 39.3552 236.9844 39.3552 
+L 173.5956 39.3552 
+Q 170.42616 39.3552 170.42616 42.312 
+L 170.42616 73.728 
+Q 170.42616 76.6848 173.5956 76.6848 
+z
+" clip-path="url(#p0a5f939900)" style="fill: #e8f0f4; stroke: #416a7a; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 242.943543 57.8352 
+Q 245.895214 57.8352 248.064261 57.8352 
+" clip-path="url(#p0a5f939900)" style="fill: none; stroke: #416a7a; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 244.464261 56.0352 
+L 248.064261 57.8352 
+L 244.464261 59.6352 
+z
+" clip-path="url(#p0a5f939900)" style="fill: #416a7a; stroke: #416a7a; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 254.8125 76.6848 
+L 318.2013 76.6848 
+Q 321.37074 76.6848 321.37074 73.728 
+L 321.37074 42.312 
+Q 321.37074 39.3552 318.2013 39.3552 
+L 254.8125 39.3552 
+Q 251.64306 39.3552 251.64306 42.312 
+L 251.64306 73.728 
+Q 251.64306 76.6848 254.8125 76.6848 
+z
+" clip-path="url(#p0a5f939900)" style="fill: #f5e9dd; stroke: #416a7a; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 324.160443 57.8352 
+Q 327.112114 57.8352 329.281161 57.8352 
+" clip-path="url(#p0a5f939900)" style="fill: none; stroke: #416a7a; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 325.681161 56.0352 
+L 329.281161 57.8352 
+L 325.681161 59.6352 
+z
+" clip-path="url(#p0a5f939900)" style="fill: #416a7a; stroke: #416a7a; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 336.0294 76.6848 
+L 399.4182 76.6848 
+Q 402.58764 76.6848 402.58764 73.728 
+L 402.58764 42.312 
+Q 402.58764 39.3552 399.4182 39.3552 
+L 336.0294 39.3552 
+Q 332.85996 39.3552 332.85996 42.312 
+L 332.85996 73.728 
+Q 332.85996 76.6848 336.0294 76.6848 
+z
+" clip-path="url(#p0a5f939900)" style="fill: #e8f0f4; stroke: #416a7a; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 7.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(25.215638 52.95945)">Corrected</text>
+    <text style="font-size: 7.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(18.986513 60.455888)">ASSISTments</text>
+    <text style="font-size: 7.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(29.480513 68.07945)">records</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 7.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(103.913662 52.95945)">Textualized</text>
+    <text style="font-size: 7.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(102.199725 59.82195)">prompt with</text>
+    <text style="font-size: 7.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(100.326037 67.38195)">explicit fields</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 7.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(175.9905 52.95945)">Untouched base</text>
+    <text style="font-size: 7.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(174.546 60.51945)">LM hidden states</text>
+    <text style="font-size: 7.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(174.57975 67.38195)">and output logits</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 6.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(262.962884 53.036013)">Representation</text>
+    <text style="font-size: 6.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(270.024103 59.546013)">readability</text>
+    <text style="font-size: 6.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(255.164447 66.056013)">(silhouette + probe)</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 7.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(337.8168 52.26195)">Lexical response</text>
+    <text style="font-size: 7.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(348.688237 60.51945)">label audit</text>
+    <text style="font-size: 7.2px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(337.287487 67.38195)">(logit-score AUC)</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 7px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="205.29" y="102.157833" transform="rotate(-0 205.29 102.157833)">The two diagnostic branches are reported separately; neither is a future-response KT benchmark.</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="205.29" y="22.474242" transform="rotate(-0 205.29 22.474242)">Static prompt-interface audit workflow</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p0a5f939900">
+   <rect x="7.2" y="7.2" width="396.18" height="110.88"/>
+  </clipPath>
+ </defs>
+</svg>

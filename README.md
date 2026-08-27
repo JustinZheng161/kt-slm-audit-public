@@ -110,7 +110,7 @@ The v27 manuscript retains the case-study protocol positioning and now repeats t
 
 ## Nature-style figure reconstruction
 
-Figure 1–Figure 6 have been reconstructed with a unified Nature-style visual system using aggregate, de-identified results. The reproducible source is `scripts/reconstruct-figures-nature.py`; the aggregate input is `data/figure-data-nature-v30.json`; and the generated PNG, SVG and PDF files are under `figures/nature-v30/`. The script does not read raw learner events, student identifiers, hidden states, checkpoints or individual predictions.
+Figure 1–Figure 6 have been reconstructed with a unified Nature-style visual system using aggregate, de-identified results. The reproducible source is `scripts/reconstruct-figures-nature.py`; the aggregate input is `data/figure-data-nature-v31.json`; and the generated PNG, SVG and PDF files are under `figures/nature-v31/`. The script does not read raw learner events, student identifiers, hidden states, checkpoints or individual predictions.
 
 Run from the repository root:
 
