@@ -83,3 +83,7 @@ Run it with:
 ```bash
 python scripts/audit-repeat-observation-adequacy.py /path/to/source.csv --student-column user_id --output metadata/repeat-observation-adequacy-v25.json
 ```
+
+## v26 manuscript positioning
+
+The v26 manuscript is intentionally positioned as a **case-study protocol** for prompt-interface auditing in the tested Qwen2.5-0.5B-Instruct and corrected ASSISTments setting. The repository does not claim that the protocol has been empirically validated across models, datasets, or the full skill distribution. The 1.000 explicit-field probe is treated as an expected accessibility diagnostic, not as evidence of semantic skill understanding or identity-independent learner-state representation. The unrun candidate architectures remain code artifacts only and are not reported as experimental results.
