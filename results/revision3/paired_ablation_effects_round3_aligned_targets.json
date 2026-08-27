@@ -1,0 +1,39 @@
+{
+  "baseline": "DKT-64 Adam",
+  "comparison_target": "Same student-disjoint split and same next-response test targets (24,306 rows) for all paired seeds.",
+  "comparisons": {
+    "DKT-64-AdamW_minus_DKT-64-Adam": {
+      "descriptive_seed_bootstrap_95_ci": [
+        -6.658485925958857e-07,
+        5.113422892888408e-07
+      ],
+      "interpretation": "This is a descriptive percentile bootstrap across three paired random seeds, not an equivalence test or a sufficiently powered inferential confidence interval.",
+      "mean_difference_auc": -6.131202508659801e-08,
+      "paired_seed_differences": [
+        5.113422892888408e-07,
+        -2.9429771952749206e-08,
+        -6.658485925958857e-07
+      ],
+      "seed_count": 3,
+      "standard_deviation_of_paired_differences": 5.892426933334033e-07,
+      "standardized_mean_difference_vs_paired_sd": -0.10405224499221181
+    },
+    "DKT-96-AdamW_dropout_minus_DKT-64-Adam": {
+      "descriptive_seed_bootstrap_95_ci": [
+        -0.0012955794974108814,
+        0.0024587618078224516
+      ],
+      "interpretation": "This is a descriptive percentile bootstrap across three paired random seeds, not an equivalence test or a sufficiently powered inferential confidence interval.",
+      "mean_difference_auc": 0.00030114014247761833,
+      "paired_seed_differences": [
+        -0.00025976188297871516,
+        -0.0012955794974108814,
+        0.0024587618078224516
+      ],
+      "seed_count": 3,
+      "standard_deviation_of_paired_differences": 0.0019390017974891217,
+      "standardized_mean_difference_vs_paired_sd": 0.1553067887134374
+    }
+  },
+  "limitation": "With three seeds, the analysis cannot establish equivalence, a zero effect, or power for differences below a pre-specified practical threshold. The intervals quantify observed seed-to-seed imprecision only."
+}

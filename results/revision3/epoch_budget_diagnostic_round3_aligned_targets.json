@@ -1,0 +1,158 @@
+{
+  "diagnostic": "train_validation_only_epoch_budget",
+  "history": [
+    {
+      "epoch": 1,
+      "training_auc": 0.7283742501396214,
+      "training_bce": 0.5996016567043997,
+      "validation_auc": 0.7292578857370398
+    },
+    {
+      "epoch": 2,
+      "training_auc": 0.7525974971666062,
+      "training_bce": 0.5517937376517607,
+      "validation_auc": 0.7536391881871283
+    },
+    {
+      "epoch": 3,
+      "training_auc": 0.7607626751622479,
+      "training_bce": 0.540426081379933,
+      "validation_auc": 0.7596860360630442
+    },
+    {
+      "epoch": 4,
+      "training_auc": 0.766264129526423,
+      "training_bce": 0.5345336960339402,
+      "validation_auc": 0.7618230720365354
+    },
+    {
+      "epoch": 5,
+      "training_auc": 0.7696148031585979,
+      "training_bce": 0.530374653424963,
+      "validation_auc": 0.7624592341808805
+    },
+    {
+      "epoch": 6,
+      "training_auc": 0.774124903050162,
+      "training_bce": 0.5272567700208016,
+      "validation_auc": 0.765944176258734
+    },
+    {
+      "epoch": 7,
+      "training_auc": 0.776675002352098,
+      "training_bce": 0.5239538151176638,
+      "validation_auc": 0.7660417835334471
+    },
+    {
+      "epoch": 8,
+      "training_auc": 0.7791808834101155,
+      "training_bce": 0.5210163431816339,
+      "validation_auc": 0.7654411600899674
+    },
+    {
+      "epoch": 9,
+      "training_auc": 0.7821572321961097,
+      "training_bce": 0.5190128960004691,
+      "validation_auc": 0.7655465152670418
+    },
+    {
+      "epoch": 10,
+      "training_auc": 0.7848612928884444,
+      "training_bce": 0.5161262171679342,
+      "validation_auc": 0.767329448436026
+    },
+    {
+      "epoch": 11,
+      "training_auc": 0.7872299391566914,
+      "training_bce": 0.5137299874321846,
+      "validation_auc": 0.7648774371469171
+    },
+    {
+      "epoch": 12,
+      "training_auc": 0.7901848290297399,
+      "training_bce": 0.5114659755290544,
+      "validation_auc": 0.765507442094944
+    },
+    {
+      "epoch": 13,
+      "training_auc": 0.7922853992234651,
+      "training_bce": 0.5092217210657738,
+      "validation_auc": 0.767331493075257
+    },
+    {
+      "epoch": 14,
+      "training_auc": 0.7945605956551395,
+      "training_bce": 0.5073119607563453,
+      "validation_auc": 0.7649560684624673
+    },
+    {
+      "epoch": 15,
+      "training_auc": 0.7968782477751271,
+      "training_bce": 0.504636392343804,
+      "validation_auc": 0.7638198620538168
+    },
+    {
+      "epoch": 16,
+      "training_auc": 0.799167836311432,
+      "training_bce": 0.5021379332130963,
+      "validation_auc": 0.7629022380543427
+    },
+    {
+      "epoch": 17,
+      "training_auc": 0.8023320107253124,
+      "training_bce": 0.4997381844435652,
+      "validation_auc": 0.7639675804486584
+    },
+    {
+      "epoch": 18,
+      "training_auc": 0.8029784035136602,
+      "training_bce": 0.497607690869505,
+      "validation_auc": 0.7620385933065215
+    },
+    {
+      "epoch": 19,
+      "training_auc": 0.8054905936775937,
+      "training_bce": 0.4953424411402701,
+      "validation_auc": 0.7612916792238682
+    },
+    {
+      "epoch": 20,
+      "training_auc": 0.8085385018600575,
+      "training_bce": 0.49326018232934965,
+      "validation_auc": 0.7616661314264146
+    }
+  ],
+  "privacy": "Only epoch-level aggregate losses and AUC values are written; no test scores, student IDs, or sequences are emitted.",
+  "purpose": "Descriptive diagnostic for the pre-specified 8-epoch computational budget; not used to change the reported test protocol.",
+  "selected_validation_auc_over_20": 0.767331493075257,
+  "selected_validation_epoch_over_20": 13,
+  "specification": {
+    "dropout": 0.0,
+    "embedding_dim": 64,
+    "epochs": 20,
+    "hidden_dim": 64,
+    "learning_rate": 0.002,
+    "name": "DKT-64-Adam-20epoch-diagnostic",
+    "seed": 20260822,
+    "weight_decay": 0.0
+  },
+  "split": {
+    "seed": 20260822,
+    "train_validation_test": [
+      0.8,
+      0.1,
+      0.1
+    ]
+  },
+  "test_split_accessed": false,
+  "train_fitted_label_support": {
+    "test_label_coverage_by_train": 1.0,
+    "test_labels_not_seen_in_train": 0,
+    "test_unique_skill_labels": 135,
+    "train_unique_skill_labels": 149,
+    "validation_label_coverage_by_train": 1.0,
+    "validation_labels_not_seen_in_train": 0,
+    "validation_unique_skill_labels": 132,
+    "vocabulary_fit": "The atomic skill_id vocabulary is fitted on training students only after student-level splitting."
+  }
+}

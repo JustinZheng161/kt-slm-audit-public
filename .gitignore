@@ -1,12 +1,19 @@
 # Do not distribute ASSISTments records or reversible student-level artifacts.
 private_data/
+controlled-research-data/
+client/
+dist/
+node_modules/
 *.csv
 *.tsv
 *.parquet
+*.feather
 *.npz
+*.npy
 *.pt
 *.pth
 *.ckpt
+*.onnx
 *.log
 .env
 .env.*

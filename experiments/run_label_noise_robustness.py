@@ -17,7 +17,7 @@ from run_student_disjoint_kt import (
     DKTSpec,
     RAW_DATA,
     SplitSpec,
-    load_student_sequences,
+    load_train_fitted_splits,
     metric_record,
     split_students,
     train_dkt,
@@ -50,8 +50,7 @@ def main() -> None:
     torch.set_num_threads(4)
     rate = 0.10
     split = SplitSpec()
-    sequences, labels = load_student_sequences(RAW_DATA)
-    train, validation, test = split_students(sequences, split)
+    train, validation, test, labels, _ = load_train_fitted_splits(RAW_DATA, split)
     specs = [
         DKTSpec("DKT-64-Adam", 64, 64, 0.0, 0.002, 0.0, 8, seed)
         for seed in (20260822, 20260823, 20260824)

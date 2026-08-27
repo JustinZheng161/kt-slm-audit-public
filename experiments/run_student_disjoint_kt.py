@@ -73,8 +73,8 @@ def set_seed(seed: int) -> None:
     torch.use_deterministic_algorithms(True, warn_only=True)
 
 
-def load_student_sequences(path: Path) -> tuple[list[list[tuple[int, int]]], list[str]]:
-    """Read official corrected collapsed data and encode per-student chronological sequences."""
+def load_student_raw_sequences(path: Path) -> list[list[tuple[str, int]]]:
+    """Read chronological student sequences without fitting labels on held-out students."""
     required = ["user_id", "order_id", "skill_id", "correct"]
     frame = pd.read_csv(
         path,
@@ -88,17 +88,66 @@ def load_student_sequences(path: Path) -> tuple[list[list[tuple[int, int]]], lis
     frame["skill_id"] = frame["skill_id"].str.strip()
     frame = frame[frame["skill_id"].ne("")]
     frame = frame.sort_values(["user_id", "order_id"], kind="mergesort")
-    skill_labels = sorted(frame["skill_id"].unique().tolist())
-    skill_index = {label: index for index, label in enumerate(skill_labels)}
-
-    sequences: list[list[tuple[int, int]]] = []
+    sequences: list[list[tuple[str, int]]] = []
     for _, group in frame.groupby("user_id", sort=False):
-        sequence = [(skill_index[str(skill)], int(correct)) for skill, correct in zip(group["skill_id"], group["correct"])]
+        sequence = [(str(skill), int(correct)) for skill, correct in zip(group["skill_id"], group["correct"])]
         if len(sequence) >= 2:
             sequences.append(sequence)
     if not sequences:
         raise ValueError("No valid student sequences with at least two interactions were constructed.")
-    return sequences, skill_labels
+    return sequences
+
+
+def encode_sequences(sequences: list[list[tuple[str, int]]], skill_index: dict[str, int]) -> list[list[tuple[int, int]]]:
+    unseen = {skill for sequence in sequences for skill, _ in sequence if skill not in skill_index}
+    if unseen:
+        raise ValueError(f"Validation/test include {len(unseen)} labels not present in the train-fitted vocabulary.")
+    return [[(skill_index[skill], outcome) for skill, outcome in sequence] for sequence in sequences]
+
+
+def load_train_fitted_splits(
+    path: Path, spec: SplitSpec
+) -> tuple[list[list[tuple[int, int]]], list[list[tuple[int, int]]], list[list[tuple[int, int]]], list[str], dict]:
+    """Split raw students first, then fit the categorical skill vocabulary on training students only."""
+    raw_sequences = load_student_raw_sequences(path)
+    raw_train, raw_validation, raw_test = split_students(raw_sequences, spec)
+    skill_labels = sorted({skill for sequence in raw_train for skill, _ in sequence})
+    skill_index = {label: index for index, label in enumerate(skill_labels)}
+    train_labels = set(skill_index)
+    validation_labels = {skill for sequence in raw_validation for skill, _ in sequence}
+    test_labels = {skill for sequence in raw_test for skill, _ in sequence}
+    validation_unseen = validation_labels.difference(train_labels)
+    test_unseen = test_labels.difference(train_labels)
+    if validation_unseen or test_unseen:
+        raise ValueError(
+            "The fixed student-disjoint split is unsupported by the train-fitted vocabulary: "
+            f"validation unseen={len(validation_unseen)}, test unseen={len(test_unseen)}."
+        )
+    support = {
+        "vocabulary_fit": "The atomic skill_id vocabulary is fitted on training students only after student-level splitting.",
+        "train_unique_skill_labels": len(train_labels),
+        "validation_unique_skill_labels": len(validation_labels),
+        "test_unique_skill_labels": len(test_labels),
+        "validation_labels_not_seen_in_train": len(validation_unseen),
+        "test_labels_not_seen_in_train": len(test_unseen),
+        "validation_label_coverage_by_train": len(validation_labels.intersection(train_labels)) / len(validation_labels) if validation_labels else None,
+        "test_label_coverage_by_train": len(test_labels.intersection(train_labels)) / len(test_labels) if test_labels else None,
+    }
+    return (
+        encode_sequences(raw_train, skill_index),
+        encode_sequences(raw_validation, skill_index),
+        encode_sequences(raw_test, skill_index),
+        skill_labels,
+        support,
+    )
+
+
+def load_student_sequences(path: Path) -> tuple[list[list[tuple[int, int]]], list[str]]:
+    """Legacy whole-file encoder retained for external inspection; not used in controlled experiments."""
+    raw_sequences = load_student_raw_sequences(path)
+    skill_labels = sorted({skill for sequence in raw_sequences for skill, _ in sequence})
+    skill_index = {label: index for index, label in enumerate(skill_labels)}
+    return encode_sequences(raw_sequences, skill_index), skill_labels
 
 
 def split_students(sequences: list[list[tuple[int, int]]], spec: SplitSpec) -> tuple[list, list, list]:
@@ -154,7 +203,8 @@ def evaluate_skill_prior(test_sequences: list[list[tuple[int, int]]], priors: np
     offsets: list[tuple[int, int]] = []
     cursor = 0
     for sequence in test_sequences:
-        for skill, outcome in sequence:
+        # Score only second and later events so all methods share the next-response target set.
+        for skill, outcome in sequence[1:]:
             targets.append(outcome)
             scores.append(float(priors[skill]))
         offsets.append((cursor, len(targets)))
@@ -235,11 +285,12 @@ def bkt_predictions(test_sequences: list[list[tuple[int, int]]], parameters: np.
     cursor = 0
     for sequence in test_sequences:
         mastery = parameters[:, 0].copy()
-        for skill, outcome in sequence:
+        for event_index, (skill, outcome) in enumerate(sequence):
             _, learn, guess, slip = parameters[skill]
             probability = mastery[skill] * (1.0 - slip) + (1.0 - mastery[skill]) * guess
-            targets.append(outcome)
-            scores.append(float(probability))
+            if event_index > 0:
+                targets.append(outcome)
+                scores.append(float(probability))
             posterior = (mastery[skill] * ((1.0 - slip) if outcome else slip)) / (
                 probability if outcome else (1.0 - probability)
             )
@@ -335,9 +386,11 @@ def evaluate_dkt(model: DKTModel, sequences: list[list[tuple[int, int]]], skill_
 def train_dkt(
     train_sequences: list[list[tuple[int, int]]],
     validation_sequences: list[list[tuple[int, int]]],
-    test_sequences: list[list[tuple[int, int]]],
+    test_sequences: list[list[tuple[int, int]]] | None,
     skill_count: int,
     spec: DKTSpec,
+    record_training_auc: bool = False,
+    early_stop_patience: int | None = 3,
 ) -> tuple[dict, np.ndarray, np.ndarray, list[tuple[int, int]]]:
     set_seed(spec.seed)
     model = DKTModel(skill_count, spec.embedding_dim, spec.hidden_dim, spec.dropout)
@@ -361,19 +414,26 @@ def train_dkt(
             observed += len(labels)
         val_targets, val_scores, _ = evaluate_dkt(model, validation_sequences, skill_count)
         validation_auc = auc_or_nan(val_targets, val_scores)
-        history.append({"epoch": epoch, "training_bce": total_loss / max(observed, 1), "validation_auc": validation_auc})
+        record = {"epoch": epoch, "training_bce": total_loss / max(observed, 1), "validation_auc": validation_auc}
+        if record_training_auc:
+            train_targets, train_scores, _ = evaluate_dkt(model, train_sequences, skill_count)
+            record["training_auc"] = auc_or_nan(train_targets, train_scores)
+        history.append(record)
         if validation_auc > best_validation + 1e-6:
             best_validation = validation_auc
             best_state = {name: value.detach().clone() for name, value in model.state_dict().items()}
             patience = 0
         else:
             patience += 1
-            if patience >= 3:
+            if early_stop_patience is not None and patience >= early_stop_patience:
                 break
     if best_state is None:
         raise RuntimeError("DKT did not produce a valid validation checkpoint.")
     model.load_state_dict(best_state)
-    targets, scores, offsets = evaluate_dkt(model, test_sequences, skill_count)
+    if test_sequences is None:
+        targets, scores, offsets = np.asarray([], dtype=np.int64), np.asarray([], dtype=float), []
+    else:
+        targets, scores, offsets = evaluate_dkt(model, test_sequences, skill_count)
     return (
         {
             "specification": asdict(spec),
@@ -411,8 +471,7 @@ def main() -> None:
     PUBLIC_DIR.mkdir(parents=True, exist_ok=True)
 
     split_spec = SplitSpec()
-    sequences, labels = load_student_sequences(RAW_DATA)
-    train_sequences, validation_sequences, test_sequences = split_students(sequences, split_spec)
+    train_sequences, validation_sequences, test_sequences, labels, label_support = load_train_fitted_splits(RAW_DATA, split_spec)
     priors = make_skill_priors(train_sequences, len(labels))
     prior_y, prior_s, prior_offsets = evaluate_skill_prior(test_sequences, priors)
     bkt_parameters = fit_bkt_models(train_sequences, len(labels))
@@ -464,15 +523,16 @@ def main() -> None:
             "source_sha256": stable_sha256(RAW_DATA),
             "source_page": "https://sites.google.com/site/assistmentsdata/home/2009-2010-assistment-data/skill-builder-data-2009-2010",
             "encoding": "corrected collapsed skill_id labels treated as categorical labels; multi-skill labels are not decomposed",
-            "student_count": len(sequences),
+            "student_count": sum(split_spec_counts for split_spec_counts in [len(train_sequences), len(validation_sequences), len(test_sequences)]),
             "skill_label_count": len(labels),
             "split_student_counts": {"train": len(train_sequences), "validation": len(validation_sequences), "test": len(test_sequences)},
+            "train_fitted_label_support": label_support,
         },
         "split": asdict(split_spec),
         "methods": {
-            "Skill-prior": "Laplace-smoothed per-skill correctness mean fitted on training students.",
-            "BKT (per-skill EM)": "Two-state BKT independently fitted per skill on training students with bounded EM parameters.",
-            "DKT-64-Adam": "GRU next-interaction baseline selected by validation AUC.",
+            "Skill-prior": "Laplace-smoothed per-skill correctness mean fitted on training students; scored only on second and later test interactions.",
+            "BKT (per-skill EM)": "Two-state BKT independently fitted per skill on training students; first test interaction updates state but is not scored.",
+            "DKT-64-Adam": "GRU next-interaction baseline selected by validation AUC; scores only second and later test interactions.",
             "DKT-64-AdamW": "Decoupled-weight-decay ablation with the same capacity and learning rate as DKT-64-Adam; three independent seeds.",
             "DKT-96-AdamW": "Capacity/dropout/AdamW candidate, three independent initialisation seeds; this is a within-protocol candidate rather than an external SOTA claim.",
         },

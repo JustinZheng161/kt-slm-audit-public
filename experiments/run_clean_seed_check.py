@@ -13,7 +13,7 @@ from pathlib import Path
 import numpy as np
 import torch
 
-from run_student_disjoint_kt import DKTSpec, RAW_DATA, SplitSpec, load_student_sequences, metric_record, split_students, train_dkt
+from run_student_disjoint_kt import DKTSpec, RAW_DATA, SplitSpec, load_train_fitted_splits, metric_record, train_dkt
 
 
 _HERE = Path(__file__).resolve()
@@ -23,8 +23,7 @@ PUBLIC_RESULTS = ROOT / "research_code" / "results" if (ROOT / "research_code").
 
 def main() -> None:
     torch.set_num_threads(4)
-    sequences, labels = load_student_sequences(RAW_DATA)
-    train, validation, test = split_students(sequences, SplitSpec())
+    train, validation, test, labels, _ = load_train_fitted_splits(RAW_DATA, SplitSpec())
     rows = []
     for seed in (20260822, 20260823, 20260824):
         spec = DKTSpec("DKT-64-Adam", 64, 64, 0.0, 0.002, 0.0, 8, seed)

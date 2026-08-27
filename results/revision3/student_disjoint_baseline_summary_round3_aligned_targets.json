@@ -11,6 +11,16 @@
       "train": 3221,
       "validation": 403,
       "test": 403
+    },
+    "train_fitted_label_support": {
+      "vocabulary_fit": "The atomic skill_id vocabulary is fitted on training students only after student-level splitting.",
+      "train_unique_skill_labels": 149,
+      "validation_unique_skill_labels": 132,
+      "test_unique_skill_labels": 135,
+      "validation_labels_not_seen_in_train": 0,
+      "test_labels_not_seen_in_train": 0,
+      "validation_label_coverage_by_train": 1.0,
+      "test_label_coverage_by_train": 1.0
     }
   },
   "split": {
@@ -19,30 +29,30 @@
     "validation_fraction": 0.1
   },
   "methods": {
-    "Skill-prior": "Laplace-smoothed per-skill correctness mean fitted on training students.",
-    "BKT (per-skill EM)": "Two-state BKT independently fitted per skill on training students with bounded EM parameters.",
-    "DKT-64-Adam": "GRU next-interaction baseline selected by validation AUC.",
+    "Skill-prior": "Laplace-smoothed per-skill correctness mean fitted on training students; scored only on second and later test interactions.",
+    "BKT (per-skill EM)": "Two-state BKT independently fitted per skill on training students; first test interaction updates state but is not scored.",
+    "DKT-64-Adam": "GRU next-interaction baseline selected by validation AUC; scores only second and later test interactions.",
     "DKT-64-AdamW": "Decoupled-weight-decay ablation with the same capacity and learning rate as DKT-64-Adam; three independent seeds.",
     "DKT-96-AdamW": "Capacity/dropout/AdamW candidate, three independent initialisation seeds; this is a within-protocol candidate rather than an external SOTA claim."
   },
   "metrics": [
     {
       "name": "Skill-prior",
-      "test_prediction_rows": 24709,
-      "roc_auc": 0.6230443320381622,
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.6230764360707914,
       "student_cluster_bootstrap_95_ci": [
-        0.6101744859292718,
-        0.635649728499808
+        0.6100499301142751,
+        0.636072938740948
       ],
       "bootstrap_replicates": 1000
     },
     {
       "name": "BKT (per-skill EM)",
-      "test_prediction_rows": 24709,
-      "roc_auc": 0.7236088556576726,
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7245304066013627,
       "student_cluster_bootstrap_95_ci": [
-        0.7067631129358187,
-        0.7411628309434364
+        0.7075407135600721,
+        0.7423872197003027
       ],
       "bootstrap_replicates": 1000
     },
@@ -507,5 +517,5 @@
       "seed_count": 3
     }
   },
-  "privacy": "Raw data, student identities, split membership, per-student sequences, and row-level predictions are stored only below private_data/ and excluded from Git."
+  "privacy": "Raw data, student identities, split membership, per-student sequences, and row-level predictions are stored only in the controlled data root and excluded from Git."
 }

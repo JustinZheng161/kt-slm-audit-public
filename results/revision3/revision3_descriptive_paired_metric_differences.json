@@ -1,0 +1,92 @@
+{
+  "experiment": "revision3_descriptive_paired_metric_differences",
+  "analysis_scope": "Primary eight-epoch analysis only; each comparison uses the same three seeds and 24,306 targets per seed.",
+  "comparisons": {
+    "DKT-64-AdamW_minus_DKT-64-Adam": {
+      "comparison": "DKT-64 AdamW \u2212 DKT-64 Adam",
+      "paired_seed_count": 3,
+      "metrics": {
+        "roc_auc": {
+          "candidate_minus_reference_per_seed": [
+            5.113422892888408e-07,
+            -2.9429771952749206e-08,
+            -6.658485925958857e-07
+          ],
+          "mean_difference": -6.131202508659801e-08,
+          "descriptive_seed_resampling_95_interval": [
+            -6.658485925958857e-07,
+            5.113422892888408e-07
+          ]
+        },
+        "brier_score": {
+          "candidate_minus_reference_per_seed": [
+            -2.0587860777299127e-08,
+            -5.333025379639089e-08,
+            -6.400119353933142e-08
+          ],
+          "mean_difference": -4.5973102704340483e-08,
+          "descriptive_seed_resampling_95_interval": [
+            -6.400119353933142e-08,
+            -2.0587860777299127e-08
+          ]
+        },
+        "ece_10": {
+          "candidate_minus_reference_per_seed": [
+            4.0264053324344865e-05,
+            6.818211572487409e-07,
+            -6.641751892623102e-05
+          ],
+          "mean_difference": -8.49054814821247e-06,
+          "descriptive_seed_resampling_95_interval": [
+            -6.641751892623102e-05,
+            4.0264053324344865e-05
+          ]
+        }
+      }
+    },
+    "DKT-96-AdamW-dropout_minus_DKT-64-Adam": {
+      "comparison": "DKT-96 AdamW + dropout \u2212 DKT-64 Adam",
+      "paired_seed_count": 3,
+      "metrics": {
+        "roc_auc": {
+          "candidate_minus_reference_per_seed": [
+            -0.00025976188297871516,
+            -0.0012955794974108814,
+            0.0024587618078224516
+          ],
+          "mean_difference": 0.00030114014247761833,
+          "descriptive_seed_resampling_95_interval": [
+            -0.0012955794974108814,
+            0.0024587618078224516
+          ]
+        },
+        "brier_score": {
+          "candidate_minus_reference_per_seed": [
+            0.0001256314914725165,
+            0.00012413640173619678,
+            -0.0007518473696857819
+          ],
+          "mean_difference": -0.0001673598254923562,
+          "descriptive_seed_resampling_95_interval": [
+            -0.0007518473696857819,
+            0.0001256314914725165
+          ]
+        },
+        "ece_10": {
+          "candidate_minus_reference_per_seed": [
+            0.00017329592248240162,
+            -0.01326694887318131,
+            0.0011226554364971615
+          ],
+          "mean_difference": -0.003990332504733915,
+          "descriptive_seed_resampling_95_interval": [
+            -0.013266948873181311,
+            0.0011226554364971615
+          ]
+        }
+      }
+    }
+  },
+  "interpretation_limit": "The n=3 seed-resampling intervals describe the observed configuration-specific variation. They do not implement TOST, do not use a pre-specified equivalence margin, and must not be read as evidence of no effect or practical equivalence.",
+  "privacy": "The output contains only aggregate per-seed metric differences; it includes no learner-level data or predictions."
+}

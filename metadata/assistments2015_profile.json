@@ -1,0 +1,11 @@
+{
+  "dataset": "ASSISTments2015 Skill Builder",
+  "source_url": "https://sites.google.com/site/assistmentsdata/datasets/2015-assistments-skill-builder-data",
+  "source_sha256": "75e1f46131d5897a388c82411bc3032279899cb1f1e66a9043354d41234407a0",
+  "row_count_excluding_header": 708631,
+  "unique_students": 19917,
+  "unique_sequence_ids": 100,
+  "columns": ["user_id", "log_id", "sequence_id", "correct"],
+  "schema_difference_from_assistments2009": "The obtained 2015 file has no skill_id field compatible with the corrected collapsed ASSISTments2009 skill vocabulary. No harmonization rule was pre-specified.",
+  "privacy_note": "This file contains aggregate metadata only. The source rows and student identifiers remain in the controlled data root and are not versioned."
+}

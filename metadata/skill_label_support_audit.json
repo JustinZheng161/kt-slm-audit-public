@@ -1,0 +1,60 @@
+{
+  "assessment": "Pass only if both validation_labels_not_seen_in_train and test_labels_not_seen_in_train equal zero. Otherwise a coverage-constrained split or explicit OOV policy is required before main-result reporting.",
+  "audit_name": "student_disjoint_skill_label_support",
+  "candidate_composite_label_distribution": {
+    "overall_candidate_composite_unique_labels": 0,
+    "test": {
+      "candidate_composite_event_rows": 0,
+      "candidate_composite_unique_labels": 0
+    },
+    "train": {
+      "candidate_composite_event_rows": 0,
+      "candidate_composite_unique_labels": 0
+    },
+    "validation": {
+      "candidate_composite_event_rows": 0,
+      "candidate_composite_unique_labels": 0
+    }
+  },
+  "data_file": "skill_builder_data_corrected_collapsed.csv",
+  "event_counts": {
+    "test": 24709,
+    "train": 234265,
+    "validation": 23995
+  },
+  "preprocessing": {
+    "candidate_composite_detection": "For disclosure only, labels containing explicit multi-value separators (~~, |||, ;, |, or comma) are counted. An underscore is not considered proof of a composite label.",
+    "provider_file": "official corrected collapsed ASSISTments2009 CSV",
+    "sequence_filter": "Only student histories with at least two interactions are retained before the student-level split.",
+    "skill_label_rule": "Each unique provider-supplied non-empty skill_id string is treated as an atomic categorical label; no extra merging, renaming, semantic normalization, or delimiter-based decomposition is applied."
+  },
+  "privacy": "Only aggregate counts are written. No raw skill strings, student IDs, split memberships, sequences, or row-level predictions are exported.",
+  "split": {
+    "fractions": {
+      "test": 0.1,
+      "train": 0.8,
+      "validation": 0.1
+    },
+    "seed": 20260822
+  },
+  "student_counts": {
+    "all_retained": 4027,
+    "test": 403,
+    "train": 3221,
+    "validation": 403
+  },
+  "train_fitted_vocabulary_support": {
+    "test_event_rows_with_unseen_label": 0,
+    "test_label_coverage_by_train": 1.0,
+    "test_labels_not_seen_in_train": 0,
+    "validation_event_rows_with_unseen_label": 0,
+    "validation_label_coverage_by_train": 1.0,
+    "validation_labels_not_seen_in_train": 0
+  },
+  "unique_skill_label_counts": {
+    "all_retained": 149,
+    "test": 135,
+    "train": 149,
+    "validation": 132
+  }
+}

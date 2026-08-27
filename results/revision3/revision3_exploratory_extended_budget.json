@@ -1,0 +1,794 @@
+{
+  "experiment": "revision3_exploratory_extended_budget",
+  "analysis_label": "Post hoc exploratory extension. For each seed, the model is trained for all 20 epochs; the checkpoint with the maximum validation AUC is selected before its single test evaluation.",
+  "source_sha256": "162ef8d2d28bcbfea6591a282994062bd8d5eaa00636544292a0d268dca6e5da",
+  "student_level_split": {
+    "seed": 20260822,
+    "train_validation_test": [
+      0.8,
+      0.1,
+      0.1
+    ]
+  },
+  "test_prediction_rows_per_seed": 24306,
+  "runs": [
+    {
+      "name": "DKT-64-Adam-exploratory-20epoch",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7638450173758893,
+      "student_cluster_bootstrap_95_ci": [
+        0.7467221698956,
+        0.7836544076291151
+      ],
+      "bootstrap_replicates": 1000,
+      "brier_score": 0.18202961652206912,
+      "ece_10": 0.0167066325070081,
+      "calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "count": 660,
+          "mean_prediction": 0.05481315611607649,
+          "empirical_accuracy": 0.05454545454545454
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "count": 777,
+          "mean_prediction": 0.1506036053983401,
+          "empirical_accuracy": 0.16216216216216217
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "count": 1128,
+          "mean_prediction": 0.25144482886167707,
+          "empirical_accuracy": 0.29432624113475175
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "count": 1384,
+          "mean_prediction": 0.3519204485450866,
+          "empirical_accuracy": 0.3663294797687861
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "count": 1954,
+          "mean_prediction": 0.4524820480979941,
+          "empirical_accuracy": 0.4375639713408393
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "count": 2658,
+          "mean_prediction": 0.5532532912210202,
+          "empirical_accuracy": 0.5669676448457487
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "count": 3429,
+          "mean_prediction": 0.6519324048401907,
+          "empirical_accuracy": 0.6465441819772528
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "count": 4458,
+          "mean_prediction": 0.7516783767481351,
+          "empirical_accuracy": 0.7274562584118439
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "count": 5303,
+          "mean_prediction": 0.8498452221832477,
+          "empirical_accuracy": 0.8382047897416557
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "count": 2555,
+          "mean_prediction": 0.9361295847043599,
+          "empirical_accuracy": 0.9068493150684932
+        }
+      ],
+      "specification": {
+        "name": "DKT-64-Adam-exploratory-20epoch",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "epochs": 20,
+        "seed": 20260822
+      },
+      "selected_validation_auc": 0.767331493075257,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.5996016567043997,
+          "validation_auc": 0.7292578857370398,
+          "training_auc": 0.7283742501396214
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.5517937376517607,
+          "validation_auc": 0.7536391881871283,
+          "training_auc": 0.7525974971666062
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.540426081379933,
+          "validation_auc": 0.7596860360630442,
+          "training_auc": 0.7607626751622479
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.5345336960339402,
+          "validation_auc": 0.7618230720365354,
+          "training_auc": 0.766264129526423
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.530374653424963,
+          "validation_auc": 0.7624592341808805,
+          "training_auc": 0.7696148031585979
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.5272567700208016,
+          "validation_auc": 0.765944176258734,
+          "training_auc": 0.774124903050162
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.5239538151176638,
+          "validation_auc": 0.7660417835334471,
+          "training_auc": 0.776675002352098
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.5210163431816339,
+          "validation_auc": 0.7654411600899674,
+          "training_auc": 0.7791808834101155
+        },
+        {
+          "epoch": 9,
+          "training_bce": 0.5190128960004691,
+          "validation_auc": 0.7655465152670418,
+          "training_auc": 0.7821572321961097
+        },
+        {
+          "epoch": 10,
+          "training_bce": 0.5161262171679342,
+          "validation_auc": 0.767329448436026,
+          "training_auc": 0.7848612928884444
+        },
+        {
+          "epoch": 11,
+          "training_bce": 0.5137299874321846,
+          "validation_auc": 0.7648774371469171,
+          "training_auc": 0.7872299391566914
+        },
+        {
+          "epoch": 12,
+          "training_bce": 0.5114659755290544,
+          "validation_auc": 0.765507442094944,
+          "training_auc": 0.7901848290297399
+        },
+        {
+          "epoch": 13,
+          "training_bce": 0.5092217210657738,
+          "validation_auc": 0.767331493075257,
+          "training_auc": 0.7922853992234651
+        },
+        {
+          "epoch": 14,
+          "training_bce": 0.5073119607563453,
+          "validation_auc": 0.7649560684624673,
+          "training_auc": 0.7945605956551395
+        },
+        {
+          "epoch": 15,
+          "training_bce": 0.504636392343804,
+          "validation_auc": 0.7638198620538168,
+          "training_auc": 0.7968782477751271
+        },
+        {
+          "epoch": 16,
+          "training_bce": 0.5021379332130963,
+          "validation_auc": 0.7629022380543427,
+          "training_auc": 0.799167836311432
+        },
+        {
+          "epoch": 17,
+          "training_bce": 0.4997381844435652,
+          "validation_auc": 0.7639675804486584,
+          "training_auc": 0.8023320107253124
+        },
+        {
+          "epoch": 18,
+          "training_bce": 0.497607690869505,
+          "validation_auc": 0.7620385933065215,
+          "training_auc": 0.8029784035136602
+        },
+        {
+          "epoch": 19,
+          "training_bce": 0.4953424411402701,
+          "validation_auc": 0.7612916792238682,
+          "training_auc": 0.8054905936775937
+        },
+        {
+          "epoch": 20,
+          "training_bce": 0.49326018232934965,
+          "validation_auc": 0.7616661314264146,
+          "training_auc": 0.8085385018600575
+        }
+      ],
+      "selected_epoch": 13
+    },
+    {
+      "name": "DKT-64-Adam-exploratory-20epoch",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7644794202570345,
+      "student_cluster_bootstrap_95_ci": [
+        0.7458256476303877,
+        0.7832044258170768
+      ],
+      "bootstrap_replicates": 1000,
+      "brier_score": 0.1823505110007572,
+      "ece_10": 0.023644309448924178,
+      "calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "count": 515,
+          "mean_prediction": 0.058822957607148924,
+          "empirical_accuracy": 0.038834951456310676
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "count": 831,
+          "mean_prediction": 0.1500279619733923,
+          "empirical_accuracy": 0.148014440433213
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "count": 916,
+          "mean_prediction": 0.2518613654713443,
+          "empirical_accuracy": 0.27292576419213976
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "count": 1328,
+          "mean_prediction": 0.3523662346583533,
+          "empirical_accuracy": 0.35240963855421686
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "count": 1759,
+          "mean_prediction": 0.45402309937257535,
+          "empirical_accuracy": 0.42581011938601476
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "count": 2459,
+          "mean_prediction": 0.5533883284145664,
+          "empirical_accuracy": 0.5408702724684831
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "count": 3350,
+          "mean_prediction": 0.6526708436546041,
+          "empirical_accuracy": 0.6158208955223881
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "count": 4888,
+          "mean_prediction": 0.7534113333190131,
+          "empirical_accuracy": 0.7213584288052373
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "count": 5568,
+          "mean_prediction": 0.8482787265581475,
+          "empirical_accuracy": 0.8261494252873564
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "count": 2692,
+          "mean_prediction": 0.934484580960706,
+          "empirical_accuracy": 0.912332838038633
+        }
+      ],
+      "specification": {
+        "name": "DKT-64-Adam-exploratory-20epoch",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "epochs": 20,
+        "seed": 20260823
+      },
+      "selected_validation_auc": 0.7659323739958486,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.6014748700607397,
+          "validation_auc": 0.7258706479281702,
+          "training_auc": 0.7234528862657095
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.5557522378311505,
+          "validation_auc": 0.7455054658948705,
+          "training_auc": 0.7469379772221967
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.5436698935469466,
+          "validation_auc": 0.7542483898039282,
+          "training_auc": 0.7581601546953705
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.5366858882183856,
+          "validation_auc": 0.7595721880676081,
+          "training_auc": 0.7648894201753947
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.5315191089147022,
+          "validation_auc": 0.7624197497530738,
+          "training_auc": 0.7698680365800408
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.5275584496037239,
+          "validation_auc": 0.7641173822804394,
+          "training_auc": 0.7734945535236317
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.524163484919057,
+          "validation_auc": 0.7634371886168672,
+          "training_auc": 0.7756245649799374
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.521854772562832,
+          "validation_auc": 0.7648162880787577,
+          "training_auc": 0.7796041400011898
+        },
+        {
+          "epoch": 9,
+          "training_bce": 0.5188469749753907,
+          "validation_auc": 0.7644761330504091,
+          "training_auc": 0.7826669932073858
+        },
+        {
+          "epoch": 10,
+          "training_bce": 0.5162648014965853,
+          "validation_auc": 0.7643701881481677,
+          "training_auc": 0.7855578114380573
+        },
+        {
+          "epoch": 11,
+          "training_bce": 0.5136658853844697,
+          "validation_auc": 0.7659323739958486,
+          "training_auc": 0.7877088617433133
+        },
+        {
+          "epoch": 12,
+          "training_bce": 0.5115309426389538,
+          "validation_auc": 0.7652722969440652,
+          "training_auc": 0.7892578050654127
+        },
+        {
+          "epoch": 13,
+          "training_bce": 0.5089362788688683,
+          "validation_auc": 0.7635089837762028,
+          "training_auc": 0.7928435192834301
+        },
+        {
+          "epoch": 14,
+          "training_bce": 0.5063132971617549,
+          "validation_auc": 0.76430631160111,
+          "training_auc": 0.7956109165901291
+        },
+        {
+          "epoch": 15,
+          "training_bce": 0.5041527044574251,
+          "validation_auc": 0.7624042539483515,
+          "training_auc": 0.7976354499099724
+        },
+        {
+          "epoch": 16,
+          "training_bce": 0.5014749915882084,
+          "validation_auc": 0.7621981566417282,
+          "training_auc": 0.8008283652838224
+        },
+        {
+          "epoch": 17,
+          "training_bce": 0.4990333080596422,
+          "validation_auc": 0.76169327818296,
+          "training_auc": 0.8031329744251465
+        },
+        {
+          "epoch": 18,
+          "training_bce": 0.49661293877284346,
+          "validation_auc": 0.7608089464970367,
+          "training_auc": 0.8048677392953261
+        },
+        {
+          "epoch": 19,
+          "training_bce": 0.4941345380633325,
+          "validation_auc": 0.7591428875447415,
+          "training_auc": 0.8076658903756381
+        },
+        {
+          "epoch": 20,
+          "training_bce": 0.4916665969944616,
+          "validation_auc": 0.7591803234535461,
+          "training_auc": 0.8101723805348469
+        }
+      ],
+      "selected_epoch": 11
+    },
+    {
+      "name": "DKT-64-Adam-exploratory-20epoch",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7654332906712,
+      "student_cluster_bootstrap_95_ci": [
+        0.7482419647980779,
+        0.7843592142357575
+      ],
+      "bootstrap_replicates": 1000,
+      "brier_score": 0.1815157955898573,
+      "ece_10": 0.009291701348715972,
+      "calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "count": 548,
+          "mean_prediction": 0.05819873433274618,
+          "empirical_accuracy": 0.0364963503649635
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "count": 866,
+          "mean_prediction": 0.15353545694510876,
+          "empirical_accuracy": 0.1789838337182448
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "count": 1033,
+          "mean_prediction": 0.25152334914202845,
+          "empirical_accuracy": 0.25653436592449175
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "count": 1445,
+          "mean_prediction": 0.35257719068378723,
+          "empirical_accuracy": 0.3737024221453287
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "count": 1897,
+          "mean_prediction": 0.4511965284331195,
+          "empirical_accuracy": 0.4422772799156563
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "count": 2730,
+          "mean_prediction": 0.5524953914212657,
+          "empirical_accuracy": 0.5439560439560439
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "count": 3676,
+          "mean_prediction": 0.653328082053005,
+          "empirical_accuracy": 0.6504352557127312
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "count": 4815,
+          "mean_prediction": 0.7510063241451577,
+          "empirical_accuracy": 0.7489096573208722
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "count": 5084,
+          "mean_prediction": 0.8480899397966714,
+          "empirical_accuracy": 0.8381195908733281
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "count": 2212,
+          "mean_prediction": 0.9347014399430635,
+          "empirical_accuracy": 0.9145569620253164
+        }
+      ],
+      "specification": {
+        "name": "DKT-64-Adam-exploratory-20epoch",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "epochs": 20,
+        "seed": 20260824
+      },
+      "selected_validation_auc": 0.7656507026330941,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.5995698673390869,
+          "validation_auc": 0.726947567558663,
+          "training_auc": 0.7242261346436342
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.5548630362368735,
+          "validation_auc": 0.7487782465842827,
+          "training_auc": 0.7484361653168817
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.5427930790159821,
+          "validation_auc": 0.7568447208086255,
+          "training_auc": 0.7584767359004119
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.5364170533823993,
+          "validation_auc": 0.7613573715036777,
+          "training_auc": 0.7652777647204108
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.5309224365178241,
+          "validation_auc": 0.763319111671219,
+          "training_auc": 0.7702546767250525
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.5274804972016855,
+          "validation_auc": 0.7630235313300148,
+          "training_auc": 0.7728951167013647
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.5243514505282886,
+          "validation_auc": 0.7649640995880995,
+          "training_auc": 0.7769501213008605
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.5214511556452345,
+          "validation_auc": 0.7644454712214855,
+          "training_auc": 0.779624641761119
+        },
+        {
+          "epoch": 9,
+          "training_bce": 0.5187809719826132,
+          "validation_auc": 0.764834759667712,
+          "training_auc": 0.7823073699712049
+        },
+        {
+          "epoch": 10,
+          "training_bce": 0.5159223246894761,
+          "validation_auc": 0.7656507026330941,
+          "training_auc": 0.786052237174224
+        },
+        {
+          "epoch": 11,
+          "training_bce": 0.5136344392775604,
+          "validation_auc": 0.7655261037926693,
+          "training_auc": 0.7878844778861698
+        },
+        {
+          "epoch": 12,
+          "training_bce": 0.5112976240145828,
+          "validation_auc": 0.764329423395985,
+          "training_auc": 0.7903000125592248
+        },
+        {
+          "epoch": 13,
+          "training_bce": 0.5088768251273403,
+          "validation_auc": 0.7633425260882193,
+          "training_auc": 0.7930394860236423
+        },
+        {
+          "epoch": 14,
+          "training_bce": 0.5063708563654022,
+          "validation_auc": 0.7619620570672233,
+          "training_auc": 0.794486642809269
+        },
+        {
+          "epoch": 15,
+          "training_bce": 0.5041081935475082,
+          "validation_auc": 0.7615218039512844,
+          "training_auc": 0.7981104576378819
+        },
+        {
+          "epoch": 16,
+          "training_bce": 0.5015229715658966,
+          "validation_auc": 0.7611026179909893,
+          "training_auc": 0.8004656506470473
+        },
+        {
+          "epoch": 17,
+          "training_bce": 0.4989793099383915,
+          "validation_auc": 0.760121486022687,
+          "training_auc": 0.8029343387837328
+        },
+        {
+          "epoch": 18,
+          "training_bce": 0.4968956326366862,
+          "validation_auc": 0.7568093178997394,
+          "training_auc": 0.8045547251071198
+        },
+        {
+          "epoch": 19,
+          "training_bce": 0.4944559874232059,
+          "validation_auc": 0.7573919469660777,
+          "training_auc": 0.8070658734669958
+        },
+        {
+          "epoch": 20,
+          "training_bce": 0.4914386834631231,
+          "validation_auc": 0.7565522093661532,
+          "training_auc": 0.8100038117591192
+        }
+      ],
+      "selected_epoch": 10
+    }
+  ],
+  "aggregate": {
+    "seed_count": 3,
+    "test_prediction_rows_per_seed": 24306,
+    "mean_roc_auc": 0.7645859094347079,
+    "standard_deviation_roc_auc": 0.0007994735604574346,
+    "mean_brier_score": 0.1819653077042279,
+    "standard_deviation_brier_score": 0.0004210572079154374,
+    "mean_ece_10": 0.016547547768216084,
+    "standard_deviation_ece_10": 0.0071776264032845805,
+    "mean_calibration_bins_10": [
+      {
+        "bin": 0,
+        "lower_inclusive": 0.0,
+        "upper_exclusive": 0.1,
+        "mean_count_across_seeds": 574.3333333333334,
+        "mean_prediction_across_seeds": 0.05727828268532387,
+        "empirical_accuracy_across_seeds": 0.043292252122242914
+      },
+      {
+        "bin": 1,
+        "lower_inclusive": 0.1,
+        "upper_exclusive": 0.2,
+        "mean_count_across_seeds": 824.6666666666666,
+        "mean_prediction_across_seeds": 0.15138900810561373,
+        "empirical_accuracy_across_seeds": 0.16305347877120666
+      },
+      {
+        "bin": 2,
+        "lower_inclusive": 0.2,
+        "upper_exclusive": 0.3,
+        "mean_count_across_seeds": 1025.6666666666667,
+        "mean_prediction_across_seeds": 0.2516098478250166,
+        "empirical_accuracy_across_seeds": 0.2745954570837944
+      },
+      {
+        "bin": 3,
+        "lower_inclusive": 0.3,
+        "upper_exclusive": 0.4,
+        "mean_count_across_seeds": 1385.6666666666667,
+        "mean_prediction_across_seeds": 0.352287957962409,
+        "empirical_accuracy_across_seeds": 0.36414718015611053
+      },
+      {
+        "bin": 4,
+        "lower_inclusive": 0.4,
+        "upper_exclusive": 0.5,
+        "mean_count_across_seeds": 1870.0,
+        "mean_prediction_across_seeds": 0.45256722530122967,
+        "empirical_accuracy_across_seeds": 0.43521712354750347
+      },
+      {
+        "bin": 5,
+        "lower_inclusive": 0.5,
+        "upper_exclusive": 0.6,
+        "mean_count_across_seeds": 2615.6666666666665,
+        "mean_prediction_across_seeds": 0.553045670352284,
+        "empirical_accuracy_across_seeds": 0.5505979870900918
+      },
+      {
+        "bin": 6,
+        "lower_inclusive": 0.6,
+        "upper_exclusive": 0.7,
+        "mean_count_across_seeds": 3485.0,
+        "mean_prediction_across_seeds": 0.6526437768492666,
+        "empirical_accuracy_across_seeds": 0.6376001110707907
+      },
+      {
+        "bin": 7,
+        "lower_inclusive": 0.7,
+        "upper_exclusive": 0.8,
+        "mean_count_across_seeds": 4720.333333333333,
+        "mean_prediction_across_seeds": 0.7520320114041019,
+        "empirical_accuracy_across_seeds": 0.7325747815126511
+      },
+      {
+        "bin": 8,
+        "lower_inclusive": 0.8,
+        "upper_exclusive": 0.9,
+        "mean_count_across_seeds": 5318.333333333333,
+        "mean_prediction_across_seeds": 0.8487379628460222,
+        "empirical_accuracy_across_seeds": 0.8341579353007801
+      },
+      {
+        "bin": 9,
+        "lower_inclusive": 0.9,
+        "upper_exclusive": 1.0,
+        "mean_count_across_seeds": 2486.3333333333335,
+        "mean_prediction_across_seeds": 0.9351052018693764,
+        "empirical_accuracy_across_seeds": 0.9112463717108142
+      }
+    ]
+  },
+  "interpretation_limit": "This is not a replacement for the pre-specified eight-epoch main analysis and it is not a new externally validated benchmark claim. It reports the consequence of extending the validation-selection budget after the original analysis.",
+  "privacy": "Only aggregate metrics, selected epochs, and aggregate training histories are written."
+}

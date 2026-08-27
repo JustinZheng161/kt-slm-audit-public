@@ -1,0 +1,3473 @@
+{
+  "experiment": "revision3_training_label_inversion_sensitivity",
+  "analysis_label": "Synthetic sensitivity analysis, not a behavioral robustness claim.",
+  "source_sha256": "162ef8d2d28bcbfea6591a282994062bd8d5eaa00636544292a0d268dca6e5da",
+  "student_level_split": {
+    "seed": 20260822,
+    "train_validation_test": [
+      0.8,
+      0.1,
+      0.1
+    ]
+  },
+  "test_prediction_rows_per_seed": 24306,
+  "perturbation": {
+    "type": "independent binary outcome inversion in training data only",
+    "rates": [
+      0.05,
+      0.1,
+      0.2
+    ],
+    "validation_and_test_unchanged": true,
+    "generator_seed_rule": "each model seed plus 1000"
+  },
+  "runs": [
+    {
+      "name": "DKT-64-Adam",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7595414098413231,
+      "student_cluster_bootstrap_95_ci": [
+        0.7420416819546805,
+        0.7796785052726385
+      ],
+      "bootstrap_replicates": 1000,
+      "brier_score": 0.18339041520198254,
+      "ece_10": 0.01592824664612145,
+      "calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "count": 211,
+          "mean_prediction": 0.06471344577898912,
+          "empirical_accuracy": 0.02843601895734597
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "count": 718,
+          "mean_prediction": 0.15372967100533602,
+          "empirical_accuracy": 0.08356545961002786
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "count": 836,
+          "mean_prediction": 0.25343101038530685,
+          "empirical_accuracy": 0.2236842105263158
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "count": 1391,
+          "mean_prediction": 0.35375143391549546,
+          "empirical_accuracy": 0.3191948238677211
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "count": 1993,
+          "mean_prediction": 0.4534473056118511,
+          "empirical_accuracy": 0.4129453085800301
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "count": 2954,
+          "mean_prediction": 0.5531315137868648,
+          "empirical_accuracy": 0.5423155044008124
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "count": 4498,
+          "mean_prediction": 0.6532116477200062,
+          "empirical_accuracy": 0.6496220542463317
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "count": 5816,
+          "mean_prediction": 0.7513230308029478,
+          "empirical_accuracy": 0.7565337001375516
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "count": 5003,
+          "mean_prediction": 0.8451514907081485,
+          "empirical_accuracy": 0.8616829902058765
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "count": 886,
+          "mean_prediction": 0.9205940803744185,
+          "empirical_accuracy": 0.9367945823927766
+        }
+      ],
+      "specification": {
+        "name": "DKT-64-Adam",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "epochs": 8,
+        "seed": 20260822
+      },
+      "selected_validation_auc": 0.7622336643044269,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.6223896273866225,
+          "validation_auc": 0.7269945438239553
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.5862902726840883,
+          "validation_auc": 0.751613722783592
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.5767785395870777,
+          "validation_auc": 0.7568885893774776
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.5720467839963206,
+          "validation_auc": 0.7586666107565825
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.568657314043835,
+          "validation_auc": 0.7588593965694648
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.5659889119347241,
+          "validation_auc": 0.7619680047559163
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.5632677031065176,
+          "validation_auc": 0.7615396314982796
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.5606019870835974,
+          "validation_auc": 0.7622336643044269
+        }
+      ],
+      "selected_epoch": 8,
+      "label_noise_rate": 0.05,
+      "training_label_flips": 11852
+    },
+    {
+      "name": "DKT-64-Adam",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7637961308457966,
+      "student_cluster_bootstrap_95_ci": [
+        0.7458257626430683,
+        0.7822907015784002
+      ],
+      "bootstrap_replicates": 1000,
+      "brier_score": 0.1825047038360669,
+      "ece_10": 0.016744003734399392,
+      "calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "count": 184,
+          "mean_prediction": 0.08042075796781675,
+          "empirical_accuracy": 0.03260869565217391
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "count": 776,
+          "mean_prediction": 0.1523633336398712,
+          "empirical_accuracy": 0.09278350515463918
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "count": 896,
+          "mean_prediction": 0.25353234903221683,
+          "empirical_accuracy": 0.20870535714285715
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "count": 1351,
+          "mean_prediction": 0.3533852642152505,
+          "empirical_accuracy": 0.33308660251665434
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "count": 1954,
+          "mean_prediction": 0.45386513132704925,
+          "empirical_accuracy": 0.41299897645854655
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "count": 2882,
+          "mean_prediction": 0.5536091688355996,
+          "empirical_accuracy": 0.5294934073560028
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "count": 4247,
+          "mean_prediction": 0.6521583874000503,
+          "empirical_accuracy": 0.6475158935719332
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "count": 5942,
+          "mean_prediction": 0.7529260602132996,
+          "empirical_accuracy": 0.7537866038370918
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "count": 5030,
+          "mean_prediction": 0.8419040440565075,
+          "empirical_accuracy": 0.8612326043737575
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "count": 1044,
+          "mean_prediction": 0.9224586775704818,
+          "empirical_accuracy": 0.9348659003831418
+        }
+      ],
+      "specification": {
+        "name": "DKT-64-Adam",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "epochs": 8,
+        "seed": 20260823
+      },
+      "selected_validation_auc": 0.7626773083400772,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.6236794759810577,
+          "validation_auc": 0.723577579210934
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.589118497713156,
+          "validation_auc": 0.7434333850447296
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.579232701809192,
+          "validation_auc": 0.7523147197783913
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.5731920508328874,
+          "validation_auc": 0.7566162100658775
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.5692573640768933,
+          "validation_auc": 0.7606793117140657
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.5657151483138763,
+          "validation_auc": 0.76204609678332
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.5629815309543247,
+          "validation_auc": 0.760520318705172
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.5609848127237299,
+          "validation_auc": 0.7626773083400772
+        }
+      ],
+      "selected_epoch": 8,
+      "label_noise_rate": 0.05,
+      "training_label_flips": 11546
+    },
+    {
+      "name": "DKT-64-Adam",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7587332572647301,
+      "student_cluster_bootstrap_95_ci": [
+        0.7414669129565644,
+        0.7787440784653229
+      ],
+      "bootstrap_replicates": 1000,
+      "brier_score": 0.18401521462847242,
+      "ece_10": 0.017331754392103226,
+      "calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "count": 148,
+          "mean_prediction": 0.07297923962107382,
+          "empirical_accuracy": 0.02702702702702703
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "count": 678,
+          "mean_prediction": 0.15370295369299816,
+          "empirical_accuracy": 0.09587020648967552
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "count": 978,
+          "mean_prediction": 0.25189419873896796,
+          "empirical_accuracy": 0.20040899795501022
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "count": 1450,
+          "mean_prediction": 0.3536510923813129,
+          "empirical_accuracy": 0.31448275862068964
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "count": 2139,
+          "mean_prediction": 0.4534947393011857,
+          "empirical_accuracy": 0.44506778868630203
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "count": 3064,
+          "mean_prediction": 0.5533145079802595,
+          "empirical_accuracy": 0.5447127937336814
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "count": 4479,
+          "mean_prediction": 0.654751033981508,
+          "empirical_accuracy": 0.6577361018084393
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "count": 6085,
+          "mean_prediction": 0.75008752034547,
+          "empirical_accuracy": 0.7643385373870173
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "count": 4532,
+          "mean_prediction": 0.8448837766159139,
+          "empirical_accuracy": 0.8704766107678729
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "count": 753,
+          "mean_prediction": 0.9207804778499274,
+          "empirical_accuracy": 0.9309428950863213
+        }
+      ],
+      "specification": {
+        "name": "DKT-64-Adam",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "epochs": 8,
+        "seed": 20260824
+      },
+      "selected_validation_auc": 0.7608189718248792,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.6222016363763299,
+          "validation_auc": 0.7258333167731781
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.5883642550563591,
+          "validation_auc": 0.7458402396810686
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.5783747744274194,
+          "validation_auc": 0.7550702222614407
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.5728643550320582,
+          "validation_auc": 0.7587685478555495
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.568303615989665,
+          "validation_auc": 0.7608189718248792
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.5653466587973831,
+          "validation_auc": 0.7596529920548267
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.5627066539073406,
+          "validation_auc": 0.7602920058307369
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.5602345635696196,
+          "validation_auc": 0.7594702509686411
+        }
+      ],
+      "selected_epoch": 5,
+      "label_noise_rate": 0.05,
+      "training_label_flips": 11575
+    },
+    {
+      "name": "DKT-64-AdamW",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7595414466285382,
+      "student_cluster_bootstrap_95_ci": [
+        0.742041648823355,
+        0.7796797785223537
+      ],
+      "bootstrap_replicates": 1000,
+      "brier_score": 0.1833903514302551,
+      "ece_10": 0.01593010925969783,
+      "calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "count": 211,
+          "mean_prediction": 0.06471773289956188,
+          "empirical_accuracy": 0.02843601895734597
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "count": 718,
+          "mean_prediction": 0.15373524352077986,
+          "empirical_accuracy": 0.08356545961002786
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "count": 836,
+          "mean_prediction": 0.25343619877000173,
+          "empirical_accuracy": 0.2236842105263158
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "count": 1391,
+          "mean_prediction": 0.3537553247147374,
+          "empirical_accuracy": 0.3191948238677211
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "count": 1993,
+          "mean_prediction": 0.4534505017277468,
+          "empirical_accuracy": 0.4129453085800301
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "count": 2954,
+          "mean_prediction": 0.5531333442790006,
+          "empirical_accuracy": 0.5423155044008124
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "count": 4498,
+          "mean_prediction": 0.6532123710590768,
+          "empirical_accuracy": 0.6496220542463317
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "count": 5816,
+          "mean_prediction": 0.7513222575310664,
+          "empirical_accuracy": 0.7565337001375516
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "count": 5003,
+          "mean_prediction": 0.8451496980653962,
+          "empirical_accuracy": 0.8616829902058765
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "count": 886,
+          "mean_prediction": 0.9205916867030124,
+          "empirical_accuracy": 0.9367945823927766
+        }
+      ],
+      "specification": {
+        "name": "DKT-64-AdamW",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0001,
+        "epochs": 8,
+        "seed": 20260822
+      },
+      "selected_validation_auc": 0.762234157035323,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.6223896950048885,
+          "validation_auc": 0.7269946912552472
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.586290402363481,
+          "validation_auc": 0.751613458959175
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.5767788271585149,
+          "validation_auc": 0.7568882828755815
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.5720472601779525,
+          "validation_auc": 0.7586665874779573
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.568657993455109,
+          "validation_auc": 0.758858748647735
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.5659898190478456,
+          "validation_auc": 0.761967841805541
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.5632688758625503,
+          "validation_auc": 0.7615399806776548
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.5606033655007302,
+          "validation_auc": 0.762234157035323
+        }
+      ],
+      "selected_epoch": 8,
+      "label_noise_rate": 0.05,
+      "training_label_flips": 11852
+    },
+    {
+      "name": "DKT-64-AdamW",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.763796373641416,
+      "student_cluster_bootstrap_95_ci": [
+        0.7458258220952365,
+        0.782291345126065
+      ],
+      "bootstrap_replicates": 1000,
+      "brier_score": 0.182504831557948,
+      "ece_10": 0.016746425252025528,
+      "calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "count": 184,
+          "mean_prediction": 0.08042253211707524,
+          "empirical_accuracy": 0.03260869565217391
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "count": 776,
+          "mean_prediction": 0.15237135227923235,
+          "empirical_accuracy": 0.09278350515463918
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "count": 896,
+          "mean_prediction": 0.25354043919859187,
+          "empirical_accuracy": 0.20870535714285715
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "count": 1351,
+          "mean_prediction": 0.3533925618576527,
+          "empirical_accuracy": 0.33308660251665434
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "count": 1954,
+          "mean_prediction": 0.45387060485757363,
+          "empirical_accuracy": 0.41299897645854655
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "count": 2882,
+          "mean_prediction": 0.5536134169384641,
+          "empirical_accuracy": 0.5294934073560028
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "count": 4247,
+          "mean_prediction": 0.6521612778393723,
+          "empirical_accuracy": 0.6475158935719332
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "count": 5942,
+          "mean_prediction": 0.7529268459072421,
+          "empirical_accuracy": 0.7537866038370918
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "count": 5030,
+          "mean_prediction": 0.84190339989975,
+          "empirical_accuracy": 0.8612326043737575
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "count": 1044,
+          "mean_prediction": 0.9224573221357389,
+          "empirical_accuracy": 0.9348659003831418
+        }
+      ],
+      "specification": {
+        "name": "DKT-64-AdamW",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0001,
+        "epochs": 8,
+        "seed": 20260823
+      },
+      "selected_validation_auc": 0.7626776070824316,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.6236795399210501,
+          "validation_auc": 0.723577765439934
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.5891186318772665,
+          "validation_auc": 0.7434337264645633
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.5792329759999999,
+          "validation_auc": 0.7523146926199954
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.5731924384544993,
+          "validation_auc": 0.75661594236169
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.5692580298201487,
+          "validation_auc": 0.7606792535175031
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.5657159974383374,
+          "validation_auc": 0.7620458407184448
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.5629826023793139,
+          "validation_auc": 0.7605203652624222
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.5609861045236871,
+          "validation_auc": 0.7626776070824316
+        }
+      ],
+      "selected_epoch": 8,
+      "label_noise_rate": 0.05,
+      "training_label_flips": 11546
+    },
+    {
+      "name": "DKT-64-AdamW",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7587327753522126,
+      "student_cluster_bootstrap_95_ci": [
+        0.7414666504681079,
+        0.7787431035831235
+      ],
+      "bootstrap_replicates": 1000,
+      "brier_score": 0.18401532028354634,
+      "ece_10": 0.017332911524806087,
+      "calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "count": 148,
+          "mean_prediction": 0.07298269837691977,
+          "empirical_accuracy": 0.02702702702702703
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "count": 678,
+          "mean_prediction": 0.1537065430266843,
+          "empirical_accuracy": 0.09587020648967552
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "count": 978,
+          "mean_prediction": 0.2518966988734672,
+          "empirical_accuracy": 0.20040899795501022
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "count": 1450,
+          "mean_prediction": 0.35365314539136555,
+          "empirical_accuracy": 0.31448275862068964
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "count": 2139,
+          "mean_prediction": 0.4534959224770703,
+          "empirical_accuracy": 0.44506778868630203
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "count": 3064,
+          "mean_prediction": 0.5533149069462059,
+          "empirical_accuracy": 0.5447127937336814
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "count": 4479,
+          "mean_prediction": 0.6547506909387456,
+          "empirical_accuracy": 0.6577361018084393
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "count": 6085,
+          "mean_prediction": 0.7500867162068162,
+          "empirical_accuracy": 0.7643385373870173
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "count": 4532,
+          "mean_prediction": 0.8448819923300924,
+          "empirical_accuracy": 0.8704766107678729
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "count": 753,
+          "mean_prediction": 0.9207785010812767,
+          "empirical_accuracy": 0.9309428950863213
+        }
+      ],
+      "specification": {
+        "name": "DKT-64-AdamW",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0001,
+        "epochs": 8,
+        "seed": 20260824
+      },
+      "selected_validation_auc": 0.7608187700767957,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.6222016969860633,
+          "validation_auc": 0.7258332158991363
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.588364369387254,
+          "validation_auc": 0.7458403405551104
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.5783750366905394,
+          "validation_auc": 0.7550698653225236
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.5728647734734641,
+          "validation_auc": 0.7587682103154866
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.5683042398151009,
+          "validation_auc": 0.7608187700767957
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.565347448652315,
+          "validation_auc": 0.7596532054422227
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.562707684988186,
+          "validation_auc": 0.7602921843001954
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.5602358498052143,
+          "validation_auc": 0.7594712170315794
+        }
+      ],
+      "selected_epoch": 5,
+      "label_noise_rate": 0.05,
+      "training_label_flips": 11575
+    },
+    {
+      "name": "DKT-64-Adam",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7564162660263042,
+      "student_cluster_bootstrap_95_ci": [
+        0.7380887418007845,
+        0.7762007764813339
+      ],
+      "bootstrap_replicates": 1000,
+      "brier_score": 0.1861559592417681,
+      "ece_10": 0.037418813318305995,
+      "calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "count": 92,
+          "mean_prediction": 0.08520864978756594,
+          "empirical_accuracy": 0.010869565217391304
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "count": 514,
+          "mean_prediction": 0.15676854442123772,
+          "empirical_accuracy": 0.058365758754863814
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "count": 901,
+          "mean_prediction": 0.2540790783148362,
+          "empirical_accuracy": 0.17869034406215317
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "count": 1518,
+          "mean_prediction": 0.3549794558636913,
+          "empirical_accuracy": 0.3208168642951252
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "count": 2284,
+          "mean_prediction": 0.45331192662492525,
+          "empirical_accuracy": 0.4190017513134851
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "count": 3622,
+          "mean_prediction": 0.553464034211234,
+          "empirical_accuracy": 0.5579790171176146
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "count": 5540,
+          "mean_prediction": 0.6521597160113848,
+          "empirical_accuracy": 0.6749097472924188
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "count": 6479,
+          "mean_prediction": 0.7485493020541065,
+          "empirical_accuracy": 0.8001234758450378
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "count": 3201,
+          "mean_prediction": 0.8391698099083916,
+          "empirical_accuracy": 0.8922211808809747
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "count": 155,
+          "mean_prediction": 0.9123871414892135,
+          "empirical_accuracy": 0.9612903225806452
+        }
+      ],
+      "specification": {
+        "name": "DKT-64-Adam",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "epochs": 8,
+        "seed": 20260822
+      },
+      "selected_validation_auc": 0.7576758103993548,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.6410862453976748,
+          "validation_auc": 0.7238264781494294
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.6141926088049827,
+          "validation_auc": 0.7476986266332875
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.6061791273706915,
+          "validation_auc": 0.7531431323272431
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.6020301365722953,
+          "validation_auc": 0.7544173577036432
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.5992919032663601,
+          "validation_auc": 0.7544325314873859
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.5969643614210665,
+          "validation_auc": 0.7576758103993548
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.5945623417902607,
+          "validation_auc": 0.7560791450282471
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.5921410694657736,
+          "validation_auc": 0.7568369729062644
+        }
+      ],
+      "selected_epoch": 6,
+      "label_noise_rate": 0.1,
+      "training_label_flips": 23378
+    },
+    {
+      "name": "DKT-64-Adam",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7569821453619581,
+      "student_cluster_bootstrap_95_ci": [
+        0.7387628175364513,
+        0.7754521239200223
+      ],
+      "bootstrap_replicates": 1000,
+      "brier_score": 0.186461833828366,
+      "ece_10": 0.04084638825672983,
+      "calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "count": 1,
+          "mean_prediction": 0.08578691631555557,
+          "empirical_accuracy": 0.0
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "count": 583,
+          "mean_prediction": 0.15610771752753347,
+          "empirical_accuracy": 0.07718696397941681
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "count": 876,
+          "mean_prediction": 0.25253909924939344,
+          "empirical_accuracy": 0.18949771689497716
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "count": 1488,
+          "mean_prediction": 0.354005423825114,
+          "empirical_accuracy": 0.2950268817204301
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "count": 2339,
+          "mean_prediction": 0.4534516152075694,
+          "empirical_accuracy": 0.4082941427960667
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "count": 3706,
+          "mean_prediction": 0.5528942632211973,
+          "empirical_accuracy": 0.5558553696708041
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "count": 5381,
+          "mean_prediction": 0.651768093269967,
+          "empirical_accuracy": 0.6775692250511057
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "count": 6767,
+          "mean_prediction": 0.7494672934801483,
+          "empirical_accuracy": 0.8037535096793261
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "count": 3076,
+          "mean_prediction": 0.836418284977676,
+          "empirical_accuracy": 0.8940182054616385
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "count": 89,
+          "mean_prediction": 0.9127399311976486,
+          "empirical_accuracy": 0.9550561797752809
+        }
+      ],
+      "specification": {
+        "name": "DKT-64-Adam",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "epochs": 8,
+        "seed": 20260823
+      },
+      "selected_validation_auc": 0.7573125086581936,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.6425527861211457,
+          "validation_auc": 0.7199450584099888
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.6169779639453064,
+          "validation_auc": 0.739932369076299
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.6087801094536958,
+          "validation_auc": 0.7482071831148089
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.603692999756542,
+          "validation_auc": 0.7522005303631215
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.6002803618067307,
+          "validation_auc": 0.7561316111692736
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.5971151887962907,
+          "validation_auc": 0.7573125086581936
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.5946207451332999,
+          "validation_auc": 0.7563997537711198
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.5926999444485194,
+          "validation_auc": 0.7569697541833842
+        }
+      ],
+      "selected_epoch": 6,
+      "label_noise_rate": 0.1,
+      "training_label_flips": 23245
+    },
+    {
+      "name": "DKT-64-Adam",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7545397980094953,
+      "student_cluster_bootstrap_95_ci": [
+        0.7371538193752807,
+        0.7745025057433047
+      ],
+      "bootstrap_replicates": 1000,
+      "brier_score": 0.18664946374588037,
+      "ece_10": 0.03730325527427267,
+      "calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "count": 69,
+          "mean_prediction": 0.08822578008192172,
+          "empirical_accuracy": 0.0
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "count": 483,
+          "mean_prediction": 0.15918700170257818,
+          "empirical_accuracy": 0.07039337474120083
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "count": 907,
+          "mean_prediction": 0.2525932061698497,
+          "empirical_accuracy": 0.1609702315325248
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "count": 1341,
+          "mean_prediction": 0.3538377838602358,
+          "empirical_accuracy": 0.2960477255779269
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "count": 2340,
+          "mean_prediction": 0.45425702027785475,
+          "empirical_accuracy": 0.4230769230769231
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "count": 3699,
+          "mean_prediction": 0.553673579745049,
+          "empirical_accuracy": 0.550419032170857
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "count": 5552,
+          "mean_prediction": 0.6544103577668625,
+          "empirical_accuracy": 0.6777737752161384
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "count": 6478,
+          "mean_prediction": 0.7486140428409418,
+          "empirical_accuracy": 0.7937635072553257
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "count": 3317,
+          "mean_prediction": 0.8373466358150313,
+          "empirical_accuracy": 0.894181489297558
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "count": 120,
+          "mean_prediction": 0.9132801348964373,
+          "empirical_accuracy": 0.925
+        }
+      ],
+      "specification": {
+        "name": "DKT-64-Adam",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "epochs": 8,
+        "seed": 20260824
+      },
+      "selected_validation_auc": 0.7566435081334856,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.641221591169155,
+          "validation_auc": 0.7229643077145262
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.6161546736828717,
+          "validation_auc": 0.7411180658417441
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.6081192085121467,
+          "validation_auc": 0.7503322267166437
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.6034465662842116,
+          "validation_auc": 0.7541360898370559
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.5993782996213456,
+          "validation_auc": 0.7566435081334856
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.5966849660304206,
+          "validation_auc": 0.7554904402407783
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.5942998043401438,
+          "validation_auc": 0.755883189442591
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.5920521624192697,
+          "validation_auc": 0.7555592440967986
+        }
+      ],
+      "selected_epoch": 5,
+      "label_noise_rate": 0.1,
+      "training_label_flips": 23558
+    },
+    {
+      "name": "DKT-64-AdamW",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7564168656579097,
+      "student_cluster_bootstrap_95_ci": [
+        0.7380886355977546,
+        0.7762006005288963
+      ],
+      "bootstrap_replicates": 1000,
+      "brier_score": 0.18615600962045645,
+      "ece_10": 0.037461811221114055,
+      "calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "count": 92,
+          "mean_prediction": 0.08520914569659077,
+          "empirical_accuracy": 0.010869565217391304
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "count": 514,
+          "mean_prediction": 0.15677309914669638,
+          "empirical_accuracy": 0.058365758754863814
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "count": 901,
+          "mean_prediction": 0.25408105719235047,
+          "empirical_accuracy": 0.17869034406215317
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "count": 1519,
+          "mean_prediction": 0.3550099340452027,
+          "empirical_accuracy": 0.3206056616194865
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "count": 2282,
+          "mean_prediction": 0.4533140702037619,
+          "empirical_accuracy": 0.4189307624890447
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "count": 3623,
+          "mean_prediction": 0.5534477141921507,
+          "empirical_accuracy": 0.5581010212531051
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "count": 5540,
+          "mean_prediction": 0.6521576586075207,
+          "empirical_accuracy": 0.6749097472924188
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "count": 6479,
+          "mean_prediction": 0.7485470571696786,
+          "empirical_accuracy": 0.8001234758450378
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "count": 3201,
+          "mean_prediction": 0.8391668975111173,
+          "empirical_accuracy": 0.8922211808809747
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "count": 155,
+          "mean_prediction": 0.9123841408760317,
+          "empirical_accuracy": 0.9612903225806452
+        }
+      ],
+      "specification": {
+        "name": "DKT-64-AdamW",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0001,
+        "epochs": 8,
+        "seed": 20260822
+      },
+      "selected_validation_auc": 0.757675950071105,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.6410862716674821,
+          "validation_auc": 0.7238261677677624
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.6141927190631532,
+          "validation_auc": 0.7476984675626832
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.6061793532661656,
+          "validation_auc": 0.7531427792680969
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.6020305518622222,
+          "validation_auc": 0.7544174159002057
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.599292466388158,
+          "validation_auc": 0.7544328185904278
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.5969651857732919,
+          "validation_auc": 0.757675950071105
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.5945633602512587,
+          "validation_auc": 0.7560794166122058
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.5921423112187152,
+          "validation_auc": 0.7568383812630781
+        }
+      ],
+      "selected_epoch": 6,
+      "label_noise_rate": 0.1,
+      "training_label_flips": 23378
+    },
+    {
+      "name": "DKT-64-AdamW",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.756982071787528,
+      "student_cluster_bootstrap_95_ci": [
+        0.7387635246308606,
+        0.7754522992548923
+      ],
+      "bootstrap_replicates": 1000,
+      "brier_score": 0.18646193287126483,
+      "ece_10": 0.04088789815619425,
+      "calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "count": 1,
+          "mean_prediction": 0.0857895016670227,
+          "empirical_accuracy": 0.0
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "count": 583,
+          "mean_prediction": 0.15611180381954842,
+          "empirical_accuracy": 0.07718696397941681
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "count": 875,
+          "mean_prediction": 0.25248916734967913,
+          "empirical_accuracy": 0.18971428571428572
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "count": 1489,
+          "mean_prediction": 0.3539727480920711,
+          "empirical_accuracy": 0.29482874412357285
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "count": 2338,
+          "mean_prediction": 0.4534348342105606,
+          "empirical_accuracy": 0.40804106073567153
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "count": 3707,
+          "mean_prediction": 0.5528824283390441,
+          "empirical_accuracy": 0.5559751820879417
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "count": 5381,
+          "mean_prediction": 0.6517694610752729,
+          "empirical_accuracy": 0.6775692250511057
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "count": 6766,
+          "mean_prediction": 0.749459536698243,
+          "empirical_accuracy": 0.8037245048773278
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "count": 3077,
+          "mean_prediction": 0.836405060199859,
+          "empirical_accuracy": 0.8940526486837829
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "count": 89,
+          "mean_prediction": 0.9127368183618181,
+          "empirical_accuracy": 0.9550561797752809
+        }
+      ],
+      "specification": {
+        "name": "DKT-64-AdamW",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0001,
+        "epochs": 8,
+        "seed": 20260823
+      },
+      "selected_validation_auc": 0.7573124039043811,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.6425528173709918,
+          "validation_auc": 0.7199450467706762
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.6169780638886775,
+          "validation_auc": 0.7399320160171527
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.6087803286716252,
+          "validation_auc": 0.7482073809831217
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.6036933426558379,
+          "validation_auc": 0.7522003635329755
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.6002809231536288,
+          "validation_auc": 0.7561319991463573
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.5971159627622573,
+          "validation_auc": 0.7573124039043811
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.5946217430395131,
+          "validation_auc": 0.7564001689065993
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.5927012351440658,
+          "validation_auc": 0.7569708211203644
+        }
+      ],
+      "selected_epoch": 6,
+      "label_noise_rate": 0.1,
+      "training_label_flips": 23245
+    },
+    {
+      "name": "DKT-64-AdamW",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7545397060414576,
+      "student_cluster_bootstrap_95_ci": [
+        0.7371543970951848,
+        0.7745031717791859
+      ],
+      "bootstrap_replicates": 1000,
+      "brier_score": 0.1866495492505333,
+      "ece_10": 0.03730435998025061,
+      "calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "count": 69,
+          "mean_prediction": 0.08822922505762266,
+          "empirical_accuracy": 0.0
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "count": 483,
+          "mean_prediction": 0.1591910280395245,
+          "empirical_accuracy": 0.07039337474120083
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "count": 907,
+          "mean_prediction": 0.2525959339366595,
+          "empirical_accuracy": 0.1609702315325248
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "count": 1341,
+          "mean_prediction": 0.3538396807413862,
+          "empirical_accuracy": 0.2960477255779269
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "count": 2339,
+          "mean_prediction": 0.4542384147134384,
+          "empirical_accuracy": 0.4228302693458743
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "count": 3700,
+          "mean_prediction": 0.5536589899739703,
+          "empirical_accuracy": 0.5505405405405406
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "count": 5552,
+          "mean_prediction": 0.6544098227958515,
+          "empirical_accuracy": 0.6777737752161384
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "count": 6478,
+          "mean_prediction": 0.7486127466561434,
+          "empirical_accuracy": 0.7937635072553257
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "count": 3317,
+          "mean_prediction": 0.8373447945041042,
+          "empirical_accuracy": 0.894181489297558
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "count": 120,
+          "mean_prediction": 0.9132779657840728,
+          "empirical_accuracy": 0.925
+        }
+      ],
+      "specification": {
+        "name": "DKT-64-AdamW",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0001,
+        "epochs": 8,
+        "seed": 20260824
+      },
+      "selected_validation_auc": 0.7566437254006526,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.6412216240507222,
+          "validation_auc": 0.7229641641630054
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.616154760555189,
+          "validation_auc": 0.7411181744753275
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.6081194065133158,
+          "validation_auc": 0.7503326379723523
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.6034469316014209,
+          "validation_auc": 0.75413596956416
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.5993788582104416,
+          "validation_auc": 0.7566437254006526
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.5966856858325329,
+          "validation_auc": 0.755491181277008
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.5943007590675331,
+          "validation_auc": 0.7558839459979042
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.5920533481986298,
+          "validation_auc": 0.7555600821272994
+        }
+      ],
+      "selected_epoch": 5,
+      "label_noise_rate": 0.1,
+      "training_label_flips": 23558
+    },
+    {
+      "name": "DKT-64-Adam",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7406073282266057,
+      "student_cluster_bootstrap_95_ci": [
+        0.7222051984489067,
+        0.7620576789110555
+      ],
+      "bootstrap_replicates": 1000,
+      "brier_score": 0.19606994261691685,
+      "ece_10": 0.07135974400626438,
+      "calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "count": 0,
+          "mean_prediction": null,
+          "empirical_accuracy": null
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "count": 223,
+          "mean_prediction": 0.17962925209592812,
+          "empirical_accuracy": 0.017937219730941704
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "count": 633,
+          "mean_prediction": 0.2588770682636595,
+          "empirical_accuracy": 0.12796208530805686
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "count": 1596,
+          "mean_prediction": 0.3575983921948232,
+          "empirical_accuracy": 0.28884711779448624
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "count": 2867,
+          "mean_prediction": 0.45397025262556884,
+          "empirical_accuracy": 0.4209975584234391
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "count": 5152,
+          "mean_prediction": 0.5549117847351555,
+          "empirical_accuracy": 0.5774456521739131
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "count": 8118,
+          "mean_prediction": 0.6515343939400448,
+          "empirical_accuracy": 0.7344173441734417
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "count": 5173,
+          "mean_prediction": 0.7396067868988034,
+          "empirical_accuracy": 0.8499903344287647
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "count": 543,
+          "mean_prediction": 0.8209341188162071,
+          "empirical_accuracy": 0.9152854511970534
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "count": 1,
+          "mean_prediction": 0.9014577269554138,
+          "empirical_accuracy": 1.0
+        }
+      ],
+      "specification": {
+        "name": "DKT-64-Adam",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "epochs": 8,
+        "seed": 20260822
+      },
+      "selected_validation_auc": 0.7423975832255656,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.6686182562242149,
+          "validation_auc": 0.7105790122663689
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.6551417630456107,
+          "validation_auc": 0.7297044279615053
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.649960225443014,
+          "validation_auc": 0.7389572507527938
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.6465646083507034,
+          "validation_auc": 0.7389109495676272
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.6445248416668965,
+          "validation_auc": 0.7371980850599561
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.6424040311868104,
+          "validation_auc": 0.7415451160975254
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.6404174297743087,
+          "validation_auc": 0.7423975832255656
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.6382865385042742,
+          "validation_auc": 0.7391410859343557
+        }
+      ],
+      "selected_epoch": 7,
+      "label_noise_rate": 0.2,
+      "training_label_flips": 46733
+    },
+    {
+      "name": "DKT-64-Adam",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7444419355563774,
+      "student_cluster_bootstrap_95_ci": [
+        0.7271096163478732,
+        0.76303221902519
+      ],
+      "bootstrap_replicates": 1000,
+      "brier_score": 0.19699588312839825,
+      "ece_10": 0.07652140979211458,
+      "calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "count": 0,
+          "mean_prediction": null,
+          "empirical_accuracy": null
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "count": 142,
+          "mean_prediction": 0.16263950836490576,
+          "empirical_accuracy": 0.028169014084507043
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "count": 545,
+          "mean_prediction": 0.26317533003080873,
+          "empirical_accuracy": 0.13211009174311927
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "count": 1345,
+          "mean_prediction": 0.3538308335281216,
+          "empirical_accuracy": 0.23568773234200743
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "count": 2868,
+          "mean_prediction": 0.4547417744308336,
+          "empirical_accuracy": 0.4093444909344491
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "count": 5831,
+          "mean_prediction": 0.5552467842327753,
+          "empirical_accuracy": 0.5647401817870005
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "count": 8511,
+          "mean_prediction": 0.6502552928116105,
+          "empirical_accuracy": 0.7438608859123488
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "count": 4725,
+          "mean_prediction": 0.7384075956369834,
+          "empirical_accuracy": 0.8617989417989418
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "count": 338,
+          "mean_prediction": 0.8214722152292375,
+          "empirical_accuracy": 0.9526627218934911
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "count": 1,
+          "mean_prediction": 0.902435302734375,
+          "empirical_accuracy": 0.0
+        }
+      ],
+      "specification": {
+        "name": "DKT-64-Adam",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "epochs": 8,
+        "seed": 20260823
+      },
+      "selected_validation_auc": 0.7405839416704079,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.6688993815480667,
+          "validation_auc": 0.7081434706044624
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.6560865569050912,
+          "validation_auc": 0.7221742971374173
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.6513330835123285,
+          "validation_auc": 0.7321481520601066
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.6477366751853338,
+          "validation_auc": 0.7375859767886813
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.644850711131403,
+          "validation_auc": 0.7400105464586613
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.6424435402789944,
+          "validation_auc": 0.7405839416704079
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.6403357583360431,
+          "validation_auc": 0.7391691017595684
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.6385411401811918,
+          "validation_auc": 0.7388902044329626
+        }
+      ],
+      "selected_epoch": 6,
+      "label_noise_rate": 0.2,
+      "training_label_flips": 46679
+    },
+    {
+      "name": "DKT-64-Adam",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7422080245644422,
+      "student_cluster_bootstrap_95_ci": [
+        0.7249540688970016,
+        0.7621647778033368
+      ],
+      "bootstrap_replicates": 1000,
+      "brier_score": 0.19599879912626306,
+      "ece_10": 0.07686838965366714,
+      "calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "count": 0,
+          "mean_prediction": null,
+          "empirical_accuracy": null
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "count": 111,
+          "mean_prediction": 0.17465814639319172,
+          "empirical_accuracy": 0.018018018018018018
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "count": 591,
+          "mean_prediction": 0.25779189749316717,
+          "empirical_accuracy": 0.1116751269035533
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "count": 1382,
+          "mean_prediction": 0.3544493307684334,
+          "empirical_accuracy": 0.22431259044862517
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "count": 2890,
+          "mean_prediction": 0.45703765678777003,
+          "empirical_accuracy": 0.40380622837370245
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "count": 5481,
+          "mean_prediction": 0.5554192209522169,
+          "empirical_accuracy": 0.5818281335522715
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "count": 8289,
+          "mean_prediction": 0.6513166124375742,
+          "empirical_accuracy": 0.7322958137290385
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "count": 5003,
+          "mean_prediction": 0.7409113641860317,
+          "empirical_accuracy": 0.8528882670397762
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "count": 559,
+          "mean_prediction": 0.8215940687438883,
+          "empirical_accuracy": 0.9194991055456172
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "count": 0,
+          "mean_prediction": null,
+          "empirical_accuracy": null
+        }
+      ],
+      "specification": {
+        "name": "DKT-64-Adam",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "epochs": 8,
+        "seed": 20260824
+      },
+      "selected_validation_auc": 0.7403363230562885,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.6685118030907179,
+          "validation_auc": 0.7118788324909795
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.6554794882806421,
+          "validation_auc": 0.7276517032880693
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.650666706808743,
+          "validation_auc": 0.7325034420744898
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.6471585650190158,
+          "validation_auc": 0.7354201761942056
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.6442774661577106,
+          "validation_auc": 0.7403363230562885
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.6417345998114808,
+          "validation_auc": 0.7359009690356189
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.6398632702117948,
+          "validation_auc": 0.7385926260097773
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.637660469403021,
+          "validation_auc": 0.7357054790224631
+        }
+      ],
+      "selected_epoch": 5,
+      "label_noise_rate": 0.2,
+      "training_label_flips": 46869
+    },
+    {
+      "name": "DKT-64-AdamW",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7406081927261596,
+      "student_cluster_bootstrap_95_ci": [
+        0.7222056947015232,
+        0.7620582587018409
+      ],
+      "bootstrap_replicates": 1000,
+      "brier_score": 0.1960698983067117,
+      "ece_10": 0.07136096831021524,
+      "calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "count": 0,
+          "mean_prediction": null,
+          "empirical_accuracy": null
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "count": 223,
+          "mean_prediction": 0.17963393787632073,
+          "empirical_accuracy": 0.017937219730941704
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "count": 633,
+          "mean_prediction": 0.2588819555855852,
+          "empirical_accuracy": 0.12796208530805686
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "count": 1596,
+          "mean_prediction": 0.3576006190034381,
+          "empirical_accuracy": 0.28884711779448624
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "count": 2867,
+          "mean_prediction": 0.4539712016845273,
+          "empirical_accuracy": 0.4209975584234391
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "count": 5153,
+          "mean_prediction": 0.5549204383756081,
+          "empirical_accuracy": 0.5773335920822822
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "count": 8118,
+          "mean_prediction": 0.6515460742110247,
+          "empirical_accuracy": 0.7345405272234541
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "count": 5172,
+          "mean_prediction": 0.7396122617769499,
+          "empirical_accuracy": 0.8499613302397525
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "count": 543,
+          "mean_prediction": 0.8209297511019978,
+          "empirical_accuracy": 0.9152854511970534
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "count": 1,
+          "mean_prediction": 0.9014512896537781,
+          "empirical_accuracy": 1.0
+        }
+      ],
+      "specification": {
+        "name": "DKT-64-AdamW",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0001,
+        "epochs": 8,
+        "seed": 20260822
+      },
+      "selected_validation_auc": 0.7423984212560663,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.6686182315649744,
+          "validation_auc": 0.7105789734686605
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.6551418104919337,
+          "validation_auc": 0.7297047267038598
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.6499603368014676,
+          "validation_auc": 0.7389575999321693
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.6465648782642093,
+          "validation_auc": 0.7389114190198982
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.6445253013071328,
+          "validation_auc": 0.7371986398671858
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.6424047042881608,
+          "validation_auc": 0.7415459386089427
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.6404182747705799,
+          "validation_auc": 0.7423984212560663
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.6382876966436971,
+          "validation_auc": 0.7391429986613782
+        }
+      ],
+      "selected_epoch": 7,
+      "label_noise_rate": 0.2,
+      "training_label_flips": 46733
+    },
+    {
+      "name": "DKT-64-AdamW",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7444422666413129,
+      "student_cluster_bootstrap_95_ci": [
+        0.7271092677855867,
+        0.7630321237058885
+      ],
+      "bootstrap_replicates": 1000,
+      "brier_score": 0.1969958257775839,
+      "ece_10": 0.07652139921919325,
+      "calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "count": 0,
+          "mean_prediction": null,
+          "empirical_accuracy": null
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "count": 142,
+          "mean_prediction": 0.1626433444694734,
+          "empirical_accuracy": 0.028169014084507043
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "count": 545,
+          "mean_prediction": 0.2631802006599006,
+          "empirical_accuracy": 0.13211009174311927
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "count": 1345,
+          "mean_prediction": 0.353835163262697,
+          "empirical_accuracy": 0.23568773234200743
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "count": 2868,
+          "mean_prediction": 0.45474586820793617,
+          "empirical_accuracy": 0.4093444909344491
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "count": 5832,
+          "mean_prediction": 0.5552575549082664,
+          "empirical_accuracy": 0.5646433470507545
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "count": 8510,
+          "mean_prediction": 0.6502622119828481,
+          "empirical_accuracy": 0.7439482961222091
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "count": 4726,
+          "mean_prediction": 0.7384196594767383,
+          "empirical_accuracy": 0.8618281845112146
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "count": 337,
+          "mean_prediction": 0.821532667567539,
+          "empirical_accuracy": 0.9525222551928784
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "count": 1,
+          "mean_prediction": 0.9024243950843811,
+          "empirical_accuracy": 0.0
+        }
+      ],
+      "specification": {
+        "name": "DKT-64-AdamW",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0001,
+        "epochs": 8,
+        "seed": 20260823
+      },
+      "selected_validation_auc": 0.7405857496436179,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.6688993717100137,
+          "validation_auc": 0.7081435404403374
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.6560866055100008,
+          "validation_auc": 0.7221748791030429
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.6513331941528249,
+          "validation_auc": 0.732148648670774
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.6477369129380676,
+          "validation_auc": 0.7375865859127027
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.6448511099738388,
+          "validation_auc": 0.7400118810998291
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.6424441658519844,
+          "validation_auc": 0.7405857496436179
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.6403365997742592,
+          "validation_auc": 0.7391698854732776
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.6385423414607418,
+          "validation_auc": 0.7388920318050267
+        }
+      ],
+      "selected_epoch": 6,
+      "label_noise_rate": 0.2,
+      "training_label_flips": 46679
+    },
+    {
+      "name": "DKT-64-AdamW",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7422092716510327,
+      "student_cluster_bootstrap_95_ci": [
+        0.7249547382711221,
+        0.7621653448666531
+      ],
+      "bootstrap_replicates": 1000,
+      "brier_score": 0.19599894054006817,
+      "ece_10": 0.07686983991810042,
+      "calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "count": 0,
+          "mean_prediction": null,
+          "empirical_accuracy": null
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "count": 111,
+          "mean_prediction": 0.17465954455169472,
+          "empirical_accuracy": 0.018018018018018018
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "count": 591,
+          "mean_prediction": 0.257796281586242,
+          "empirical_accuracy": 0.1116751269035533
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "count": 1382,
+          "mean_prediction": 0.3544522089568302,
+          "empirical_accuracy": 0.22431259044862517
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "count": 2890,
+          "mean_prediction": 0.4570392562237578,
+          "empirical_accuracy": 0.40380622837370245
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "count": 5481,
+          "mean_prediction": 0.5554192830798096,
+          "empirical_accuracy": 0.5818281335522715
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "count": 8289,
+          "mean_prediction": 0.651315403381552,
+          "empirical_accuracy": 0.7322958137290385
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "count": 5003,
+          "mean_prediction": 0.7409089318685667,
+          "empirical_accuracy": 0.8528882670397762
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "count": 559,
+          "mean_prediction": 0.8215903949012483,
+          "empirical_accuracy": 0.9194991055456172
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "count": 0,
+          "mean_prediction": null,
+          "empirical_accuracy": null
+        }
+      ],
+      "specification": {
+        "name": "DKT-64-AdamW",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0001,
+        "epochs": 8,
+        "seed": 20260824
+      },
+      "selected_validation_auc": 0.7403377197737898,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.6685117968313582,
+          "validation_auc": 0.7118786346226669
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.6554795572945777,
+          "validation_auc": 0.7276519127956944
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.6506668409452496,
+          "validation_auc": 0.7325051414141164
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.6471588703126215,
+          "validation_auc": 0.735420882312498
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.644277910171863,
+          "validation_auc": 0.7403377197737898
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.6417352490081811,
+          "validation_auc": 0.735902652856162
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.639864164286368,
+          "validation_auc": 0.7385946163322166
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.6376616544314024,
+          "validation_auc": 0.7357083073754033
+        }
+      ],
+      "selected_epoch": 5,
+      "label_noise_rate": 0.2,
+      "training_label_flips": 46869
+    }
+  ],
+  "aggregate_by_rate_and_method": {
+    "0.05": {
+      "DKT-64-Adam": {
+        "seed_count": 3,
+        "test_prediction_rows_per_seed": 24306,
+        "mean_roc_auc": 0.7606902659839498,
+        "standard_deviation_roc_auc": 0.0027199402662197855,
+        "mean_brier_score": 0.1833034445555073,
+        "standard_deviation_brier_score": 0.0007590017348495541,
+        "mean_ece_10": 0.016668001590874688,
+        "standard_deviation_ece_10": 0.0007048338404354408,
+        "mean_calibration_bins_10": [
+          {
+            "bin": 0,
+            "lower_inclusive": 0.0,
+            "upper_exclusive": 0.1,
+            "mean_count_across_seeds": 181.0,
+            "mean_prediction_across_seeds": 0.07270448112262656,
+            "empirical_accuracy_across_seeds": 0.029357247212182302
+          },
+          {
+            "bin": 1,
+            "lower_inclusive": 0.1,
+            "upper_exclusive": 0.2,
+            "mean_count_across_seeds": 724.0,
+            "mean_prediction_across_seeds": 0.15326531944606847,
+            "empirical_accuracy_across_seeds": 0.09073972375144752
+          },
+          {
+            "bin": 2,
+            "lower_inclusive": 0.2,
+            "upper_exclusive": 0.3,
+            "mean_count_across_seeds": 903.3333333333334,
+            "mean_prediction_across_seeds": 0.2529525193854972,
+            "empirical_accuracy_across_seeds": 0.21093285520806104
+          },
+          {
+            "bin": 3,
+            "lower_inclusive": 0.3,
+            "upper_exclusive": 0.4,
+            "mean_count_across_seeds": 1397.3333333333333,
+            "mean_prediction_across_seeds": 0.3535959301706863,
+            "empirical_accuracy_across_seeds": 0.3222547283350217
+          },
+          {
+            "bin": 4,
+            "lower_inclusive": 0.4,
+            "upper_exclusive": 0.5,
+            "mean_count_across_seeds": 2028.6666666666667,
+            "mean_prediction_across_seeds": 0.45360239208002867,
+            "empirical_accuracy_across_seeds": 0.4236706912416262
+          },
+          {
+            "bin": 5,
+            "lower_inclusive": 0.5,
+            "upper_exclusive": 0.6,
+            "mean_count_across_seeds": 2966.6666666666665,
+            "mean_prediction_across_seeds": 0.553351730200908,
+            "empirical_accuracy_across_seeds": 0.5388405684968323
+          },
+          {
+            "bin": 6,
+            "lower_inclusive": 0.6,
+            "upper_exclusive": 0.7,
+            "mean_count_across_seeds": 4408.0,
+            "mean_prediction_across_seeds": 0.6533736897005215,
+            "empirical_accuracy_across_seeds": 0.6516246832089014
+          },
+          {
+            "bin": 7,
+            "lower_inclusive": 0.7,
+            "upper_exclusive": 0.8,
+            "mean_count_across_seeds": 5947.666666666667,
+            "mean_prediction_across_seeds": 0.7514455371205724,
+            "empirical_accuracy_across_seeds": 0.7582196137872202
+          },
+          {
+            "bin": 8,
+            "lower_inclusive": 0.8,
+            "upper_exclusive": 0.9,
+            "mean_count_across_seeds": 4855.0,
+            "mean_prediction_across_seeds": 0.8439797704601899,
+            "empirical_accuracy_across_seeds": 0.8644640684491689
+          },
+          {
+            "bin": 9,
+            "lower_inclusive": 0.9,
+            "upper_exclusive": 1.0,
+            "mean_count_across_seeds": 894.3333333333334,
+            "mean_prediction_across_seeds": 0.9212777452649425,
+            "empirical_accuracy_across_seeds": 0.9342011259540799
+          }
+        ]
+      },
+      "DKT-64-AdamW": {
+        "seed_count": 3,
+        "test_prediction_rows_per_seed": 24306,
+        "mean_roc_auc": 0.7606901985407223,
+        "standard_deviation_roc_auc": 0.0027202444973596853,
+        "mean_brier_score": 0.18330350109058316,
+        "standard_deviation_brier_score": 0.0007589804237697903,
+        "mean_ece_10": 0.016669815345509816,
+        "standard_deviation_ece_10": 0.0007045320128145161,
+        "mean_calibration_bins_10": [
+          {
+            "bin": 0,
+            "lower_inclusive": 0.0,
+            "upper_exclusive": 0.1,
+            "mean_count_across_seeds": 181.0,
+            "mean_prediction_across_seeds": 0.07270765446451898,
+            "empirical_accuracy_across_seeds": 0.029357247212182302
+          },
+          {
+            "bin": 1,
+            "lower_inclusive": 0.1,
+            "upper_exclusive": 0.2,
+            "mean_count_across_seeds": 724.0,
+            "mean_prediction_across_seeds": 0.1532710462755655,
+            "empirical_accuracy_across_seeds": 0.09073972375144752
+          },
+          {
+            "bin": 2,
+            "lower_inclusive": 0.2,
+            "upper_exclusive": 0.3,
+            "mean_count_across_seeds": 903.3333333333334,
+            "mean_prediction_across_seeds": 0.2529577789473536,
+            "empirical_accuracy_across_seeds": 0.21093285520806104
+          },
+          {
+            "bin": 3,
+            "lower_inclusive": 0.3,
+            "upper_exclusive": 0.4,
+            "mean_count_across_seeds": 1397.3333333333333,
+            "mean_prediction_across_seeds": 0.35360034398791856,
+            "empirical_accuracy_across_seeds": 0.3222547283350217
+          },
+          {
+            "bin": 4,
+            "lower_inclusive": 0.4,
+            "upper_exclusive": 0.5,
+            "mean_count_across_seeds": 2028.6666666666667,
+            "mean_prediction_across_seeds": 0.45360567635413024,
+            "empirical_accuracy_across_seeds": 0.4236706912416262
+          },
+          {
+            "bin": 5,
+            "lower_inclusive": 0.5,
+            "upper_exclusive": 0.6,
+            "mean_count_across_seeds": 2966.6666666666665,
+            "mean_prediction_across_seeds": 0.5533538893878903,
+            "empirical_accuracy_across_seeds": 0.5388405684968323
+          },
+          {
+            "bin": 6,
+            "lower_inclusive": 0.6,
+            "upper_exclusive": 0.7,
+            "mean_count_across_seeds": 4408.0,
+            "mean_prediction_across_seeds": 0.6533747799457316,
+            "empirical_accuracy_across_seeds": 0.6516246832089014
+          },
+          {
+            "bin": 7,
+            "lower_inclusive": 0.7,
+            "upper_exclusive": 0.8,
+            "mean_count_across_seeds": 5947.666666666667,
+            "mean_prediction_across_seeds": 0.7514452732150416,
+            "empirical_accuracy_across_seeds": 0.7582196137872202
+          },
+          {
+            "bin": 8,
+            "lower_inclusive": 0.8,
+            "upper_exclusive": 0.9,
+            "mean_count_across_seeds": 4855.0,
+            "mean_prediction_across_seeds": 0.8439783634317463,
+            "empirical_accuracy_across_seeds": 0.8644640684491689
+          },
+          {
+            "bin": 9,
+            "lower_inclusive": 0.9,
+            "upper_exclusive": 1.0,
+            "mean_count_across_seeds": 894.3333333333334,
+            "mean_prediction_across_seeds": 0.9212758366400093,
+            "empirical_accuracy_across_seeds": 0.9342011259540799
+          }
+        ]
+      }
+    },
+    "0.10": {
+      "DKT-64-Adam": {
+        "seed_count": 3,
+        "test_prediction_rows_per_seed": 24306,
+        "mean_roc_auc": 0.7559794031325858,
+        "standard_deviation_roc_auc": 0.0012784373424033714,
+        "mean_brier_score": 0.18642241893867148,
+        "standard_deviation_brier_score": 0.00024910203540316864,
+        "mean_ece_10": 0.0385228189497695,
+        "standard_deviation_ece_10": 0.002013099391130823,
+        "mean_calibration_bins_10": [
+          {
+            "bin": 0,
+            "lower_inclusive": 0.0,
+            "upper_exclusive": 0.1,
+            "mean_count_across_seeds": 54.0,
+            "mean_prediction_across_seeds": 0.0864071153950144,
+            "empirical_accuracy_across_seeds": 0.0036231884057971015
+          },
+          {
+            "bin": 1,
+            "lower_inclusive": 0.1,
+            "upper_exclusive": 0.2,
+            "mean_count_across_seeds": 526.6666666666666,
+            "mean_prediction_across_seeds": 0.15735442121711643,
+            "empirical_accuracy_across_seeds": 0.06864869915849382
+          },
+          {
+            "bin": 2,
+            "lower_inclusive": 0.2,
+            "upper_exclusive": 0.3,
+            "mean_count_across_seeds": 894.6666666666666,
+            "mean_prediction_across_seeds": 0.2530704612446931,
+            "empirical_accuracy_across_seeds": 0.17638609749655168
+          },
+          {
+            "bin": 3,
+            "lower_inclusive": 0.3,
+            "upper_exclusive": 0.4,
+            "mean_count_across_seeds": 1449.0,
+            "mean_prediction_across_seeds": 0.3542742211830137,
+            "empirical_accuracy_across_seeds": 0.30396382386449405
+          },
+          {
+            "bin": 4,
+            "lower_inclusive": 0.4,
+            "upper_exclusive": 0.5,
+            "mean_count_across_seeds": 2321.0,
+            "mean_prediction_across_seeds": 0.45367352070344974,
+            "empirical_accuracy_across_seeds": 0.4167909390621583
+          },
+          {
+            "bin": 5,
+            "lower_inclusive": 0.5,
+            "upper_exclusive": 0.6,
+            "mean_count_across_seeds": 3675.6666666666665,
+            "mean_prediction_across_seeds": 0.5533439590591601,
+            "empirical_accuracy_across_seeds": 0.5547511396530919
+          },
+          {
+            "bin": 6,
+            "lower_inclusive": 0.6,
+            "upper_exclusive": 0.7,
+            "mean_count_across_seeds": 5491.0,
+            "mean_prediction_across_seeds": 0.6527793890160715,
+            "empirical_accuracy_across_seeds": 0.676750915853221
+          },
+          {
+            "bin": 7,
+            "lower_inclusive": 0.7,
+            "upper_exclusive": 0.8,
+            "mean_count_across_seeds": 6574.666666666667,
+            "mean_prediction_across_seeds": 0.748876879458399,
+            "empirical_accuracy_across_seeds": 0.79921349759323
+          },
+          {
+            "bin": 8,
+            "lower_inclusive": 0.8,
+            "upper_exclusive": 0.9,
+            "mean_count_across_seeds": 3198.0,
+            "mean_prediction_across_seeds": 0.8376449102336997,
+            "empirical_accuracy_across_seeds": 0.8934736252133905
+          },
+          {
+            "bin": 9,
+            "lower_inclusive": 0.9,
+            "upper_exclusive": 1.0,
+            "mean_count_across_seeds": 121.33333333333333,
+            "mean_prediction_across_seeds": 0.9128024025277665,
+            "empirical_accuracy_across_seeds": 0.9471155007853088
+          }
+        ]
+      },
+      "DKT-64-AdamW": {
+        "seed_count": 3,
+        "test_prediction_rows_per_seed": 24306,
+        "mean_roc_auc": 0.7559795478289651,
+        "standard_deviation_roc_auc": 0.0012785627759437867,
+        "mean_brier_score": 0.18642249724741822,
+        "standard_deviation_brier_score": 0.0002491218937292071,
+        "mean_ece_10": 0.03855135645251964,
+        "standard_deviation_ece_10": 0.002025035326375901,
+        "mean_calibration_bins_10": [
+          {
+            "bin": 0,
+            "lower_inclusive": 0.0,
+            "upper_exclusive": 0.1,
+            "mean_count_across_seeds": 54.0,
+            "mean_prediction_across_seeds": 0.08640929080707871,
+            "empirical_accuracy_across_seeds": 0.0036231884057971015
+          },
+          {
+            "bin": 1,
+            "lower_inclusive": 0.1,
+            "upper_exclusive": 0.2,
+            "mean_count_across_seeds": 526.6666666666666,
+            "mean_prediction_across_seeds": 0.1573586436685898,
+            "empirical_accuracy_across_seeds": 0.06864869915849382
+          },
+          {
+            "bin": 2,
+            "lower_inclusive": 0.2,
+            "upper_exclusive": 0.3,
+            "mean_count_across_seeds": 894.3333333333334,
+            "mean_prediction_across_seeds": 0.253055386159563,
+            "empirical_accuracy_across_seeds": 0.17645828710298792
+          },
+          {
+            "bin": 3,
+            "lower_inclusive": 0.3,
+            "upper_exclusive": 0.4,
+            "mean_count_across_seeds": 1449.6666666666667,
+            "mean_prediction_across_seeds": 0.3542741209595533,
+            "empirical_accuracy_across_seeds": 0.3038273771069954
+          },
+          {
+            "bin": 4,
+            "lower_inclusive": 0.4,
+            "upper_exclusive": 0.5,
+            "mean_count_across_seeds": 2319.6666666666665,
+            "mean_prediction_across_seeds": 0.45366243970925363,
+            "empirical_accuracy_across_seeds": 0.4166006975235302
+          },
+          {
+            "bin": 5,
+            "lower_inclusive": 0.5,
+            "upper_exclusive": 0.6,
+            "mean_count_across_seeds": 3676.6666666666665,
+            "mean_prediction_across_seeds": 0.553329710835055,
+            "empirical_accuracy_across_seeds": 0.5548722479605291
+          },
+          {
+            "bin": 6,
+            "lower_inclusive": 0.6,
+            "upper_exclusive": 0.7,
+            "mean_count_across_seeds": 5491.0,
+            "mean_prediction_across_seeds": 0.6527789808262151,
+            "empirical_accuracy_across_seeds": 0.676750915853221
+          },
+          {
+            "bin": 7,
+            "lower_inclusive": 0.7,
+            "upper_exclusive": 0.8,
+            "mean_count_across_seeds": 6574.333333333333,
+            "mean_prediction_across_seeds": 0.7488731135080217,
+            "empirical_accuracy_across_seeds": 0.7992038293258972
+          },
+          {
+            "bin": 8,
+            "lower_inclusive": 0.8,
+            "upper_exclusive": 0.9,
+            "mean_count_across_seeds": 3198.3333333333335,
+            "mean_prediction_across_seeds": 0.8376389174050268,
+            "empirical_accuracy_across_seeds": 0.8934851062874385
+          },
+          {
+            "bin": 9,
+            "lower_inclusive": 0.9,
+            "upper_exclusive": 1.0,
+            "mean_count_across_seeds": 121.33333333333333,
+            "mean_prediction_across_seeds": 0.9127996416739741,
+            "empirical_accuracy_across_seeds": 0.9471155007853088
+          }
+        ]
+      }
+    },
+    "0.20": {
+      "DKT-64-Adam": {
+        "seed_count": 3,
+        "test_prediction_rows_per_seed": 24306,
+        "mean_roc_auc": 0.7424190961158085,
+        "standard_deviation_roc_auc": 0.0019259975968914948,
+        "mean_brier_score": 0.19635487495719273,
+        "standard_deviation_brier_score": 0.0005562678812674652,
+        "mean_ece_10": 0.07491651448401537,
+        "standard_deviation_ece_10": 0.0030851354799475987,
+        "mean_calibration_bins_10": [
+          {
+            "bin": 0,
+            "lower_inclusive": 0.0,
+            "upper_exclusive": 0.1,
+            "mean_count_across_seeds": 0.0,
+            "mean_prediction_across_seeds": null,
+            "empirical_accuracy_across_seeds": null
+          },
+          {
+            "bin": 1,
+            "lower_inclusive": 0.1,
+            "upper_exclusive": 0.2,
+            "mean_count_across_seeds": 158.66666666666666,
+            "mean_prediction_across_seeds": 0.17230896895134187,
+            "empirical_accuracy_across_seeds": 0.021374750611155586
+          },
+          {
+            "bin": 2,
+            "lower_inclusive": 0.2,
+            "upper_exclusive": 0.3,
+            "mean_count_across_seeds": 589.6666666666666,
+            "mean_prediction_across_seeds": 0.2599480985958785,
+            "empirical_accuracy_across_seeds": 0.12391576798490982
+          },
+          {
+            "bin": 3,
+            "lower_inclusive": 0.3,
+            "upper_exclusive": 0.4,
+            "mean_count_across_seeds": 1441.0,
+            "mean_prediction_across_seeds": 0.35529285216379275,
+            "empirical_accuracy_across_seeds": 0.24961581352837295
+          },
+          {
+            "bin": 4,
+            "lower_inclusive": 0.4,
+            "upper_exclusive": 0.5,
+            "mean_count_across_seeds": 2875.0,
+            "mean_prediction_across_seeds": 0.45524989461472415,
+            "empirical_accuracy_across_seeds": 0.4113827592438635
+          },
+          {
+            "bin": 5,
+            "lower_inclusive": 0.5,
+            "upper_exclusive": 0.6,
+            "mean_count_across_seeds": 5488.0,
+            "mean_prediction_across_seeds": 0.5551925966400492,
+            "empirical_accuracy_across_seeds": 0.574671322504395
+          },
+          {
+            "bin": 6,
+            "lower_inclusive": 0.6,
+            "upper_exclusive": 0.7,
+            "mean_count_across_seeds": 8306.0,
+            "mean_prediction_across_seeds": 0.6510354330630765,
+            "empirical_accuracy_across_seeds": 0.7368580146049429
+          },
+          {
+            "bin": 7,
+            "lower_inclusive": 0.7,
+            "upper_exclusive": 0.8,
+            "mean_count_across_seeds": 4967.0,
+            "mean_prediction_across_seeds": 0.7396419155739395,
+            "empirical_accuracy_across_seeds": 0.8548925144224943
+          },
+          {
+            "bin": 8,
+            "lower_inclusive": 0.8,
+            "upper_exclusive": 0.9,
+            "mean_count_across_seeds": 480.0,
+            "mean_prediction_across_seeds": 0.8213334675964443,
+            "empirical_accuracy_across_seeds": 0.9291490928787205
+          },
+          {
+            "bin": 9,
+            "lower_inclusive": 0.9,
+            "upper_exclusive": 1.0,
+            "mean_count_across_seeds": 0.6666666666666666,
+            "mean_prediction_across_seeds": 0.9019465148448944,
+            "empirical_accuracy_across_seeds": 0.5
+          }
+        ]
+      },
+      "DKT-64-AdamW": {
+        "seed_count": 3,
+        "test_prediction_rows_per_seed": 24306,
+        "mean_roc_auc": 0.7424199103395018,
+        "standard_deviation_roc_auc": 0.0019256965465837455,
+        "mean_brier_score": 0.19635488820812128,
+        "standard_deviation_brier_score": 0.000556200932328659,
+        "mean_ece_10": 0.07491740248250296,
+        "standard_deviation_ece_10": 0.0030848858563204047,
+        "mean_calibration_bins_10": [
+          {
+            "bin": 0,
+            "lower_inclusive": 0.0,
+            "upper_exclusive": 0.1,
+            "mean_count_across_seeds": 0.0,
+            "mean_prediction_across_seeds": null,
+            "empirical_accuracy_across_seeds": null
+          },
+          {
+            "bin": 1,
+            "lower_inclusive": 0.1,
+            "upper_exclusive": 0.2,
+            "mean_count_across_seeds": 158.66666666666666,
+            "mean_prediction_across_seeds": 0.1723122756324963,
+            "empirical_accuracy_across_seeds": 0.021374750611155586
+          },
+          {
+            "bin": 2,
+            "lower_inclusive": 0.2,
+            "upper_exclusive": 0.3,
+            "mean_count_across_seeds": 589.6666666666666,
+            "mean_prediction_across_seeds": 0.25995281261057596,
+            "empirical_accuracy_across_seeds": 0.12391576798490982
+          },
+          {
+            "bin": 3,
+            "lower_inclusive": 0.3,
+            "upper_exclusive": 0.4,
+            "mean_count_across_seeds": 1441.0,
+            "mean_prediction_across_seeds": 0.35529599707432175,
+            "empirical_accuracy_across_seeds": 0.24961581352837295
+          },
+          {
+            "bin": 4,
+            "lower_inclusive": 0.4,
+            "upper_exclusive": 0.5,
+            "mean_count_across_seeds": 2875.0,
+            "mean_prediction_across_seeds": 0.4552521087054071,
+            "empirical_accuracy_across_seeds": 0.4113827592438635
+          },
+          {
+            "bin": 5,
+            "lower_inclusive": 0.5,
+            "upper_exclusive": 0.6,
+            "mean_count_across_seeds": 5488.666666666667,
+            "mean_prediction_across_seeds": 0.555199092121228,
+            "empirical_accuracy_across_seeds": 0.5746016908951027
+          },
+          {
+            "bin": 6,
+            "lower_inclusive": 0.6,
+            "upper_exclusive": 0.7,
+            "mean_count_across_seeds": 8305.666666666666,
+            "mean_prediction_across_seeds": 0.651041229858475,
+            "empirical_accuracy_across_seeds": 0.7369282123582339
+          },
+          {
+            "bin": 7,
+            "lower_inclusive": 0.7,
+            "upper_exclusive": 0.8,
+            "mean_count_across_seeds": 4967.0,
+            "mean_prediction_across_seeds": 0.7396469510407515,
+            "empirical_accuracy_across_seeds": 0.8548925939302477
+          },
+          {
+            "bin": 8,
+            "lower_inclusive": 0.8,
+            "upper_exclusive": 0.9,
+            "mean_count_across_seeds": 479.6666666666667,
+            "mean_prediction_across_seeds": 0.8213509378569284,
+            "empirical_accuracy_across_seeds": 0.929102270645183
+          },
+          {
+            "bin": 9,
+            "lower_inclusive": 0.9,
+            "upper_exclusive": 1.0,
+            "mean_count_across_seeds": 0.6666666666666666,
+            "mean_prediction_across_seeds": 0.9019378423690796,
+            "empirical_accuracy_across_seeds": 0.5
+          }
+        ]
+      }
+    }
+  },
+  "clean_reference_from_same_script": {
+    "DKT-64-Adam": {
+      "seed_count": 3,
+      "test_prediction_rows_per_seed": 24306,
+      "mean_roc_auc": 0.7653960853081293,
+      "standard_deviation_roc_auc": 0.00111634893582303,
+      "mean_brier_score": 0.1815545566540945,
+      "standard_deviation_brier_score": 0.0004550822840638538,
+      "mean_ece_10": 0.012923502448250709,
+      "standard_deviation_ece_10": 0.0077668797821556605,
+      "mean_calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "mean_count_across_seeds": 454.0,
+          "mean_prediction_across_seeds": 0.06237136118652817,
+          "empirical_accuracy_across_seeds": 0.0395457935042436
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "mean_count_across_seeds": 829.3333333333334,
+          "mean_prediction_across_seeds": 0.1513559972664324,
+          "empirical_accuracy_across_seeds": 0.1372102645317821
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "mean_count_across_seeds": 1066.3333333333333,
+          "mean_prediction_across_seeds": 0.2525474576520404,
+          "empirical_accuracy_across_seeds": 0.25470067033915184
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "mean_count_across_seeds": 1433.3333333333333,
+          "mean_prediction_across_seeds": 0.3526928055288164,
+          "empirical_accuracy_across_seeds": 0.3595784634202605
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "mean_count_across_seeds": 1890.3333333333333,
+          "mean_prediction_across_seeds": 0.4522814163687546,
+          "empirical_accuracy_across_seeds": 0.44341634572100536
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "mean_count_across_seeds": 2652.0,
+          "mean_prediction_across_seeds": 0.5528819733090434,
+          "empirical_accuracy_across_seeds": 0.5455218748240961
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "mean_count_across_seeds": 3576.3333333333335,
+          "mean_prediction_across_seeds": 0.6522827299380234,
+          "empirical_accuracy_across_seeds": 0.640102192109757
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "mean_count_across_seeds": 4879.333333333333,
+          "mean_prediction_across_seeds": 0.7521312387992901,
+          "empirical_accuracy_across_seeds": 0.740384799439171
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "mean_count_across_seeds": 5393.666666666667,
+          "mean_prediction_across_seeds": 0.8477310127573464,
+          "empirical_accuracy_across_seeds": 0.8379300464576577
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "mean_count_across_seeds": 2131.3333333333335,
+          "mean_prediction_across_seeds": 0.9336859102272385,
+          "empirical_accuracy_across_seeds": 0.917770807727288
+        }
+      ]
+    },
+    "DKT-64-AdamW": {
+      "seed_count": 3,
+      "test_prediction_rows_per_seed": 24306,
+      "mean_roc_auc": 0.7653960239961042,
+      "standard_deviation_roc_auc": 0.0011168578112805807,
+      "mean_brier_score": 0.1815545106809918,
+      "standard_deviation_brier_score": 0.0004550602788441662,
+      "mean_ece_10": 0.012915011900102497,
+      "standard_deviation_ece_10": 0.007770575748144405,
+      "mean_calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "mean_count_across_seeds": 454.0,
+          "mean_prediction_across_seeds": 0.062375068309003245,
+          "empirical_accuracy_across_seeds": 0.0395457935042436
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "mean_count_across_seeds": 829.3333333333334,
+          "mean_prediction_across_seeds": 0.15135992064054604,
+          "empirical_accuracy_across_seeds": 0.1372102645317821
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "mean_count_across_seeds": 1066.3333333333333,
+          "mean_prediction_across_seeds": 0.25255042001507316,
+          "empirical_accuracy_across_seeds": 0.25470067033915184
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "mean_count_across_seeds": 1433.3333333333333,
+          "mean_prediction_across_seeds": 0.352693863626725,
+          "empirical_accuracy_across_seeds": 0.3595784634202605
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "mean_count_across_seeds": 1890.6666666666667,
+          "mean_prediction_across_seeds": 0.45228893528186837,
+          "empirical_accuracy_across_seeds": 0.4433404393076159
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "mean_count_across_seeds": 2651.6666666666665,
+          "mean_prediction_across_seeds": 0.5528872608209348,
+          "empirical_accuracy_across_seeds": 0.5455905526622977
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "mean_count_across_seeds": 3577.3333333333335,
+          "mean_prediction_across_seeds": 0.6522946545613203,
+          "empirical_accuracy_across_seeds": 0.6401097337673568
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "mean_count_across_seeds": 4878.333333333333,
+          "mean_prediction_across_seeds": 0.7521397745710514,
+          "empirical_accuracy_across_seeds": 0.7404016022255316
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "mean_count_across_seeds": 5394.333333333333,
+          "mean_prediction_across_seeds": 0.8477348456705389,
+          "empirical_accuracy_across_seeds": 0.8379500786430089
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "mean_count_across_seeds": 2130.6666666666665,
+          "mean_prediction_across_seeds": 0.9336938547452562,
+          "empirical_accuracy_across_seeds": 0.917745629026142
+        }
+      ]
+    }
+  },
+  "privacy": "Only aggregate metrics, counts, and calibration bins are written; no interaction-level data or predictions are emitted."
+}
