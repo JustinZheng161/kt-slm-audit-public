@@ -132,3 +132,9 @@ python3 scripts/build-nature-kt-contact-sheet.py
 The semantic names are `figure-01-student-disjoint-baselines`, `figure-02-training-window-sensitivity`, `figure-03-primary-ablation`, `figure-04-label-inversion-sensitivity`, `figure-s01-probability-quality`, `figure-s02-exploratory-budget`, and `figure-s03-bkt-diagnostics`. Each has a PDF vector source, editable SVG, 600-dpi PNG for DOCX insertion, and 600-dpi TIFF print derivative. `figures/nature-kt-v31/figure-manifest.json` records aggregate inputs, input hashes, output paths, DPI, uncertainty meanings and the privacy scope. The contact sheet is a visual-QA artifact only, not a submission figure.
 
 The reconstruction reads only the tracked aggregate JSON files. It does not access or deposit raw student records, student-level split memberships, sequences, predictions, per-skill parameter vectors, bootstrap replicate values or model checkpoints.
+
+## Final data and submission structure
+
+The public repository contains the complete public reproducibility layer: aggregate data in `data/`, data cards and privacy documentation in `metadata/` and `docs/`, released result summaries in `results/`, figure source code in `scripts/`, and Nature-style figure outputs in `figures/nature-kt-v31/` and `figures/nature-v31/`. No raw learner records, student-level manifests, hidden states, logits, checkpoints, private salts or manuscript files are published here.
+
+The final manuscript, named **A Case-Study Protocol for Prompt-Interface Auditing of Skill-Conditioned Hidden States in Small Language Models.docx**, is stored only in the private repository under `final-submission/`. The corresponding editable text source is stored beside it. All active figure, data and source filenames use descriptive hyphenated names without underscores.
