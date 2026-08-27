@@ -10,14 +10,16 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import os
 from collections import Counter
 from pathlib import Path
 
 
 _HERE = Path(__file__).resolve()
 ROOT = _HERE.parents[2] if (_HERE.parents[2] / "research_code").exists() else _HERE.parents[1]
-RAW = ROOT / "private_data" / "raw" / "skill_builder_data_corrected_collapsed.csv"
-PRIVATE_OUT = ROOT / "private_data" / "metadata" / "raw_profile.json"
+CONTROLLED_DATA_ROOT = Path(os.environ.get("KT_AUDIT_DATA_ROOT", ROOT / "private_data"))
+RAW = CONTROLLED_DATA_ROOT / "raw" / "skill_builder_data_corrected_collapsed.csv"
+PRIVATE_OUT = CONTROLLED_DATA_ROOT / "metadata" / "raw_profile.json"
 PUBLIC_OUT = (ROOT / "research_code" / "metadata" if (ROOT / "research_code").exists() else ROOT / "metadata") / "assistments2009_data_card.json"
 
 
@@ -85,7 +87,7 @@ def main() -> None:
         "answer_type_counts": dict(answer_types.most_common()),
         "privacy_note": (
             "Only aggregate statistics are stored here. Raw student records, IDs, splits, "
-            "and per-student predictions remain locally controlled under private_data/."
+            "and per-student predictions remain in the locally controlled data root."
         ),
     }
 

@@ -26,7 +26,7 @@ from run_student_disjoint_kt import (
 
 _HERE = Path(__file__).resolve()
 ROOT = _HERE.parents[2] if (_HERE.parents[2] / "research_code").exists() else _HERE.parents[1]
-PRIVATE_DIR = ROOT / "private_data" / "results"
+PRIVATE_DIR = RAW_DATA.parents[1] / "results"
 PUBLIC_DIR = ROOT / "research_code" / "results" if (ROOT / "research_code").exists() else ROOT / "results"
 
 

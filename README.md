@@ -35,6 +35,8 @@ python analysis/make_paper_figures.py
 
 The scripts write raw- or student-level artifacts only below the local `private_data/` path. The repository contains only public aggregate JSON summaries and paper figures.
 
+If a controlled-data directory is kept outside the repository or project tree, set `KT_AUDIT_DATA_ROOT=/absolute/path/to/controlled-data` before invoking the scripts. This audit used an external controlled-data root; the environment variable is supported precisely to keep source files out of versioned project folders.
+
 ## Results in the controlled protocol
 
 | Method | Test ROC-AUC | Uncertainty | Interpretation |

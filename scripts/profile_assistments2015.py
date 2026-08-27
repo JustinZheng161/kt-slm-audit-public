@@ -5,14 +5,16 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import os
 from collections import Counter
 from pathlib import Path
 
 
 _HERE = Path(__file__).resolve()
 ROOT = _HERE.parents[2] if (_HERE.parents[2] / "research_code").exists() else _HERE.parents[1]
-RAW = ROOT / "private_data" / "raw" / "assistments2015_skill_builder.csv"
-PRIVATE_OUT = ROOT / "private_data" / "metadata" / "assistments2015_profile.json"
+CONTROLLED_DATA_ROOT = Path(os.environ.get("KT_AUDIT_DATA_ROOT", ROOT / "private_data"))
+RAW = CONTROLLED_DATA_ROOT / "raw" / "assistments2015_skill_builder.csv"
+PRIVATE_OUT = CONTROLLED_DATA_ROOT / "metadata" / "assistments2015_profile.json"
 PUBLIC_OUT = (ROOT / "research_code" / "metadata" if (ROOT / "research_code").exists() else ROOT / "metadata") / "assistments2015_data_card.json"
 
 

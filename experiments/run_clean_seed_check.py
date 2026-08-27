@@ -46,7 +46,7 @@ def main() -> None:
         },
         "privacy": "No raw interactions, student IDs, memberships, or row-level predictions are stored in this public output.",
     }
-    for destination in (ROOT / "private_data" / "results" / "clean_dkt64_adam_multiseed_private.json", PUBLIC_RESULTS / "clean_dkt64_adam_multiseed.json"):
+    for destination in (RAW_DATA.parents[1] / "results" / "clean_dkt64_adam_multiseed_private.json", PUBLIC_RESULTS / "clean_dkt64_adam_multiseed.json"):
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_text(json.dumps(result, indent=2), encoding="utf-8")
     print(json.dumps(result, indent=2))

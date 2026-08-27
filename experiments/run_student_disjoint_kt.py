@@ -33,8 +33,9 @@ from torch.utils.data import DataLoader, Dataset
 
 _HERE = Path(__file__).resolve()
 ROOT = _HERE.parents[2] if (_HERE.parents[2] / "research_code").exists() else _HERE.parents[1]
-RAW_DATA = ROOT / "private_data" / "raw" / "skill_builder_data_corrected_collapsed.csv"
-PRIVATE_DIR = ROOT / "private_data" / "results"
+CONTROLLED_DATA_ROOT = Path(os.environ.get("KT_AUDIT_DATA_ROOT", ROOT / "private_data"))
+RAW_DATA = CONTROLLED_DATA_ROOT / "raw" / "skill_builder_data_corrected_collapsed.csv"
+PRIVATE_DIR = CONTROLLED_DATA_ROOT / "results"
 PUBLIC_DIR = ROOT / "research_code" / "results" if (ROOT / "research_code").exists() else ROOT / "results"
 
 
@@ -477,7 +478,7 @@ def main() -> None:
         },
         "metrics": baseline_metrics,
         "candidate_seed_summary": candidate_seed_summary,
-        "privacy": "Raw data, student identities, split membership, per-student sequences, and row-level predictions are stored only below private_data/ and excluded from Git.",
+        "privacy": "Raw data, student identities, split membership, per-student sequences, and row-level predictions are stored only in the controlled data root and excluded from Git.",
     }
     np.savez_compressed(PRIVATE_DIR / "student_level_predictions.npz", **{f"{name}_{key}": value for name, values in private_scores.items() for key, value in values.items()})
     (PRIVATE_DIR / "bkt_parameters_private.json").write_text(json.dumps(bkt_parameters.tolist()), encoding="utf-8")

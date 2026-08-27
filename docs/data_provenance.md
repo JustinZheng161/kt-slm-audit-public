@@ -77,3 +77,7 @@ PSLC DataShop的KDD Cup 2010官方入口将任务定义为：根据智能辅导�
 [D5] Choi, Y., et al. (2020). *EdNet: A Large-Scale Hierarchical Dataset in Education*. https://github.com/riiid/ednet  
 [D6] PSLC DataShop. *KDD Cup 2010: Educational Data Mining Challenge*. https://pslcdatashop.web.cmu.edu/KDDCup/  
 [D7] Liu, Z., et al. (2023). *simpleKT: A Simple But Tough-to-Beat Baseline for Knowledge Tracing*, Appendix A. https://arxiv.org/html/2302.06881v2
+
+### 受控数据存储位置（2026-08-27 最终更新）
+
+为避免原始学生记录进入网页项目的版本保存、构建目录或任何Git工作树，所有原始ASSISTments文件、学生级预测和私有实验输出已从项目目录迁移至`/home/ubuntu/controlled-research-data/kt-slm-audit/`。实验入口接受环境变量`KT_AUDIT_DATA_ROOT`，默认值仅为本地复现便利而设；当前项目实际运行时明确设置该目录外路径。该移动不改变文件内容、来源SHA-256或公开聚合结果。
