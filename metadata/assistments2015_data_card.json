@@ -1,0 +1,19 @@
+{
+  "columns": [
+    "user_id",
+    "log_id",
+    "sequence_id",
+    "correct"
+  ],
+  "correct_count": 500379,
+  "correct_rate": 0.7061206749351919,
+  "dataset": "ASSISTments2015 Skill Builder",
+  "incorrect_count": 183422,
+  "privacy_note": "Output contains only aggregates. Source rows and student identifiers remain under private_data/ and are never versioned.",
+  "row_count_excluding_header": 708631,
+  "sha256": "75e1f46131d5897a388c82411bc3032279899cb1f1e66a9043354d41234407a0",
+  "source_file": "assistments2015_skill_builder.csv",
+  "source_url": "https://sites.google.com/site/assistmentsdata/datasets/2015-assistments-skill-builder-data",
+  "unique_sequence_ids": 100,
+  "unique_students": 19917
+}

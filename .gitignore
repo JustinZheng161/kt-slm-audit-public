@@ -1,0 +1,19 @@
+# Do not distribute ASSISTments records or reversible student-level artifacts.
+private_data/
+*.csv
+*.tsv
+*.parquet
+*.npz
+*.pt
+*.pth
+*.ckpt
+*.log
+.env
+.env.*
+!.env.example
+__pycache__/
+.pytest_cache/
+.venv/
+*token*
+*secret*
+*credential*

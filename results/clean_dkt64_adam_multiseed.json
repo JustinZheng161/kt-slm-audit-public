@@ -1,0 +1,213 @@
+{
+  "experiment": "clean_dkt64_adam_multiseed_fairness_check",
+  "source_sha256": "162ef8d2d28bcbfea6591a282994062bd8d5eaa00636544292a0d268dca6e5da",
+  "student_level_split": {
+    "seed": 20260822,
+    "train_validation_test": [
+      0.8,
+      0.1,
+      0.1
+    ]
+  },
+  "architecture": "embedding_dim=64, hidden_dim=64, dropout=0.0, learning_rate=0.002, epochs=8",
+  "runs": [
+    {
+      "name": "DKT-64-Adam",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7659819204817124,
+      "student_cluster_bootstrap_95_ci": [
+        0.749049878304873,
+        0.7854160828135961
+      ],
+      "bootstrap_replicates": 1000,
+      "specification": {
+        "name": "DKT-64-Adam",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "epochs": 8,
+        "seed": 20260822
+      },
+      "selected_validation_auc": 0.7660417835334471,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.5996016567043997,
+          "validation_auc": 0.7292578857370398
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.5517937376517607,
+          "validation_auc": 0.7536391881871283
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.540426081379933,
+          "validation_auc": 0.7596860360630442
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.5345336960339402,
+          "validation_auc": 0.7618230720365354
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.530374653424963,
+          "validation_auc": 0.7624592341808805
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.5272567700208016,
+          "validation_auc": 0.765944176258734
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.5239538151176638,
+          "validation_auc": 0.7660417835334471
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.5210163431816339,
+          "validation_auc": 0.7654411600899674
+        }
+      ],
+      "selected_epoch": 7
+    },
+    {
+      "name": "DKT-64-Adam",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7660975684496951,
+      "student_cluster_bootstrap_95_ci": [
+        0.7483600518921119,
+        0.7843569050482438
+      ],
+      "bootstrap_replicates": 1000,
+      "specification": {
+        "name": "DKT-64-Adam",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "epochs": 8,
+        "seed": 20260823
+      },
+      "selected_validation_auc": 0.7648162880787577,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.6014748700607397,
+          "validation_auc": 0.7258706479281702
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.5557522378311505,
+          "validation_auc": 0.7455054658948705
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.5436698935469466,
+          "validation_auc": 0.7542483898039282
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.5366858882183856,
+          "validation_auc": 0.7595721880676081
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.5315191089147022,
+          "validation_auc": 0.7624197497530738
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.5275584496037239,
+          "validation_auc": 0.7641173822804394
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.524163484919057,
+          "validation_auc": 0.7634371886168672
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.521854772562832,
+          "validation_auc": 0.7648162880787577
+        }
+      ],
+      "selected_epoch": 8
+    },
+    {
+      "name": "DKT-64-Adam",
+      "test_prediction_rows": 24306,
+      "roc_auc": 0.7641087669929802,
+      "student_cluster_bootstrap_95_ci": [
+        0.7469883467296868,
+        0.7830529191530375
+      ],
+      "bootstrap_replicates": 1000,
+      "specification": {
+        "name": "DKT-64-Adam",
+        "embedding_dim": 64,
+        "hidden_dim": 64,
+        "dropout": 0.0,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "epochs": 8,
+        "seed": 20260824
+      },
+      "selected_validation_auc": 0.7649640995880995,
+      "training_history": [
+        {
+          "epoch": 1,
+          "training_bce": 0.5995698673390869,
+          "validation_auc": 0.726947567558663
+        },
+        {
+          "epoch": 2,
+          "training_bce": 0.5548630362368735,
+          "validation_auc": 0.7487782465842827
+        },
+        {
+          "epoch": 3,
+          "training_bce": 0.5427930790159821,
+          "validation_auc": 0.7568447208086255
+        },
+        {
+          "epoch": 4,
+          "training_bce": 0.5364170533823993,
+          "validation_auc": 0.7613573715036777
+        },
+        {
+          "epoch": 5,
+          "training_bce": 0.5309224365178241,
+          "validation_auc": 0.763319111671219
+        },
+        {
+          "epoch": 6,
+          "training_bce": 0.5274804972016855,
+          "validation_auc": 0.7630235313300148
+        },
+        {
+          "epoch": 7,
+          "training_bce": 0.5243514505282886,
+          "validation_auc": 0.7649640995880995
+        },
+        {
+          "epoch": 8,
+          "training_bce": 0.5214511556452345,
+          "validation_auc": 0.7644454712214855
+        }
+      ],
+      "selected_epoch": 7
+    }
+  ],
+  "aggregate": {
+    "mean_roc_auc": 0.7653960853081293,
+    "standard_deviation_roc_auc": 0.00111634893582303,
+    "seed_count": 3
+  },
+  "privacy": "No raw interactions, student IDs, memberships, or row-level predictions are stored in this public output."
+}
