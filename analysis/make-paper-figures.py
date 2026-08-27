@@ -55,10 +55,10 @@ def style_axes(ax: plt.Axes) -> None:
 
 
 def main() -> None:
-    main_result = load("revision3_main_eight_epoch_probability_quality.json")
-    extended = load("revision3_exploratory_extended_budget.json")
-    sensitivity = load("revision3_training_label_inversion_sensitivity.json")
-    seed_ranges = load("revision5_three_seed_observed_ranges.json")
+    main_result = load("revision3-main-eight-epoch-probability-quality.json")
+    extended = load("revision3-exploratory-extended-budget.json")
+    sensitivity = load("revision3-training-label-inversion-sensitivity.json")
+    seed_ranges = load("revision5-three-seed-observed-ranges.json")
     plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 8})
     TABLES.mkdir(parents=True, exist_ok=True)
 
@@ -84,7 +84,7 @@ def main() -> None:
     dkt_jitter = np.asarray([-0.075, 0.0, 0.075])
     ax.scatter(2 + dkt_jitter, dkt_values, s=22, marker="o", facecolor="white", edgecolor="#17252D", linewidth=0.7, zorder=5, label="DKT seed estimates")
     fig.text(0.01, -0.06, "24,306 shared second-and-later test interactions; fixed 80/10/10 student split; 1,000 student-cluster bootstrap replicates. The DKT bar and error bar are for seed 20260822; the three open circles show all seed-level AUC estimates (SD reported in Table 1).", fontsize=6.2)
-    save(fig, "fig1_student_disjoint_baselines.png")
+    save(fig, "fig1-student-disjoint-baselines.png")
 
     # Figure 2 — three seed ablation without a truncated near-value scale.
     groups = [
@@ -107,7 +107,7 @@ def main() -> None:
     ax.set_title("Main analysis: three paired-seed ablations")
     style_axes(ax)
     fig.text(0.01, -0.06, "Identical split, seed set, validation rule, eight-epoch budget and 24,306 targets. The y-axis begins at 0.70; horizontal bars are means and points are the three observed seed estimates. This display is descriptive, not an equivalence test or population interval.", fontsize=6.1)
-    save(fig, "fig2_clean_ablation.png")
+    save(fig, "fig2-clean-ablation.png")
 
     # Figure 3 — a genuine three-level sensitivity curve plus its clean reference.
     rates = np.array([0.00, 0.05, 0.10, 0.20])
@@ -135,7 +135,7 @@ def main() -> None:
     style_axes(ax)
     ax.legend(frameon=False, loc="lower left", fontsize=7)
     fig.text(0.01, -0.07, "Error bars are across-seed SDs. Only training labels are independently inverted; validation/test labels remain clean. This is a synthetic sensitivity analysis, not a model of learner behaviour.", fontsize=6.25)
-    save(fig, "fig3_label_noise_sensitivity.png")
+    save(fig, "fig3-label-noise-sensitivity.png")
 
     # Figure 4 — probability quality, separated from discrimination.
     aggregate = main_result["clean_dkt_aggregate"]
@@ -169,7 +169,7 @@ def main() -> None:
     style_axes(ax)
     ax.legend(frameon=False, fontsize=6.2, loc="upper left")
     fig.text(0.01, -0.06, "All summaries use the same 24,306 test targets. ECE uses ten fixed-width probability bins; Brier score and ECE are descriptive probability-quality measures, not hypothesis tests.", fontsize=6.2)
-    save(fig, "fig4_probability_quality.png")
+    save(fig, "fig4-probability-quality.png")
 
     # Figure A1 — explicitly exploratory extended-budget diagnostic across all seeds.
     fig, ax = plt.subplots(figsize=(6.4, 3.1))
@@ -191,7 +191,7 @@ def main() -> None:
     style_axes(ax)
     ax.legend(frameon=False, fontsize=6.0, loc="lower left")
     fig.text(0.01, -0.07, "Test data were evaluated once per seed only after selection of the maximum validation AUC within 20 epochs. This post hoc extension does not replace the pre-specified eight-epoch main analysis.", fontsize=6.15)
-    save(fig, "figA1_exploratory_extended_budget.png")
+    save(fig, "figA1-exploratory-extended-budget.png")
 
     # Compact safe table for manuscript generation/inspection.
     with (TABLES / "revision3_aggregate_results.csv").open("w", newline="", encoding="utf-8") as handle:

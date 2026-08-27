@@ -28,7 +28,7 @@ def result_directory(root: Path) -> Path:
         root / "artifacts" / "revision3",
     )
     for candidate in candidates:
-        if (candidate / "revision3_main_eight_epoch_probability_quality.json").exists():
+        if (candidate / "revision3-main-eight-epoch-probability-quality.json").exists():
             return candidate
     raise FileNotFoundError("No Revision 3 aggregate-result directory was found.")
 
@@ -73,7 +73,7 @@ def describe(values: list[float]) -> dict:
 
 
 def main() -> None:
-    main_result = json.loads((RESULTS / "revision3_main_eight_epoch_probability_quality.json").read_text(encoding="utf-8"))
+    main_result = json.loads((RESULTS / "revision3-main-eight-epoch-probability-quality.json").read_text(encoding="utf-8"))
     report = {
         "experiment": "revision4_descriptive_seed_uncertainty",
         "analysis_scope": "Post hoc descriptive summary of the archived Revision 3 eight-epoch per-seed aggregate records.",
@@ -88,7 +88,7 @@ def main() -> None:
             metric: describe([row[metric] for row in rows])
             for metric in ("roc_auc", "brier_score", "ece_10")
         }
-    target = RESULTS / "revision4_descriptive_seed_uncertainty.json"
+    target = RESULTS / "revision4-descriptive-seed-uncertainty.json"
     target.write_text(json.dumps(report, indent=2), encoding="utf-8")
     print(json.dumps(report, indent=2))
 

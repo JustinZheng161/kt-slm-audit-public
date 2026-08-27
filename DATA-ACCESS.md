@@ -20,9 +20,9 @@ After obtaining authorized source files, keep them outside the cloned repository
 
 ```bash
 export KT_AUDIT_DATA_ROOT=/absolute/path/to/controlled/kt-slm-audit
-python3 research_code/experiments/run_student_disjoint_kt.py
-python3 research_code/experiments/run_revision3_extended_evidence.py
-python3 research_code/analysis/make_paper_figures.py
+python3 research_code/experiments/run-student-disjoint-kt.py
+python3 research_code/experiments/run-revision3-extended-evidence.py
+python3 research_code/analysis/make-paper-figures.py
 ```
 
-The released result files are aggregate-only. They contain summary metrics, counts, fixed-bin calibration aggregates and source checksums, but no learner records or individual predictions. See `github_storage_classification.md` for the repository boundary and `research_code/metadata/skill_label_support_audit.json` for the held-out label-support audit.
+The released result files are aggregate-only. They contain summary metrics, counts, fixed-bin calibration aggregates and source checksums, but no learner records or individual predictions. See `github_storage_classification.md` for the repository boundary and `research_code/metadata/skill-label-support-audit.json` for the held-out label-support audit.

@@ -1,10 +1,17 @@
+import importlib.util
 import sys
 from pathlib import Path
 
 import torch
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from models.optimized_dkt import LayerNormResidualDKT, TemporalAttentionDKT
+MODEL_PATH = Path(__file__).resolve().parents[1] / 'models' / 'optimized-dkt.py'
+spec = importlib.util.spec_from_file_location('optimized_dkt', MODEL_PATH)
+module = importlib.util.module_from_spec(spec)
+sys.modules['optimized_dkt'] = module
+assert spec.loader is not None
+spec.loader.exec_module(module)
+LayerNormResidualDKT = module.LayerNormResidualDKT
+TemporalAttentionDKT = module.TemporalAttentionDKT
 
 
 def test_layernorm_residual_dkt_shape_and_gradients():

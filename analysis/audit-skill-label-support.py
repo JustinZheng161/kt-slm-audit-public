@@ -15,7 +15,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve()
 ROOT = HERE.parents[2] if (HERE.parents[2] / "research_code").exists() else HERE.parents[1]
 EXPERIMENTS = ROOT / "research_code" / "experiments" if (ROOT / "research_code").exists() else ROOT / "experiments"
-PUBLIC_OUT = (ROOT / "research_code" / "metadata" if (ROOT / "research_code").exists() else ROOT / "metadata") / "skill_label_support_audit.json"
+PUBLIC_OUT = (ROOT / "research_code" / "metadata" if (ROOT / "research_code").exists() else ROOT / "metadata") / "skill-label-support-audit.json"
 CONTROLLED = Path(os.environ.get("KT_AUDIT_DATA_ROOT", ROOT / "private_data"))
 PRIVATE_OUT = CONTROLLED / "metadata" / "skill_label_support_audit_private.json"
 sys.path.insert(0, str(EXPERIMENTS))

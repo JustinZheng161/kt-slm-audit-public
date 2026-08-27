@@ -130,9 +130,9 @@ def main() -> None:
     encoded = json.dumps(payload, indent=2)
     ARCHIVE_RESULTS.mkdir(parents=True, exist_ok=True)
     CONTROLLED_RESULTS.mkdir(parents=True, exist_ok=True)
-    (ARCHIVE_RESULTS / "revision5_training_window_length_sensitivity.json").write_text(encoded, encoding="utf-8")
+    (ARCHIVE_RESULTS / "revision5-training-window-length-sensitivity.json").write_text(encoded, encoding="utf-8")
     (CONTROLLED_RESULTS / "revision5_training_window_length_sensitivity_private.json").write_text(encoded, encoding="utf-8")
-    print(json.dumps({"aggregate": payload["aggregate"], "output": "revision5_training_window_length_sensitivity.json"}, indent=2))
+    print(json.dumps({"aggregate": payload["aggregate"], "output": "revision5-training-window-length-sensitivity.json"}, indent=2))
 
 
 if __name__ == "__main__":

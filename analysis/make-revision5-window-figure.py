@@ -16,7 +16,7 @@ ROOT = HERE.parents[2] if HERE.parents[1].name == "code" else HERE.parents[1]
 def result_directory(root: Path) -> Path:
     candidates = (root / "research_code" / "results", root / "results" / "revision3", root / "artifacts" / "revision3")
     for candidate in candidates:
-        if (candidate / "revision5_training_window_length_sensitivity.json").exists():
+        if (candidate / "revision5-training-window-length-sensitivity.json").exists():
             return candidate
     raise FileNotFoundError("Revision 5 window-sensitivity aggregate JSON is missing.")
 
@@ -26,7 +26,7 @@ FIGURES = ROOT / "research_artifacts" / "figures" if (ROOT / "research_artifacts
 
 
 def main() -> None:
-    payload = json.loads((RESULTS / "revision5_training_window_length_sensitivity.json").read_text(encoding="utf-8"))
+    payload = json.loads((RESULTS / "revision5-training-window-length-sensitivity.json").read_text(encoding="utf-8"))
     aggregate = payload["aggregate"]
     labels = ["200", "500", "full\n(1,028)"]
     keys = ["window_200", "window_500", "full_available_history"]

@@ -14,8 +14,8 @@ _HERE = Path(__file__).resolve()
 ROOT = _HERE.parents[2] if (_HERE.parents[2] / "research_code").exists() else _HERE.parents[1]
 CONTROLLED_DATA_ROOT = Path(os.environ.get("KT_AUDIT_DATA_ROOT", ROOT / "private_data"))
 RAW = CONTROLLED_DATA_ROOT / "raw" / "assistments2015_skill_builder.csv"
-PRIVATE_OUT = CONTROLLED_DATA_ROOT / "metadata" / "assistments2015_profile.json"
-PUBLIC_OUT = (ROOT / "research_code" / "metadata" if (ROOT / "research_code").exists() else ROOT / "metadata") / "assistments2015_data_card.json"
+PRIVATE_OUT = CONTROLLED_DATA_ROOT / "metadata" / "assistments2015-profile.json"
+PUBLIC_OUT = (ROOT / "research_code" / "metadata" if (ROOT / "research_code").exists() else ROOT / "metadata") / "assistments2015-data-card.json"
 
 
 def checksum(path: Path) -> str:

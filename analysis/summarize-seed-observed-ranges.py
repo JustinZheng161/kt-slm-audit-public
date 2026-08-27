@@ -25,7 +25,7 @@ def result_directory(root: Path) -> Path:
         root / "artifacts" / "revision3",
     )
     for candidate in candidates:
-        if (candidate / "revision3_main_eight_epoch_probability_quality.json").exists():
+        if (candidate / "revision3-main-eight-epoch-probability-quality.json").exists():
             return candidate
     raise FileNotFoundError("No Revision 3 aggregate-result directory was found.")
 
@@ -49,7 +49,7 @@ def describe(values: list[float]) -> dict:
 
 
 def main() -> None:
-    source = json.loads((RESULTS / "revision3_main_eight_epoch_probability_quality.json").read_text(encoding="utf-8"))
+    source = json.loads((RESULTS / "revision3-main-eight-epoch-probability-quality.json").read_text(encoding="utf-8"))
     output = {
         "experiment": "revision5_three_seed_observed_ranges",
         "analysis_scope": "Post hoc descriptive summary of the archived Revision 3 eight-epoch seed-level aggregate records.",
@@ -62,7 +62,7 @@ def main() -> None:
         "interpretation_limit": "Each observed range is the literal minimum and maximum across three seed-level values. It is descriptive only and is not a confidence interval, bootstrap interval, hypothesis test or equivalence analysis.",
         "privacy": "The input and output contain only aggregate per-seed metrics; neither contains learner-level data, split memberships, predictions or checkpoints.",
     }
-    target = RESULTS / "revision5_three_seed_observed_ranges.json"
+    target = RESULTS / "revision5-three-seed-observed-ranges.json"
     target.write_text(json.dumps(output, indent=2), encoding="utf-8")
     print(json.dumps(output, indent=2))
 

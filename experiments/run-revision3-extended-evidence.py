@@ -187,7 +187,7 @@ def main() -> None:
         },
         "privacy": "Only aggregate metrics and bins are written. Raw rows, identifiers, split memberships, and individual predictions remain in the controlled data root.",
     }
-    write_aggregate("revision3_main_eight_epoch_probability_quality.json", main_result)
+    write_aggregate("revision3-main-eight-epoch-probability-quality.json", main_result)
 
     # Exploratory extension: the twenty-epoch cap was motivated by a later diagnostic.
     extended_runs: list[dict] = []
@@ -212,7 +212,7 @@ def main() -> None:
         "interpretation_limit": "This is not a replacement for the pre-specified eight-epoch main analysis and it is not a new externally validated benchmark claim. It reports the consequence of extending the validation-selection budget after the original analysis.",
         "privacy": "Only aggregate metrics, selected epochs, and aggregate training histories are written.",
     }
-    write_aggregate("revision3_exploratory_extended_budget.json", extended_result)
+    write_aggregate("revision3-exploratory-extended-budget.json", extended_result)
 
     # Sensitivity curve: rates are fixed before these reruns and never applied to val/test.
     noise_rates = (0.05, 0.10, 0.20)
@@ -258,7 +258,7 @@ def main() -> None:
         },
         "privacy": "Only aggregate metrics, counts, and calibration bins are written; no interaction-level data or predictions are emitted.",
     }
-    write_aggregate("revision3_training_label_inversion_sensitivity.json", noise_result)
+    write_aggregate("revision3-training-label-inversion-sensitivity.json", noise_result)
 
     print(
         json.dumps(
@@ -267,9 +267,9 @@ def main() -> None:
                 "extended": extended_result["aggregate"]["mean_roc_auc"],
                 "noise_rates": list(sensitivity_summary),
                 "outputs": [
-                    "revision3_main_eight_epoch_probability_quality.json",
-                    "revision3_exploratory_extended_budget.json",
-                    "revision3_training_label_inversion_sensitivity.json",
+                    "revision3-main-eight-epoch-probability-quality.json",
+                    "revision3-exploratory-extended-budget.json",
+                    "revision3-training-label-inversion-sensitivity.json",
                 ],
             },
             indent=2,

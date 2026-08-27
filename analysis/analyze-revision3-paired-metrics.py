@@ -45,7 +45,7 @@ def compare(reference_rows: list[dict], candidate_rows: list[dict], label: str, 
 
 
 def main() -> None:
-    main_result = json.loads((RESULTS / "revision3_main_eight_epoch_probability_quality.json").read_text(encoding="utf-8"))
+    main_result = json.loads((RESULTS / "revision3-main-eight-epoch-probability-quality.json").read_text(encoding="utf-8"))
     runs = main_result["clean_dkt_runs"]
     output = {
         "experiment": "revision3_descriptive_paired_metric_differences",
@@ -57,7 +57,7 @@ def main() -> None:
         "interpretation_limit": "The n=3 seed-resampling intervals describe the observed configuration-specific variation. They do not implement TOST, do not use a pre-specified equivalence margin, and must not be read as evidence of no effect or practical equivalence.",
         "privacy": "The output contains only aggregate per-seed metric differences; it includes no learner-level data or predictions.",
     }
-    target = RESULTS / "revision3_descriptive_paired_metric_differences.json"
+    target = RESULTS / "revision3-descriptive-paired-metric-differences.json"
     target.write_text(json.dumps(output, indent=2), encoding="utf-8")
     print(json.dumps(output, indent=2))
 

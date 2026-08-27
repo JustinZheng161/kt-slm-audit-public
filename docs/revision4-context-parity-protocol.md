@@ -4,7 +4,7 @@
 
 本协议补充 Revision 3 的归档实验，而不替代其主结果。Revision 3 的 DKT 训练将每位学生历史切分为最长 200 个 transition 的非重叠窗口，但归档验证与测试阶段向模型提供完整学生历史。这个差异可能影响模型可用上下文，因而应当被显式审计，而不应被隐含在实现细节中。
 
-当前仓库提供了 `experiments/run_context_parity_audit.py`。**该脚本在本次修订时尚未使用受控源文件执行，因此没有新的 AUC、校准指标或图表被报告。** 该约束是为了避免把未运行的设计写成实际实验结果。
+当前仓库提供了 `experiments/run-context-parity-audit.py`。**该脚本在本次修订时尚未使用受控源文件执行，因此没有新的 AUC、校准指标或图表被报告。** 该约束是为了避免把未运行的设计写成实际实验结果。
 
 ## 预先固定的比较
 
@@ -26,7 +26,7 @@
 
 ```bash
 export KT_AUDIT_DATA_ROOT=/absolute/path/to/controlled-data
-python experiments/run_context_parity_audit.py
+python experiments/run-context-parity-audit.py
 ```
 
 脚本要求两种协议都对每个测试学生的第二次及以后交互**恰好计数一次**。它仅在 `results/revision3/revision4_context_parity_audit.json` 写入每种子的聚合指标、协议元数据及成对差异。原始 CSV、学生标识、训练/验证/测试成员、序列、逐行预测和检查点只保留在 `KT_AUDIT_DATA_ROOT`，不应被提交到任何仓库。

@@ -41,9 +41,9 @@
 获得官方数据许可后，将原始文件仅放置到外部受控根目录的 `raw/skill_builder_data_corrected_collapsed.csv`，设置 `KT_AUDIT_DATA_ROOT`，并执行：
 
 ```bash
-python analysis/profile_history_length_distribution.py
-python experiments/run_window_length_sensitivity.py
-python analysis/make_revision5_window_figure.py
+python analysis/profile-history-length-distribution.py
+python experiments/run-window-length-sensitivity.py
+python analysis/make-revision5-window-figure.py
 ```
 
 脚本仅将供提交的聚合结果写入 `results/revision3/`；所有可逆学生级工件只会写入外部 `KT_AUDIT_DATA_ROOT/results/`。

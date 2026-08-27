@@ -26,7 +26,7 @@ def load_chunker(source_path: Path):
 
 
 def main() -> None:
-    source = Path(__file__).resolve().parents[1] / "experiments" / "run_student_disjoint_kt.py"
+    source = Path(__file__).resolve().parents[1] / "experiments" / "run-student-disjoint-kt.py"
     iter_sequence_chunks, tree = load_chunker(source)
     sequence = [(0, 1), (1, 0), (2, 1), (0, 0), (1, 1), (2, 0), (0, 1)]
     chunks = list(iter_sequence_chunks(sequence, max_length=2))

@@ -83,7 +83,7 @@ def main() -> None:
     encoded = json.dumps(payload, indent=2)
     ARCHIVE_RESULTS.mkdir(parents=True, exist_ok=True)
     CONTROLLED_RESULTS.mkdir(parents=True, exist_ok=True)
-    (ARCHIVE_RESULTS / "revision5_history_length_distribution.json").write_text(encoded, encoding="utf-8")
+    (ARCHIVE_RESULTS / "revision5-history-length-distribution.json").write_text(encoded, encoding="utf-8")
     (CONTROLLED_RESULTS / "revision5_history_length_distribution_private.json").write_text(encoded, encoding="utf-8")
     print(json.dumps(payload, indent=2))
 

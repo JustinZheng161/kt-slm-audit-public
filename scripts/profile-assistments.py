@@ -20,7 +20,7 @@ ROOT = _HERE.parents[2] if (_HERE.parents[2] / "research_code").exists() else _H
 CONTROLLED_DATA_ROOT = Path(os.environ.get("KT_AUDIT_DATA_ROOT", ROOT / "private_data"))
 RAW = CONTROLLED_DATA_ROOT / "raw" / "skill_builder_data_corrected_collapsed.csv"
 PRIVATE_OUT = CONTROLLED_DATA_ROOT / "metadata" / "raw_profile.json"
-PUBLIC_OUT = (ROOT / "research_code" / "metadata" if (ROOT / "research_code").exists() else ROOT / "metadata") / "assistments2009_data_card.json"
+PUBLIC_OUT = (ROOT / "research_code" / "metadata" if (ROOT / "research_code").exists() else ROOT / "metadata") / "assistments2009-data-card.json"
 
 
 def sha256(path: Path) -> str:
