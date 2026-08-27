@@ -1,0 +1,196 @@
+{
+  "revision": "nature-kt-v31",
+  "style": "compact Nature-style scientific figures",
+  "figure_count": 7,
+  "figures": [
+    {
+      "file_prefix": "figure-01-student-disjoint-baselines",
+      "display_name": "Figure 01 student disjoint baselines",
+      "aggregate_inputs": [
+        "results/revision3/revision3-main-eight-epoch-probability-quality.json"
+      ],
+      "input_sha256": {
+        "results/revision3/revision3-main-eight-epoch-probability-quality.json": "c8ff36ffbe8b16b406131876711e435a8c4be1fc4d0f6a44e660e3c55059a8bb"
+      },
+      "outputs": {
+        "pdf": "figures/nature-kt-v31/figure-01-student-disjoint-baselines.pdf",
+        "svg": "figures/nature-kt-v31/figure-01-student-disjoint-baselines.svg",
+        "png": "figures/nature-kt-v31/figure-01-student-disjoint-baselines.png",
+        "tif": "figures/nature-kt-v31/figure-01-student-disjoint-baselines.tif"
+      },
+      "tiff_pixel_dimensions": [
+        4063,
+        1753
+      ],
+      "tiff_dpi": [
+        600,
+        600
+      ],
+      "description": "Shared-target baseline hierarchy.",
+      "uncertainty_definition": "Bars use 1,000 student-cluster bootstrap 95% intervals; open circles are the literal three DKT seed estimates.",
+      "privacy_scope": "Aggregate-only. No raw records, student identifiers, memberships, sequences, predictions, per-skill parameter vectors, bootstrap replicates or checkpoints."
+    },
+    {
+      "file_prefix": "figure-02-training-window-sensitivity",
+      "display_name": "Figure 02 training window sensitivity",
+      "aggregate_inputs": [
+        "results/revision3/revision5-training-window-length-sensitivity.json"
+      ],
+      "input_sha256": {
+        "results/revision3/revision5-training-window-length-sensitivity.json": "9ab33f64db49ca114d2db83b7a4bf36e5685915d3d956234285389a8823d2308"
+      },
+      "outputs": {
+        "pdf": "figures/nature-kt-v31/figure-02-training-window-sensitivity.pdf",
+        "svg": "figures/nature-kt-v31/figure-02-training-window-sensitivity.svg",
+        "png": "figures/nature-kt-v31/figure-02-training-window-sensitivity.png",
+        "tif": "figures/nature-kt-v31/figure-02-training-window-sensitivity.tif"
+      },
+      "tiff_pixel_dimensions": [
+        3469,
+        1753
+      ],
+      "tiff_dpi": [
+        600,
+        600
+      ],
+      "description": "Fixed-protocol training-window sensitivity.",
+      "uncertainty_definition": "Capped error bars are across-seed standard deviations (n=3), not confidence intervals.",
+      "privacy_scope": "Aggregate-only. No raw records, student identifiers, memberships, sequences, predictions, per-skill parameter vectors, bootstrap replicates or checkpoints."
+    },
+    {
+      "file_prefix": "figure-03-primary-ablation",
+      "display_name": "Figure 03 primary ablation",
+      "aggregate_inputs": [
+        "results/revision3/revision3-main-eight-epoch-probability-quality.json"
+      ],
+      "input_sha256": {
+        "results/revision3/revision3-main-eight-epoch-probability-quality.json": "c8ff36ffbe8b16b406131876711e435a8c4be1fc4d0f6a44e660e3c55059a8bb"
+      },
+      "outputs": {
+        "pdf": "figures/nature-kt-v31/figure-03-primary-ablation.pdf",
+        "svg": "figures/nature-kt-v31/figure-03-primary-ablation.svg",
+        "png": "figures/nature-kt-v31/figure-03-primary-ablation.png",
+        "tif": "figures/nature-kt-v31/figure-03-primary-ablation.tif"
+      },
+      "tiff_pixel_dimensions": [
+        3710,
+        1753
+      ],
+      "tiff_dpi": [
+        600,
+        600
+      ],
+      "description": "Primary DKT ablation observations.",
+      "uncertainty_definition": "Points are three seed estimates; capped vertical bars are across-seed SDs, not confidence intervals.",
+      "privacy_scope": "Aggregate-only. No raw records, student identifiers, memberships, sequences, predictions, per-skill parameter vectors, bootstrap replicates or checkpoints."
+    },
+    {
+      "file_prefix": "figure-04-label-inversion-sensitivity",
+      "display_name": "Figure 04 label inversion sensitivity",
+      "aggregate_inputs": [
+        "results/revision3/revision3-training-label-inversion-sensitivity.json"
+      ],
+      "input_sha256": {
+        "results/revision3/revision3-training-label-inversion-sensitivity.json": "6076848ad7cacde71bcdbd8697606bb3ba1500c1f9bdd0d312bcf7eec072aedd"
+      },
+      "outputs": {
+        "pdf": "figures/nature-kt-v31/figure-04-label-inversion-sensitivity.pdf",
+        "svg": "figures/nature-kt-v31/figure-04-label-inversion-sensitivity.svg",
+        "png": "figures/nature-kt-v31/figure-04-label-inversion-sensitivity.png",
+        "tif": "figures/nature-kt-v31/figure-04-label-inversion-sensitivity.tif"
+      },
+      "tiff_pixel_dimensions": [
+        3321,
+        1753
+      ],
+      "tiff_dpi": [
+        600,
+        600
+      ],
+      "description": "Synthetic training-label inversion sensitivity.",
+      "uncertainty_definition": "Capped error bars are across-seed standard deviations (n=3).",
+      "privacy_scope": "Aggregate-only. No raw records, student identifiers, memberships, sequences, predictions, per-skill parameter vectors, bootstrap replicates or checkpoints."
+    },
+    {
+      "file_prefix": "figure-s01-probability-quality",
+      "display_name": "Figure s01 probability quality",
+      "aggregate_inputs": [
+        "results/revision3/revision3-main-eight-epoch-probability-quality.json"
+      ],
+      "input_sha256": {
+        "results/revision3/revision3-main-eight-epoch-probability-quality.json": "c8ff36ffbe8b16b406131876711e435a8c4be1fc4d0f6a44e660e3c55059a8bb"
+      },
+      "outputs": {
+        "pdf": "figures/nature-kt-v31/figure-s01-probability-quality.pdf",
+        "svg": "figures/nature-kt-v31/figure-s01-probability-quality.svg",
+        "png": "figures/nature-kt-v31/figure-s01-probability-quality.png",
+        "tif": "figures/nature-kt-v31/figure-s01-probability-quality.tif"
+      },
+      "tiff_pixel_dimensions": [
+        4004,
+        1634
+      ],
+      "tiff_dpi": [
+        600,
+        600
+      ],
+      "description": "Probability-quality summaries and reliability curve.",
+      "uncertainty_definition": "No inferential interval is depicted; calibration values are descriptive aggregate summaries.",
+      "privacy_scope": "Aggregate-only. No raw records, student identifiers, memberships, sequences, predictions, per-skill parameter vectors, bootstrap replicates or checkpoints."
+    },
+    {
+      "file_prefix": "figure-s02-exploratory-budget",
+      "display_name": "Figure s02 exploratory budget",
+      "aggregate_inputs": [
+        "results/revision3/revision3-exploratory-extended-budget.json"
+      ],
+      "input_sha256": {
+        "results/revision3/revision3-exploratory-extended-budget.json": "e0cc047c376b38e3902316159c248a463994043743e3d2a201c8b043b4d9fed1"
+      },
+      "outputs": {
+        "pdf": "figures/nature-kt-v31/figure-s02-exploratory-budget.pdf",
+        "svg": "figures/nature-kt-v31/figure-s02-exploratory-budget.svg",
+        "png": "figures/nature-kt-v31/figure-s02-exploratory-budget.png",
+        "tif": "figures/nature-kt-v31/figure-s02-exploratory-budget.tif"
+      },
+      "tiff_pixel_dimensions": [
+        3640,
+        1753
+      ],
+      "tiff_dpi": [
+        600,
+        600
+      ],
+      "description": "Exploratory validation trajectories under extended budget.",
+      "uncertainty_definition": "Each line is one seed; no test-series error bar is used because selection precedes one test evaluation per seed.",
+      "privacy_scope": "Aggregate-only. No raw records, student identifiers, memberships, sequences, predictions, per-skill parameter vectors, bootstrap replicates or checkpoints."
+    },
+    {
+      "file_prefix": "figure-s03-bkt-diagnostics",
+      "display_name": "Figure s03 bkt diagnostics",
+      "aggregate_inputs": [
+        "results/revision3/revision6-statistical-and-bkt-audits.json"
+      ],
+      "input_sha256": {
+        "results/revision3/revision6-statistical-and-bkt-audits.json": "4c7bc084c5bc7228089a0dd827e020874259bc1f33054c0feab84cd14a3194fd"
+      },
+      "outputs": {
+        "pdf": "figures/nature-kt-v31/figure-s03-bkt-diagnostics.pdf",
+        "svg": "figures/nature-kt-v31/figure-s03-bkt-diagnostics.svg",
+        "png": "figures/nature-kt-v31/figure-s03-bkt-diagnostics.png",
+        "tif": "figures/nature-kt-v31/figure-s03-bkt-diagnostics.tif"
+      },
+      "tiff_pixel_dimensions": [
+        4308,
+        1634
+      ],
+      "tiff_dpi": [
+        600,
+        600
+      ],
+      "description": "Aggregate BKT parameter and stability diagnostics.",
+      "uncertainty_definition": "P05\u2013P95 spans are cross-skill aggregate summaries; bars are aggregate counts/proportions, not learner-level estimates.",
+      "privacy_scope": "Aggregate-only. No raw records, student identifiers, memberships, sequences, predictions, per-skill parameter vectors, bootstrap replicates or checkpoints."
+    }
+  ]
+}
