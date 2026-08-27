@@ -73,3 +73,13 @@ Please cite the official ASSISTments data page and the data-system paper: M. Fen
 ## License
 
 Code in this repository is released under the MIT License. The license does not grant any rights to the ASSISTments data; see the official data source and its terms.
+
+## v25 identity-audit data-capacity check
+
+The v25 revision adds `scripts/audit-repeat-observation-adequacy.py`, which reports only aggregate student-repeat counts from a user-supplied source CSV. On the private top-11-skill source, the audit found 115,681 interactions, 3,176 students, 3,021 students with at least two rows, and 2,724 students with at least five rows. The public metadata file `metadata/repeat-observation-adequacy-v25.json` contains these aggregate counts only; it does not contain student identifiers or hidden states. This check establishes data capacity for a future student-grouped hidden-state identity audit, not a completed model-behavior result.
+
+Run it with:
+
+```bash
+python scripts/audit-repeat-observation-adequacy.py /path/to/source.csv --student-column user_id --output metadata/repeat-observation-adequacy-v25.json
+```
