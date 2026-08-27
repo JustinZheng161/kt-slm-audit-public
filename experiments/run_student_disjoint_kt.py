@@ -300,16 +300,31 @@ def bkt_predictions(test_sequences: list[list[tuple[int, int]]], parameters: np.
     return np.asarray(targets), np.asarray(scores), offsets
 
 
+def iter_sequence_chunks(
+    sequence: list[tuple[int, int]], max_length: int
+) -> Iterable[list[tuple[int, int]]]:
+    """Yield non-overlapping target windows with at most ``max_length`` transitions.
+
+    A chunk beginning at event ``start`` predicts events ``start + 1`` through
+    ``stop - 1``. The same convention can be applied at evaluation time to make
+    the available history explicit and avoid silently comparing chunk-trained
+    models with full-history evaluation.
+    """
+    if max_length < 1:
+        raise ValueError("max_length must be at least one transition.")
+    for start in range(0, len(sequence) - 1, max_length):
+        chunk = sequence[start : min(start + max_length + 1, len(sequence))]
+        if len(chunk) >= 2:
+            yield chunk
+
+
 class NextInteractionDataset(Dataset):
     """Chunks each student sequence but never mixes student memberships across splits."""
 
     def __init__(self, sequences: list[list[tuple[int, int]]], skill_count: int, max_length: int = 200) -> None:
         self.samples: list[tuple[np.ndarray, np.ndarray, np.ndarray]] = []
         for sequence in sequences:
-            for start in range(0, len(sequence) - 1, max_length):
-                chunk = sequence[start : start + max_length + 1]
-                if len(chunk) < 2:
-                    continue
+            for chunk in iter_sequence_chunks(sequence, max_length):
                 skills = np.asarray([event[0] for event in chunk], dtype=np.int64)
                 outcomes = np.asarray([event[1] for event in chunk], dtype=np.int64)
                 tokens = skills[:-1] + outcomes[:-1] * skill_count
@@ -359,23 +374,42 @@ def batch_loss(model: DKTModel, batch: tuple[Tensor, Tensor, Tensor]) -> tuple[T
     return loss, selected[mask].detach(), target_outcomes[mask].detach()
 
 
-def evaluate_dkt(model: DKTModel, sequences: list[list[tuple[int, int]]], skill_count: int) -> tuple[np.ndarray, np.ndarray, list[tuple[int, int]]]:
+def evaluate_dkt(
+    model: DKTModel,
+    sequences: list[list[tuple[int, int]]],
+    skill_count: int,
+    max_length: int | None = None,
+) -> tuple[np.ndarray, np.ndarray, list[tuple[int, int]]]:
+    """Evaluate every second-and-later event using explicit history-window policy.
+
+    ``max_length=None`` retains the archived full-history evaluation protocol.
+    Passing a positive window evaluates the same non-overlapping transition
+    chunks used during training, which is the recommended context-parity audit.
+    """
+    if max_length is not None and max_length < 1:
+        raise ValueError("max_length must be positive when context parity is requested.")
     model.eval()
     targets: list[np.ndarray] = []
     scores: list[np.ndarray] = []
     offsets: list[tuple[int, int]] = []
     cursor = 0
-    with torch.no_grad():
+    with torch.inference_mode():
         for sequence in sequences:
             if len(sequence) < 2:
                 continue
-            skills = torch.tensor([event[0] for event in sequence], dtype=torch.long)
-            outcomes = torch.tensor([event[1] for event in sequence], dtype=torch.long)
-            tokens = (skills[:-1] + outcomes[:-1] * skill_count).unsqueeze(0)
-            logits = model(tokens).squeeze(0)
-            selected = logits.gather(1, skills[1:].unsqueeze(1)).squeeze(1)
-            local_scores = torch.sigmoid(selected).cpu().numpy()
-            local_targets = outcomes[1:].cpu().numpy()
+            student_targets: list[np.ndarray] = []
+            student_scores: list[np.ndarray] = []
+            chunks: Iterable[list[tuple[int, int]]] = (sequence,) if max_length is None else iter_sequence_chunks(sequence, max_length)
+            for chunk in chunks:
+                skills = torch.tensor([event[0] for event in chunk], dtype=torch.long)
+                outcomes = torch.tensor([event[1] for event in chunk], dtype=torch.long)
+                tokens = (skills[:-1] + outcomes[:-1] * skill_count).unsqueeze(0)
+                logits = model(tokens).squeeze(0)
+                selected = logits.gather(1, skills[1:].unsqueeze(1)).squeeze(1)
+                student_scores.append(torch.sigmoid(selected).cpu().numpy())
+                student_targets.append(outcomes[1:].cpu().numpy())
+            local_targets = np.concatenate(student_targets)
+            local_scores = np.concatenate(student_scores)
             targets.append(local_targets)
             scores.append(local_scores)
             offsets.append((cursor, cursor + len(local_targets)))
@@ -391,11 +425,22 @@ def train_dkt(
     spec: DKTSpec,
     record_training_auc: bool = False,
     early_stop_patience: int | None = 3,
+    max_length: int = 200,
+    evaluation_context_window: int | None = None,
 ) -> tuple[dict, np.ndarray, np.ndarray, list[tuple[int, int]]]:
+    if max_length < 1:
+        raise ValueError("max_length must be at least one transition.")
+    if evaluation_context_window is not None and evaluation_context_window != max_length:
+        raise ValueError("Context-parity evaluation must use the same window as training.")
     set_seed(spec.seed)
     model = DKTModel(skill_count, spec.embedding_dim, spec.hidden_dim, spec.dropout)
     optimizer = torch.optim.AdamW(model.parameters(), lr=spec.learning_rate, weight_decay=spec.weight_decay)
-    loader = DataLoader(NextInteractionDataset(train_sequences, skill_count), batch_size=64, shuffle=True, collate_fn=collate_batch)
+    loader = DataLoader(
+        NextInteractionDataset(train_sequences, skill_count, max_length=max_length),
+        batch_size=64,
+        shuffle=True,
+        collate_fn=collate_batch,
+    )
     best_state: dict[str, Tensor] | None = None
     best_validation = -math.inf
     patience = 0
@@ -412,11 +457,15 @@ def train_dkt(
             optimizer.step()
             total_loss += float(loss.detach()) * len(labels)
             observed += len(labels)
-        val_targets, val_scores, _ = evaluate_dkt(model, validation_sequences, skill_count)
+        val_targets, val_scores, _ = evaluate_dkt(
+            model, validation_sequences, skill_count, max_length=evaluation_context_window
+        )
         validation_auc = auc_or_nan(val_targets, val_scores)
         record = {"epoch": epoch, "training_bce": total_loss / max(observed, 1), "validation_auc": validation_auc}
         if record_training_auc:
-            train_targets, train_scores, _ = evaluate_dkt(model, train_sequences, skill_count)
+            train_targets, train_scores, _ = evaluate_dkt(
+                model, train_sequences, skill_count, max_length=evaluation_context_window
+            )
             record["training_auc"] = auc_or_nan(train_targets, train_scores)
         history.append(record)
         if validation_auc > best_validation + 1e-6:
@@ -433,13 +482,20 @@ def train_dkt(
     if test_sequences is None:
         targets, scores, offsets = np.asarray([], dtype=np.int64), np.asarray([], dtype=float), []
     else:
-        targets, scores, offsets = evaluate_dkt(model, test_sequences, skill_count)
+        targets, scores, offsets = evaluate_dkt(
+            model, test_sequences, skill_count, max_length=evaluation_context_window
+        )
     return (
         {
             "specification": asdict(spec),
             "selected_validation_auc": best_validation,
             "training_history": history,
             "selected_epoch": int(max(history, key=lambda item: item["validation_auc"])["epoch"]),
+            "training_sequence_chunk_length": max_length,
+            "evaluation_context_policy": (
+                "full_student_history_legacy" if evaluation_context_window is None
+                else f"matched_nonoverlapping_{evaluation_context_window}_transition_chunks"
+            ),
         },
         targets,
         scores,
@@ -463,6 +519,13 @@ def main() -> None:
     parser.add_argument("--dkt-epochs", type=int, default=8)
     parser.add_argument("--bootstrap-replicates", type=int, default=1000)
     parser.add_argument("--threads", type=int, default=min(4, os.cpu_count() or 1))
+    parser.add_argument("--max-history", type=int, default=200, help="Maximum transitions per training chunk.")
+    parser.add_argument(
+        "--evaluation-context",
+        choices=("full_history", "matched_train_chunks"),
+        default="full_history",
+        help="Use matched training chunks at validation/test to audit train-test context parity.",
+    )
     args = parser.parse_args()
     if not RAW_DATA.exists():
         raise FileNotFoundError(f"Controlled source data missing: {RAW_DATA}")
@@ -471,6 +534,7 @@ def main() -> None:
     PUBLIC_DIR.mkdir(parents=True, exist_ok=True)
 
     split_spec = SplitSpec()
+    evaluation_context_window = args.max_history if args.evaluation_context == "matched_train_chunks" else None
     train_sequences, validation_sequences, test_sequences, labels, label_support = load_train_fitted_splits(RAW_DATA, split_spec)
     priors = make_skill_priors(train_sequences, len(labels))
     prior_y, prior_s, prior_offsets = evaluate_skill_prior(test_sequences, priors)
@@ -494,12 +558,26 @@ def main() -> None:
         "bkt": {"target": bkt_y, "score": bkt_s},
     }
     dkt_details, dkt_y, dkt_s, dkt_offsets = train_dkt(
-        train_sequences, validation_sequences, test_sequences, len(labels), baseline_spec
+        train_sequences,
+        validation_sequences,
+        test_sequences,
+        len(labels),
+        baseline_spec,
+        max_length=args.max_history,
+        evaluation_context_window=evaluation_context_window,
     )
     dkt_runs.append({**metric_record(baseline_spec.name, dkt_y, dkt_s, dkt_offsets, baseline_spec.seed), **dkt_details})
     private_scores[baseline_spec.name] = {"target": dkt_y, "score": dkt_s}
     for spec in optimized_specs:
-        details, y, score, offsets = train_dkt(train_sequences, validation_sequences, test_sequences, len(labels), spec)
+        details, y, score, offsets = train_dkt(
+            train_sequences,
+            validation_sequences,
+            test_sequences,
+            len(labels),
+            spec,
+            max_length=args.max_history,
+            evaluation_context_window=evaluation_context_window,
+        )
         dkt_runs.append({**metric_record(spec.name, y, score, offsets, spec.seed), **details})
         private_scores[f"{spec.name}_seed_{spec.seed}"] = {"target": y, "score": score}
 

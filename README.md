@@ -29,7 +29,12 @@ python experiments/run_clean_seed_check.py
 python experiments/run_label_noise_robustness.py
 python experiments/run_revision3_extended_evidence.py
 python analysis/analyze_revision3_paired_metrics.py
+python analysis/summarize_seed_uncertainty.py
 python analysis/make_paper_figures.py
+
+# A prospective context-availability sensitivity audit. It is not part of the
+# archived Revision 3 primary result and must be reported as a separate audit.
+python experiments/run_context_parity_audit.py
 ```
 
 The scripts write raw- or student-level artifacts only below the external controlled-data root. The repository contains only public aggregate JSON summaries, source checksums, figures and code. A held-out label absent from the training-fitted vocabulary causes an explicit failure rather than silent handling; the fixed source/split audit found zero such labels (149 training labels; 132 validation labels; 135 test labels).
@@ -44,7 +49,7 @@ The scripts write raw- or student-level artifacts only below the external contro
 | DKT-64 AdamW | 0.7654 | 3-seed SD 0.0011; Brier 0.1816; ECE10 0.0129 | Observed paired AUC difference is below this n=3 design’s resolution. |
 | DKT-96 AdamW + dropout | 0.7657 | 3-seed SD 0.0009; Brier 0.1814; ECE10 0.0089 | Joint configuration, not an isolated capacity test. |
 
-The public artifact set also reports a 5%/10%/20% synthetic training-label inversion sensitivity curve and a separate post hoc 20-epoch validation-selection extension. Neither replaces the primary eight-epoch analysis. No external performance values are included here; cross-paper scores must not be subtracted from the above results or presented as a shared leaderboard.
+The public artifact set also reports a 5%/10%/20% synthetic training-label inversion sensitivity curve, a separate post hoc 20-epoch validation-selection extension, and a post hoc descriptive three-seed dispersion summary. The latter provides observed ranges and t-reference displays only; it is not a learner-cluster confidence interval, hypothesis test or equivalence analysis. Neither analysis replaces the primary eight-epoch result. A prospective context-parity audit is supplied as code but is not reported as a result until it has been run on the controlled source. No external performance values are included here; cross-paper scores must not be subtracted from the above results or presented as a shared leaderboard.
 
 ## Citation and source data
 

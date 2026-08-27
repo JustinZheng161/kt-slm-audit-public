@@ -15,11 +15,21 @@ import numpy as np
 
 
 HERE = Path(__file__).resolve()
-ROOT = HERE.parents[2] if (HERE.parents[2] / "research_code").exists() else HERE.parents[1]
+# Public layout: <repo>/analysis; private archive layout: <repo>/code/analysis.
+ROOT = HERE.parents[2] if HERE.parents[1].name == "code" else HERE.parents[1]
 IS_PROJECT_LAYOUT = (ROOT / "research_code").exists()
-RESULTS = ROOT / "research_code" / "results" if IS_PROJECT_LAYOUT else ROOT / "results"
-FIGURES = ROOT / "research_artifacts" / "figures" if IS_PROJECT_LAYOUT else ROOT / "figures"
-TABLES = ROOT / "research_artifacts" / "tables" if IS_PROJECT_LAYOUT else ROOT / "tables"
+if IS_PROJECT_LAYOUT:
+    RESULTS = ROOT / "research_code" / "results"
+    FIGURES = ROOT / "research_artifacts" / "figures"
+    TABLES = ROOT / "research_artifacts" / "tables"
+elif (ROOT / "results" / "revision3").exists():
+    RESULTS = ROOT / "results" / "revision3"
+    FIGURES = ROOT / "figures" / "revision3"
+    TABLES = ROOT / "tables" / "revision3"
+else:
+    RESULTS = ROOT / "artifacts" / "revision3"
+    FIGURES = ROOT / "figures" / "revision3"
+    TABLES = ROOT / "tables" / "revision3"
 
 COLORS = {"Adam": "#31708E", "AdamW": "#C76B45", "Reference": "#76818A", "BKT": "#5F8D4E"}
 
@@ -48,6 +58,7 @@ def main() -> None:
     main_result = load("revision3_main_eight_epoch_probability_quality.json")
     extended = load("revision3_exploratory_extended_budget.json")
     sensitivity = load("revision3_training_label_inversion_sensitivity.json")
+    seed_uncertainty = load("revision4_descriptive_seed_uncertainty.json")
     plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 8})
     TABLES.mkdir(parents=True, exist_ok=True)
 
@@ -73,17 +84,19 @@ def main() -> None:
 
     # Figure 2 — three seed ablation without a truncated near-value scale.
     groups = [
-        ("DKT-64\nAdam", main_result["clean_dkt_runs"]["DKT-64-Adam"], COLORS["Adam"]),
-        ("DKT-64\nAdamW", main_result["clean_dkt_runs"]["DKT-64-AdamW"], "#7FA7B8"),
-        ("DKT-96\nAdamW + dropout", main_result["clean_dkt_runs"]["DKT-96-AdamW-dropout"], COLORS["AdamW"]),
+        ("DKT-64\nAdam", "DKT-64-Adam", main_result["clean_dkt_runs"]["DKT-64-Adam"], COLORS["Adam"]),
+        ("DKT-64\nAdamW", "DKT-64-AdamW", main_result["clean_dkt_runs"]["DKT-64-AdamW"], "#7FA7B8"),
+        ("DKT-96\nAdamW + dropout", "DKT-96-AdamW-dropout", main_result["clean_dkt_runs"]["DKT-96-AdamW-dropout"], COLORS["AdamW"]),
     ]
     fig, ax = plt.subplots(figsize=(6.4, 3.1))
     rng = np.random.default_rng(20260822)
-    for index, (label, rows, color) in enumerate(groups):
+    for index, (label, key, rows, color) in enumerate(groups):
         values = [row["roc_auc"] for row in rows]
+        reference_range = seed_uncertainty["configurations"][key]["roc_auc"]["descriptive_t_reference_range_95"]
         jitter = rng.uniform(-0.06, 0.06, size=len(values))
         ax.scatter(np.full(len(values), index) + jitter, values, s=34, color=color, edgecolor="#1A2730", linewidth=0.5, zorder=3)
-        ax.hlines(np.mean(values), index - 0.20, index + 0.20, color="#1A2730", linewidth=1.4)
+        ax.vlines(index, reference_range[0], reference_range[1], color="#56666F", linewidth=1.0, zorder=2)
+        ax.hlines(np.mean(values), index - 0.20, index + 0.20, color="#1A2730", linewidth=1.4, zorder=4)
         ax.text(index, 0.751, f"mean {np.mean(values):.4f}", ha="center", va="bottom", fontsize=7)
     ax.set_xlim(-0.5, 2.5)
     ax.set_ylim(0.70, 0.78)
@@ -91,7 +104,7 @@ def main() -> None:
     ax.set_ylabel("Test ROC-AUC")
     ax.set_title("Main analysis: three paired-seed ablations")
     style_axes(ax)
-    fig.text(0.01, -0.06, "Identical split, seed set, validation rule, eight-epoch budget and 24,306 targets. The y-axis begins at 0.70; horizontal bars are means. This n=3 display is descriptive, not an equivalence test.", fontsize=6.15)
+    fig.text(0.01, -0.06, "Identical split, seed set, validation rule, eight-epoch budget and 24,306 targets. The y-axis begins at 0.70; horizontal bars are means and thin lines are post hoc t-reference ranges across 3 seeds. This display is descriptive, not an equivalence test or population interval.", fontsize=6.0)
     save(fig, "fig2_clean_ablation.png")
 
     # Figure 3 — a genuine three-level sensitivity curve plus its clean reference.
@@ -181,13 +194,14 @@ def main() -> None:
     # Compact safe table for manuscript generation/inspection.
     with (TABLES / "revision3_aggregate_results.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.writer(handle)
-        writer.writerow(["analysis", "method", "test_prediction_rows", "mean_roc_auc", "sd_roc_auc", "mean_brier_score", "mean_ece_10", "scope"])
+        writer.writerow(["analysis", "method", "test_prediction_rows", "mean_roc_auc", "sd_roc_auc", "descriptive_t_reference_low", "descriptive_t_reference_high", "mean_brier_score", "mean_ece_10", "scope"])
         for name, values in aggregate.items():
-            writer.writerow(["main_8_epoch", name, values["test_prediction_rows_per_seed"], f"{values['mean_roc_auc']:.6f}", f"{values['standard_deviation_roc_auc']:.6f}", f"{values['mean_brier_score']:.6f}", f"{values['mean_ece_10']:.6f}", "three-seed; primary budget-conditional analysis"])
-        writer.writerow(["exploratory_20_epoch", "DKT-64 Adam", extended["aggregate"]["test_prediction_rows_per_seed"], f"{extended['aggregate']['mean_roc_auc']:.6f}", f"{extended['aggregate']['standard_deviation_roc_auc']:.6f}", f"{extended['aggregate']['mean_brier_score']:.6f}", f"{extended['aggregate']['mean_ece_10']:.6f}", "post hoc exploratory extension"])
+            reference_range = seed_uncertainty["configurations"][name]["roc_auc"]["descriptive_t_reference_range_95"]
+            writer.writerow(["main_8_epoch", name, values["test_prediction_rows_per_seed"], f"{values['mean_roc_auc']:.6f}", f"{values['standard_deviation_roc_auc']:.6f}", f"{reference_range[0]:.6f}", f"{reference_range[1]:.6f}", f"{values['mean_brier_score']:.6f}", f"{values['mean_ece_10']:.6f}", "three-seed; primary budget-conditional analysis; post hoc descriptive t-reference range"])
+        writer.writerow(["exploratory_20_epoch", "DKT-64 Adam", extended["aggregate"]["test_prediction_rows_per_seed"], f"{extended['aggregate']['mean_roc_auc']:.6f}", f"{extended['aggregate']['standard_deviation_roc_auc']:.6f}", "", "", f"{extended['aggregate']['mean_brier_score']:.6f}", f"{extended['aggregate']['mean_ece_10']:.6f}", "post hoc exploratory extension"])
         for rate, methods in sensitivity["aggregate_by_rate_and_method"].items():
             for name, values in methods.items():
-                writer.writerow([f"noise_{rate}", name, values["test_prediction_rows_per_seed"], f"{values['mean_roc_auc']:.6f}", f"{values['standard_deviation_roc_auc']:.6f}", f"{values['mean_brier_score']:.6f}", f"{values['mean_ece_10']:.6f}", "synthetic training-label inversion"])
+                writer.writerow([f"noise_{rate}", name, values["test_prediction_rows_per_seed"], f"{values['mean_roc_auc']:.6f}", f"{values['standard_deviation_roc_auc']:.6f}", "", "", f"{values['mean_brier_score']:.6f}", f"{values['mean_ece_10']:.6f}", "synthetic training-label inversion"])
 
 
 if __name__ == "__main__":
