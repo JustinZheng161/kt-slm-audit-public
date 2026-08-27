@@ -7,7 +7,7 @@
     {
       "figure_id": "fig1-student-disjoint-baselines",
       "vector_pdf": "figures/revision3/fig1-student-disjoint-baselines.pdf",
-      "print_tiff_600dpi": "figures/revision3/tiff_600dpi/fig1-student-disjoint-baselines.tif",
+      "print_tiff-600dpi": "figures/revision3/tiff-600dpi/fig1-student-disjoint-baselines.tif",
       "pdf_sha256": "c95a7efa08c48a31522513908a4e3f798709e94bb6738eda10ff825dc8dcad38",
       "tiff_sha256": "94bc9e64b77136e6b6c3ef837d365ec2d6e9db89db95b00199f4d84619f2360b",
       "tiff_pixel_dimensions": [
@@ -27,7 +27,7 @@
     {
       "figure_id": "fig2-clean-ablation",
       "vector_pdf": "figures/revision3/fig2-clean-ablation.pdf",
-      "print_tiff_600dpi": "figures/revision3/tiff_600dpi/fig2-clean-ablation.tif",
+      "print_tiff-600dpi": "figures/revision3/tiff-600dpi/fig2-clean-ablation.tif",
       "pdf_sha256": "a320f49b03c7641be0e4d6240ce7aca66d60047021633618843f122fcdb60b93",
       "tiff_sha256": "ee4292e9ea5050db97063bb11a83511ed6c49a9939df6d87d6c608af8b2ca882",
       "tiff_pixel_dimensions": [
@@ -47,7 +47,7 @@
     {
       "figure_id": "fig3-label-noise-sensitivity",
       "vector_pdf": "figures/revision3/fig3-label-noise-sensitivity.pdf",
-      "print_tiff_600dpi": "figures/revision3/tiff_600dpi/fig3-label-noise-sensitivity.tif",
+      "print_tiff-600dpi": "figures/revision3/tiff-600dpi/fig3-label-noise-sensitivity.tif",
       "pdf_sha256": "705b4eb44665a29ec8b55c2c6eb0b5e05778b6207f912707212a70cd6b90ea2f",
       "tiff_sha256": "aa8b599920997e323a5de3fe5a8a9365f0d2eb96a4af67804e5b01c7a685e232",
       "tiff_pixel_dimensions": [
@@ -67,7 +67,7 @@
     {
       "figure_id": "fig4-probability-quality",
       "vector_pdf": "figures/revision3/fig4-probability-quality.pdf",
-      "print_tiff_600dpi": "figures/revision3/tiff_600dpi/fig4-probability-quality.tif",
+      "print_tiff-600dpi": "figures/revision3/tiff-600dpi/fig4-probability-quality.tif",
       "pdf_sha256": "2a75146e66f5b98292e445ed2ce948e699904d5eead2c5a3edb7a3fa37205797",
       "tiff_sha256": "62f5ef8e2934b6132c06d7e924d85a7c5cde36f6b9acf4eea401d982e6e8e4dd",
       "tiff_pixel_dimensions": [
@@ -87,7 +87,7 @@
     {
       "figure_id": "fig5-training-window-sensitivity",
       "vector_pdf": "figures/revision3/fig5-training-window-sensitivity.pdf",
-      "print_tiff_600dpi": "figures/revision3/tiff_600dpi/fig5-training-window-sensitivity.tif",
+      "print_tiff-600dpi": "figures/revision3/tiff-600dpi/fig5-training-window-sensitivity.tif",
       "pdf_sha256": "eed33e74462aa8be4e917aed5b13dc0e546d67f41e345caddf8e7fd7a195b3c9",
       "tiff_sha256": "eeb5c2a7ac3de0f9114afb95bfe161cc45294a3e7436cfc443020493edcf0e38",
       "tiff_pixel_dimensions": [
@@ -107,7 +107,7 @@
     {
       "figure_id": "figA1-exploratory-extended-budget",
       "vector_pdf": "figures/revision3/figA1-exploratory-extended-budget.pdf",
-      "print_tiff_600dpi": "figures/revision3/tiff_600dpi/figA1-exploratory-extended-budget.tif",
+      "print_tiff-600dpi": "figures/revision3/tiff-600dpi/figA1-exploratory-extended-budget.tif",
       "pdf_sha256": "5dd6a520eea1350ea65b1818c5ff742c5f49f8ff97ecbca20a4124826b17f809",
       "tiff_sha256": "8b95e8e2a474a50b33bf8bb2bd6f5bfa77d8b00702e52f51d82fe5043cd2a6f9",
       "tiff_pixel_dimensions": [
@@ -127,7 +127,7 @@
     {
       "figure_id": "figA2-bkt-fit-diagnostics",
       "vector_pdf": "figures/revision3/figA2-bkt-fit-diagnostics.pdf",
-      "print_tiff_600dpi": "figures/revision3/tiff_600dpi/figA2-bkt-fit-diagnostics.tif",
+      "print_tiff-600dpi": "figures/revision3/tiff-600dpi/figA2-bkt-fit-diagnostics.tif",
       "pdf_sha256": "c0f92760b036f109b5190af94d1b1a9ab2bc4544604ebac960e25d87c9d86be0",
       "tiff_sha256": "888fab90fe04a4e18cc81efef5088b148a33717e5a98d3065497655d8d7c6f28",
       "tiff_pixel_dimensions": [

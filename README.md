@@ -73,10 +73,10 @@ The public artifact set also reports a 5%/10%/20% synthetic training-label inver
 Every aggregate-only figure in `figures/revision3/` is available as a PDF vector source. To generate the matching 600-dpi TIFF submission derivatives and an auditable file/DPI manifest, run:
 
 ```bash
-python scripts/export_print_figures.py
+python scripts/export-print-figures.py
 ```
 
-The command writes TIFF files to `figures/revision3/tiff_600dpi/` and `revision7_figure_technical_manifest.json`. It does not access the controlled data root. Figure 1 has a legend that separately identifies single-run bars, student-cluster bootstrap error bars, and open circles for the three DKT seed estimates. Figure captions specify whether error bars are bootstrap intervals or descriptive across-seed SDs.
+The command writes TIFF files to `figures/revision3/tiff-600dpi/` and `revision7-figure-technical-manifest.json`. It does not access the controlled data root. Figure 1 has a legend that separately identifies single-run bars, student-cluster bootstrap error bars, and open circles for the three DKT seed estimates. Figure captions specify whether error bars are bootstrap intervals or descriptive across-seed SDs.
 
 ## Double-blind review mirror
 

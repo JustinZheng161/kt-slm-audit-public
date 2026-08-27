@@ -18,8 +18,8 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 FIGURE_DIR = ROOT / "figures" / "revision3"
-TIFF_DIR = FIGURE_DIR / "tiff_600dpi"
-MANIFEST = FIGURE_DIR / "revision7_figure_technical_manifest.json"
+TIFF_DIR = FIGURE_DIR / "tiff-600dpi"
+MANIFEST = FIGURE_DIR / "revision7-figure-technical-manifest.json"
 
 
 def sha256(path: Path) -> str:
@@ -95,7 +95,7 @@ def main() -> None:
             {
                 "figure_id": pdf.stem,
                 "vector_pdf": str(pdf.relative_to(ROOT)),
-                "print_tiff_600dpi": str(tiff.relative_to(ROOT)),
+                "print_tiff-600dpi": str(tiff.relative_to(ROOT)),
                 "pdf_sha256": sha256(pdf),
                 "tiff_sha256": sha256(tiff),
                 "tiff_pixel_dimensions": [width, height],
