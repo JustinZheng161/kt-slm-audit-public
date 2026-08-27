@@ -1,0 +1,171 @@
+{
+  "provenance": {
+    "source_sha256": "162ef8d2d28bcbfea6591a282994062bd8d5eaa00636544292a0d268dca6e5da",
+    "source_file": "skill_builder_data_corrected_collapsed.csv",
+    "split_seed": 20260822,
+    "privacy": "The public file contains only aggregate-safe statistics. Detailed source records, student membership, predictions, per-skill values and checkpoints remain in KT_AUDIT_DATA_ROOT."
+  },
+  "paired_effects": {
+    "experiment": "revision6_standardized_paired_effect_summary",
+    "analysis_scope": "Primary eight-epoch DKT comparisons; same three seeds and 24,306 test targets per seed.",
+    "reference_condition": "DKT-64 Adam",
+    "comparisons": {
+      "DKT-64-AdamW_minus_DKT-64-Adam": {
+        "comparison": "DKT-64 AdamW \u2212 DKT-64 Adam",
+        "paired_seed_count": 3,
+        "mean_auc_difference": -6.131202508659801e-08,
+        "absolute_mean_difference": 6.131202508659801e-08,
+        "paired_difference_standard_deviation": 5.892426933334033e-07,
+        "paired_standardized_mean_difference_cohens_dz": -0.10405224499221181,
+        "reference_condition_cross_seed_standard_deviation": 0.00111634893582303,
+        "absolute_mean_difference_divided_by_reference_cross_seed_sd": 5.492191833496542e-05,
+        "observed_sd_power_reference": {
+          "assumed_test": "two-sided paired t reference",
+          "alpha": 0.05,
+          "target_power": 0.8,
+          "minimum_detectable_auc_difference_reference": 1.8245959792153683e-06,
+          "calculation": "(t_(1-alpha/2, df) + t_(power, df)) * paired-SD / sqrt(n), with df=n-1",
+          "interpretation": "Post hoc observed-SD planning reference only; it is neither an exact retrospective power calculation, a pre-specified SESOI nor an equivalence margin and cannot support a no-effect conclusion."
+        }
+      },
+      "DKT-96-AdamW-dropout_minus_DKT-64-Adam": {
+        "comparison": "DKT-96 AdamW + dropout \u2212 DKT-64 Adam",
+        "paired_seed_count": 3,
+        "mean_auc_difference": 0.00030114014247761833,
+        "absolute_mean_difference": 0.00030114014247761833,
+        "paired_difference_standard_deviation": 0.0019390017974891217,
+        "paired_standardized_mean_difference_cohens_dz": 0.1553067887134374,
+        "reference_condition_cross_seed_standard_deviation": 0.00111634893582303,
+        "absolute_mean_difference_divided_by_reference_cross_seed_sd": 0.26975449414980834,
+        "observed_sd_power_reference": {
+          "assumed_test": "two-sided paired t reference",
+          "alpha": 0.05,
+          "target_power": 0.8,
+          "minimum_detectable_auc_difference_reference": 0.006004138741841342,
+          "calculation": "(t_(1-alpha/2, df) + t_(power, df)) * paired-SD / sqrt(n), with df=n-1",
+          "interpretation": "Post hoc observed-SD planning reference only; it is neither an exact retrospective power calculation, a pre-specified SESOI nor an equivalence margin and cannot support a no-effect conclusion."
+        }
+      }
+    },
+    "interpretation_limit": "Cohen's dz uses the standard deviation of the three paired seed differences. With n=3 it is descriptive and unstable. MDE references are calculated from observed paired SD using a transparent t-quantile planning approximation after observing the data; they are not an exact retrospective power calculation, a SESOI, power guarantee, equivalence interval or TOST.",
+    "privacy": "Aggregate seed-level metrics only; no student-level scores, predictions or bootstrap replicates are released."
+  },
+  "bkt_diagnostics": {
+    "experiment": "revision6_bkt_per_skill_aggregate_diagnostics",
+    "fit_scope": "Independent two-state BKT EM per train-fitted atomic skill; fixed 20 iterations.",
+    "skill_count": 149,
+    "short_data_fallback_skill_count": 15,
+    "training_observations_per_skill": {
+      "p05": 7.4,
+      "p25": 194.0,
+      "p50": 773.0,
+      "p75": 1656.0,
+      "p95": 5538.5999999999985
+    },
+    "parameter_quantiles_across_skills": {
+      "P(L0)": {
+        "p05": 0.13470282228651848,
+        "p25": 0.32903221528991417,
+        "p50": 0.5694074064239473,
+        "p75": 0.7376314973740441,
+        "p95": 0.9084348995348017
+      },
+      "P(T)": {
+        "p05": 0.0010976279746081551,
+        "p25": 0.07679800723201641,
+        "p50": 0.11522152515852513,
+        "p75": 0.23199352591425249,
+        "p95": 0.5
+      },
+      "P(G)": {
+        "p05": 0.05785977277144635,
+        "p25": 0.16715737445576265,
+        "p50": 0.2557220132441358,
+        "p75": 0.3794308460645149,
+        "p95": 0.49
+      },
+      "P(S)": {
+        "p05": 0.029083384172126553,
+        "p25": 0.1,
+        "p50": 0.16669357221462588,
+        "p75": 0.24121187963625595,
+        "p95": 0.3575542937776912
+      }
+    },
+    "parameter_bound_proximity_counts": {
+      "P(L0)": {
+        "within_0.01_of_lower_bound": 4,
+        "within_0.01_of_upper_bound": 1
+      },
+      "P(T)": {
+        "within_0.01_of_lower_bound": 14,
+        "within_0.01_of_upper_bound": 10
+      },
+      "P(G)": {
+        "within_0.01_of_lower_bound": 2,
+        "within_0.01_of_upper_bound": 17
+      },
+      "P(S)": {
+        "within_0.01_of_lower_bound": 6,
+        "within_0.01_of_upper_bound": 2
+      }
+    },
+    "final_iteration_max_absolute_parameter_change": {
+      "threshold_for_parameter_stability_proxy": 1e-05,
+      "skills_at_or_below_threshold": 19,
+      "proportion_at_or_below_threshold": 0.12751677852348994,
+      "quantiles": {
+        "p05": 0.0,
+        "p25": 0.00032100790614753016,
+        "p50": 0.0029279672236874887,
+        "p75": 0.006841568472391368,
+        "p95": 0.01321094376635613
+      }
+    },
+    "interpretation_limit": "The iteration-19 to iteration-20 parameter change is a fixed-iteration stability proxy, not a likelihood-based convergence certificate, a global-optimum proof or a multi-start diagnostic. Per-skill parameter values are intentionally not released.",
+    "privacy": "Only cross-skill aggregate quantiles and counts are released; no skill identifiers, per-skill parameter vectors, learners or interactions are released."
+  },
+  "bkt_iteration_sensitivity": {
+    "experiment": "revision6_bkt_fixed_iteration_sensitivity",
+    "comparison": "Per-skill BKT with 20 versus 100 fixed EM iterations on the same train/test protocol.",
+    "skill_count": 149,
+    "shared_test_targets": 24306,
+    "fixed_20_test_roc_auc": 0.7245304066013627,
+    "fixed_100_test_roc_auc": 0.7242094050414745,
+    "auc_difference_100_minus_20": -0.0003210015598882343,
+    "fixed_100_final_iteration_max_absolute_parameter_change": {
+      "threshold_for_parameter_stability_proxy": 1e-05,
+      "skills_at_or_below_threshold": 111,
+      "proportion_at_or_below_threshold": 0.7449664429530202,
+      "quantiles": {
+        "p05": 0.0,
+        "p25": 1.1102230246251565e-15,
+        "p50": 1.4447027685271507e-08,
+        "p75": 1.2371982446190977e-05,
+        "p95": 0.0011862000992541462
+      }
+    },
+    "interpretation_limit": "The 100-iteration comparison is a post hoc implementation sensitivity check. Its final-update parameter change remains a stability proxy, not a likelihood-based convergence certificate, a multi-start analysis or an independently pre-specified benchmark.",
+    "privacy": "Only cross-skill aggregate stability summaries and aggregate test ROC-AUC values are released; no per-skill parameters, learners, predictions or replicate values are released."
+  },
+  "dkt_bkt_paired_bootstrap": {
+    "experiment": "revision6_student_cluster_paired_bootstrap_dkt64adam_minus_bkt",
+    "comparison": "DKT-64 Adam seed 20260822 minus per-skill BKT EM",
+    "shared_test_targets": 24306,
+    "student_clusters": 403,
+    "bootstrap_replicates": 1000,
+    "random_seed": 20260826,
+    "observed_auc_difference": 0.04145151388034973,
+    "percentile_95_confidence_interval": [
+      0.03504739653839106,
+      0.0479451621982368
+    ],
+    "bootstrap_difference_summary": {
+      "mean": 0.04130400772105483,
+      "standard_deviation": 0.003271573469167292
+    },
+    "two_sided_direction_reversal_proportion": 0.0,
+    "interpretation_limit": "This is a student-cluster paired bootstrap for the shared target set and one DKT seed versus one fixed-iteration BKT implementation. The direction-reversal proportion is reported as a descriptive bootstrap tail proportion, not a universal model-selection claim or cross-dataset inference.",
+    "privacy": "Only aggregate bootstrap summary statistics are released; bootstrap replicate values, predictions, per-student AUCs and student membership remain controlled."
+  }
+}

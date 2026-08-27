@@ -34,6 +34,8 @@ python analysis/profile-history-length-distribution.py
 python experiments/run-window-length-sensitivity.py
 python analysis/make-paper-figures.py
 python analysis/make-revision5-window-figure.py
+python analysis/run_revision6_statistical_and_bkt_audits.py
+python analysis/make_revision6_bkt_diagnostic_figure.py
 
 # A prospective context-availability sensitivity audit. It is not part of the
 # archived Revision 3 primary result and must be reported as a separate audit.
@@ -49,7 +51,7 @@ The scripts write raw- or student-level artifacts only below the external contro
 | Skill-prior | 0.6231 | Student-cluster 95% CI [0.6100, 0.6361] | No-history reference. |
 | Per-skill BKT EM | 0.7245 | Student-cluster 95% CI [0.7075, 0.7424] | Classical reference. |
 | DKT-64 Adam | 0.7654 | 3-seed SD 0.0011; Brier 0.1816; ECE10 0.0129 | Primary budget-conditional neural reference. |
-| DKT-64 AdamW | 0.7654 | 3-seed SD 0.0011; Brier 0.1816; ECE10 0.0129 | Observed paired AUC difference is below this n=3 design’s resolution. |
+| DKT-64 AdamW | 0.7654 | 3-seed SD 0.0011; Brier 0.1816; ECE10 0.0129 | Observed mean difference is smaller than reference cross-seed SD; this does not imply zero difference or equivalence. |
 | DKT-96 AdamW + dropout | 0.7657 | 3-seed SD 0.0009; Brier 0.1814; ECE10 0.0089 | Joint configuration, not an isolated capacity test. |
 
 ## Candidate model improvements
@@ -64,7 +66,11 @@ python tests/run-optimized-smoke.py
 
 The smoke test passes after installing `requirements.txt`. No performance number for either candidate is reported until it has been trained and evaluated with the same fixed split and seeds.
 
-The public artifact set also reports a 5%/10%/20% synthetic training-label inversion sensitivity curve, a separate post hoc 20-epoch validation-selection extension, a literal three-seed observed min–max summary, and a completed 200/500/full-history training-window sensitivity analysis. The min–max is descriptive only; it is not a learner-cluster confidence interval, hypothesis test or equivalence analysis. The window analysis fixes the split, DKT-64 architecture, optimizer, batch size, eight-epoch cap, validation selection and complete-history test evaluation; its small observed mean differences do not establish global window-length invariance. Neither supplemental analysis replaces the primary eight-epoch result. A prospective context-parity audit is supplied as code but is not reported as a result until it has been run on the controlled source. No external performance values are included here; cross-paper scores must not be subtracted from the above results or presented as a shared leaderboard.
+The public artifact set also reports a 5%/10%/20% synthetic training-label inversion sensitivity curve, a separate post hoc 20-epoch validation-selection extension, a literal three-seed observed min–max summary, a completed 200/500/full-history training-window sensitivity analysis, standardized paired seed-effect summaries, cross-skill BKT stability summaries, a 20-versus-100 fixed-iteration BKT sensitivity check, and a DKT–BKT student-cluster paired bootstrap. Cohen’s d_z values and observed-SD MDE references are descriptive post hoc scales only: they are neither a pre-specified SESOI nor equivalence analyses. The window analysis fixes the split, DKT-64 architecture, optimizer, batch size, eight-epoch cap, validation selection and complete-history test evaluation; its small observed mean differences do not establish global window-length invariance. The BKT audit reports only cross-skill quantiles and counts, never skill-level estimates. Neither supplemental analysis replaces the primary eight-epoch result. A prospective context-parity audit is supplied as code but is not reported as a result until it has been run on the controlled source. No external performance values are included here; cross-paper scores must not be subtracted from the above results or presented as a shared leaderboard.
+
+## Double-blind review mirror
+
+This is an identified development repository and must **not** be cited in a blinded manuscript. Before resubmission, create and independently inspect a fixed-commit, read-only anonymous mirror containing only code and aggregate-safe outputs; the complete identity-redaction, expiry, access and privacy checklist is in [ANONYMOUS_REVIEW_MIRROR.md](docs/ANONYMOUS_REVIEW_MIRROR.md). Until that external release gate is closed, `[ANONYMOUS_REVIEW_CODE_URL]` is an intentional placeholder, not an actual review link.
 
 ## Citation and source data
 
