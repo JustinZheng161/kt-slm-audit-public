@@ -45,7 +45,7 @@
   "download_file": "skill_builder_data_corrected_collapsed.csv",
   "incorrect_count": 123042,
   "multi_skill_row_count": 47037,
-  "privacy_note": "Only aggregate statistics are stored here. Raw student records, IDs, splits, and per-student predictions remain locally controlled under private_data/.",
+  "privacy_note": "Only aggregate statistics are stored here. Raw student records, IDs, splits, and per-student predictions remain in the locally controlled data root.",
   "row_count_excluding_header": 346860,
   "sha256": "162ef8d2d28bcbfea6591a282994062bd8d5eaa00636544292a0d268dca6e5da",
   "source_url": "https://sites.google.com/site/assistmentsdata/home/2009-2010-assistment-data/skill-builder-data-2009-2010",
