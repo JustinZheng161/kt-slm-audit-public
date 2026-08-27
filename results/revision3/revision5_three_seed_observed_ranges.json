@@ -1,0 +1,160 @@
+{
+  "experiment": "revision5_three_seed_observed_ranges",
+  "analysis_scope": "Post hoc descriptive summary of the archived Revision 3 eight-epoch seed-level aggregate records.",
+  "shared_evaluation_target": "second and later interaction for each test student",
+  "test_prediction_rows_per_seed": 24306,
+  "configurations": {
+    "DKT-64-Adam": {
+      "roc_auc": {
+        "seed_count": 3,
+        "per_seed_values": [
+          0.7659819204817124,
+          0.7660975684496951,
+          0.7641087669929802
+        ],
+        "mean": 0.7653960853081293,
+        "standard_deviation": 0.00111634893582303,
+        "observed_minimum": 0.7641087669929802,
+        "observed_maximum": 0.7660975684496951,
+        "observed_range_min_max": [
+          0.7641087669929802,
+          0.7660975684496951
+        ]
+      },
+      "brier_score": {
+        "seed_count": 3,
+        "per_seed_values": [
+          0.18108658089356586,
+          0.18158154477364152,
+          0.18199554429507608
+        ],
+        "mean": 0.1815545566540945,
+        "standard_deviation": 0.0004550822840638538,
+        "observed_minimum": 0.18108658089356586,
+        "observed_maximum": 0.18199554429507608,
+        "observed_range_min_max": [
+          0.18108658089356586,
+          0.18199554429507608
+        ]
+      },
+      "ece_10": {
+        "seed_count": 3,
+        "per_seed_values": [
+          0.00781296299820897,
+          0.02186126474652489,
+          0.009096279600018266
+        ],
+        "mean": 0.012923502448250709,
+        "standard_deviation": 0.0077668797821556605,
+        "observed_minimum": 0.00781296299820897,
+        "observed_maximum": 0.02186126474652489,
+        "observed_range_min_max": [
+          0.00781296299820897,
+          0.02186126474652489
+        ]
+      }
+    },
+    "DKT-64-AdamW": {
+      "roc_auc": {
+        "seed_count": 3,
+        "per_seed_values": [
+          0.7659824318240017,
+          0.7660975390199232,
+          0.7641081011443877
+        ],
+        "mean": 0.7653960239961042,
+        "standard_deviation": 0.0011168578112805807,
+        "observed_minimum": 0.7641081011443877,
+        "observed_maximum": 0.7660975390199232,
+        "observed_range_min_max": [
+          0.7641081011443877,
+          0.7660975390199232
+        ]
+      },
+      "brier_score": {
+        "seed_count": 3,
+        "per_seed_values": [
+          0.18108656030570508,
+          0.18158149144338773,
+          0.18199548029388254
+        ],
+        "mean": 0.1815545106809918,
+        "standard_deviation": 0.0004550602788441662,
+        "observed_minimum": 0.18108656030570508,
+        "observed_maximum": 0.18199548029388254,
+        "observed_range_min_max": [
+          0.18108656030570508,
+          0.18199548029388254
+        ]
+      },
+      "ece_10": {
+        "seed_count": 3,
+        "per_seed_values": [
+          0.007853227051533315,
+          0.021861946567682138,
+          0.009029862081092035
+        ],
+        "mean": 0.012915011900102497,
+        "standard_deviation": 0.007770575748144405,
+        "observed_minimum": 0.007853227051533315,
+        "observed_maximum": 0.021861946567682138,
+        "observed_range_min_max": [
+          0.007853227051533315,
+          0.021861946567682138
+        ]
+      }
+    },
+    "DKT-96-AdamW-dropout": {
+      "roc_auc": {
+        "seed_count": 3,
+        "per_seed_values": [
+          0.7657221585987337,
+          0.7648019889522842,
+          0.7665675288008027
+        ],
+        "mean": 0.7656972254506069,
+        "standard_deviation": 0.0008830339662681628,
+        "observed_minimum": 0.7648019889522842,
+        "observed_maximum": 0.7665675288008027,
+        "observed_range_min_max": [
+          0.7648019889522842,
+          0.7665675288008027
+        ]
+      },
+      "brier_score": {
+        "seed_count": 3,
+        "per_seed_values": [
+          0.18121221238503837,
+          0.18170568117537772,
+          0.1812436969253903
+        ],
+        "mean": 0.18138719682860213,
+        "standard_deviation": 0.0002762644175895584,
+        "observed_minimum": 0.18121221238503837,
+        "observed_maximum": 0.18170568117537772,
+        "observed_range_min_max": [
+          0.18121221238503837,
+          0.18170568117537772
+        ]
+      },
+      "ece_10": {
+        "seed_count": 3,
+        "per_seed_values": [
+          0.007986258920691372,
+          0.00859431587334358,
+          0.010218935036515428
+        ],
+        "mean": 0.008933169943516792,
+        "standard_deviation": 0.001154264796395313,
+        "observed_minimum": 0.007986258920691372,
+        "observed_maximum": 0.010218935036515428,
+        "observed_range_min_max": [
+          0.007986258920691372,
+          0.010218935036515428
+        ]
+      }
+    }
+  },
+  "interpretation_limit": "Each observed range is the literal minimum and maximum across three seed-level values. It is descriptive only and is not a confidence interval, bootstrap interval, hypothesis test or equivalence analysis.",
+  "privacy": "The input and output contain only aggregate per-seed metrics; neither contains learner-level data, split memberships, predictions or checkpoints."
+}

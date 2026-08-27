@@ -427,9 +427,12 @@ def train_dkt(
     early_stop_patience: int | None = 3,
     max_length: int = 200,
     evaluation_context_window: int | None = None,
+    batch_size: int = 64,
 ) -> tuple[dict, np.ndarray, np.ndarray, list[tuple[int, int]]]:
     if max_length < 1:
         raise ValueError("max_length must be at least one transition.")
+    if batch_size < 1:
+        raise ValueError("batch_size must be positive.")
     if evaluation_context_window is not None and evaluation_context_window != max_length:
         raise ValueError("Context-parity evaluation must use the same window as training.")
     set_seed(spec.seed)
@@ -437,7 +440,7 @@ def train_dkt(
     optimizer = torch.optim.AdamW(model.parameters(), lr=spec.learning_rate, weight_decay=spec.weight_decay)
     loader = DataLoader(
         NextInteractionDataset(train_sequences, skill_count, max_length=max_length),
-        batch_size=64,
+        batch_size=batch_size,
         shuffle=True,
         collate_fn=collate_batch,
     )
@@ -492,6 +495,7 @@ def train_dkt(
             "training_history": history,
             "selected_epoch": int(max(history, key=lambda item: item["validation_auc"])["epoch"]),
             "training_sequence_chunk_length": max_length,
+            "batch_size": batch_size,
             "evaluation_context_policy": (
                 "full_student_history_legacy" if evaluation_context_window is None
                 else f"matched_nonoverlapping_{evaluation_context_window}_transition_chunks"
@@ -520,6 +524,7 @@ def main() -> None:
     parser.add_argument("--bootstrap-replicates", type=int, default=1000)
     parser.add_argument("--threads", type=int, default=min(4, os.cpu_count() or 1))
     parser.add_argument("--max-history", type=int, default=200, help="Maximum transitions per training chunk.")
+    parser.add_argument("--batch-size", type=int, default=64, help="Training batch size; default retains the archived configuration.")
     parser.add_argument(
         "--evaluation-context",
         choices=("full_history", "matched_train_chunks"),
@@ -565,6 +570,7 @@ def main() -> None:
         baseline_spec,
         max_length=args.max_history,
         evaluation_context_window=evaluation_context_window,
+        batch_size=args.batch_size,
     )
     dkt_runs.append({**metric_record(baseline_spec.name, dkt_y, dkt_s, dkt_offsets, baseline_spec.seed), **dkt_details})
     private_scores[baseline_spec.name] = {"target": dkt_y, "score": dkt_s}
@@ -577,6 +583,7 @@ def main() -> None:
             spec,
             max_length=args.max_history,
             evaluation_context_window=evaluation_context_window,
+            batch_size=args.batch_size,
         )
         dkt_runs.append({**metric_record(spec.name, y, score, offsets, spec.seed), **details})
         private_scores[f"{spec.name}_seed_{spec.seed}"] = {"target": y, "score": score}

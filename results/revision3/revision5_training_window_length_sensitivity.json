@@ -1,0 +1,1712 @@
+{
+  "experiment": "revision5_training_window_length_sensitivity",
+  "analysis_label": "Prospective sensitivity analysis; distinct from the archived Revision 3 primary result.",
+  "source_sha256": "162ef8d2d28bcbfea6591a282994062bd8d5eaa00636544292a0d268dca6e5da",
+  "student_level_split": {
+    "seed": 20260822,
+    "train_validation_test": [
+      0.8,
+      0.1,
+      0.1
+    ]
+  },
+  "train_fitted_label_support": {
+    "vocabulary_fit": "The atomic skill_id vocabulary is fitted on training students only after student-level splitting.",
+    "train_unique_skill_labels": 149,
+    "validation_unique_skill_labels": 132,
+    "test_unique_skill_labels": 135,
+    "validation_labels_not_seen_in_train": 0,
+    "test_labels_not_seen_in_train": 0,
+    "validation_label_coverage_by_train": 1.0,
+    "test_label_coverage_by_train": 1.0
+  },
+  "seed_set": [
+    20260822,
+    20260823,
+    20260824
+  ],
+  "shared_evaluation_target": "All second-and-later interactions of fixed test students, scored with complete preceding histories under every condition.",
+  "fixed_settings": {
+    "embedding_dim": 64,
+    "hidden_dim": 64,
+    "dropout": 0.0,
+    "optimizer": "AdamW with weight_decay=0",
+    "learning_rate": 0.002,
+    "batch_size": 64,
+    "gradient_clip_norm": 5.0,
+    "maximum_epochs": 8,
+    "checkpoint_selection": "highest validation ROC-AUC within the eight-epoch cap"
+  },
+  "training_window_conditions": {
+    "window_200": 200,
+    "window_500": 500,
+    "full_available_history": 1028
+  },
+  "runs": {
+    "window_200": [
+      {
+        "name": "DKT-64-window_200",
+        "test_prediction_rows": 24306,
+        "roc_auc": 0.7659819204817124,
+        "student_cluster_bootstrap_95_ci": [
+          0.749049878304873,
+          0.7854160828135961
+        ],
+        "bootstrap_replicates": 1000,
+        "brier_score": 0.18108658089356586,
+        "ece_10": 0.00781296299820897,
+        "calibration_bins_10": [
+          {
+            "bin": 0,
+            "lower_inclusive": 0.0,
+            "upper_exclusive": 0.1,
+            "count": 478,
+            "mean_prediction": 0.06218163220593745,
+            "empirical_accuracy": 0.04602510460251046
+          },
+          {
+            "bin": 1,
+            "lower_inclusive": 0.1,
+            "upper_exclusive": 0.2,
+            "count": 838,
+            "mean_prediction": 0.15003502620539688,
+            "empirical_accuracy": 0.13484486873508353
+          },
+          {
+            "bin": 2,
+            "lower_inclusive": 0.2,
+            "upper_exclusive": 0.3,
+            "count": 1140,
+            "mean_prediction": 0.2534085662349274,
+            "empirical_accuracy": 0.26842105263157895
+          },
+          {
+            "bin": 3,
+            "lower_inclusive": 0.3,
+            "upper_exclusive": 0.4,
+            "count": 1514,
+            "mean_prediction": 0.35221814898628856,
+            "empirical_accuracy": 0.3606340819022457
+          },
+          {
+            "bin": 4,
+            "lower_inclusive": 0.4,
+            "upper_exclusive": 0.5,
+            "count": 1972,
+            "mean_prediction": 0.4529167868151626,
+            "empirical_accuracy": 0.44929006085192696
+          },
+          {
+            "bin": 5,
+            "lower_inclusive": 0.5,
+            "upper_exclusive": 0.6,
+            "count": 2722,
+            "mean_prediction": 0.5517151846682473,
+            "empirical_accuracy": 0.5606171932402645
+          },
+          {
+            "bin": 6,
+            "lower_inclusive": 0.6,
+            "upper_exclusive": 0.7,
+            "count": 3610,
+            "mean_prediction": 0.6529610307923315,
+            "empirical_accuracy": 0.6551246537396122
+          },
+          {
+            "bin": 7,
+            "lower_inclusive": 0.7,
+            "upper_exclusive": 0.8,
+            "count": 4758,
+            "mean_prediction": 0.7517082137864094,
+            "empirical_accuracy": 0.7419083648591845
+          },
+          {
+            "bin": 8,
+            "lower_inclusive": 0.8,
+            "upper_exclusive": 0.9,
+            "count": 5187,
+            "mean_prediction": 0.847624063756118,
+            "empirical_accuracy": 0.8436475804896858
+          },
+          {
+            "bin": 9,
+            "lower_inclusive": 0.9,
+            "upper_exclusive": 1.0,
+            "count": 2087,
+            "mean_prediction": 0.9334672735419408,
+            "empirical_accuracy": 0.9175850503114519
+          }
+        ],
+        "specification": {
+          "name": "DKT-64-window_200",
+          "embedding_dim": 64,
+          "hidden_dim": 64,
+          "dropout": 0.0,
+          "learning_rate": 0.002,
+          "weight_decay": 0.0,
+          "epochs": 8,
+          "seed": 20260822
+        },
+        "selected_validation_auc": 0.7660417835334471,
+        "training_history": [
+          {
+            "epoch": 1,
+            "training_bce": 0.5996016567043997,
+            "validation_auc": 0.7292578857370398
+          },
+          {
+            "epoch": 2,
+            "training_bce": 0.5517937376517607,
+            "validation_auc": 0.7536391881871283
+          },
+          {
+            "epoch": 3,
+            "training_bce": 0.540426081379933,
+            "validation_auc": 0.7596860360630442
+          },
+          {
+            "epoch": 4,
+            "training_bce": 0.5345336960339402,
+            "validation_auc": 0.7618230720365354
+          },
+          {
+            "epoch": 5,
+            "training_bce": 0.530374653424963,
+            "validation_auc": 0.7624592341808805
+          },
+          {
+            "epoch": 6,
+            "training_bce": 0.5272567700208016,
+            "validation_auc": 0.765944176258734
+          },
+          {
+            "epoch": 7,
+            "training_bce": 0.5239538151176638,
+            "validation_auc": 0.7660417835334471
+          },
+          {
+            "epoch": 8,
+            "training_bce": 0.5210163431816339,
+            "validation_auc": 0.7654411600899674
+          }
+        ],
+        "selected_epoch": 7,
+        "training_sequence_chunk_length": 200,
+        "batch_size": 64,
+        "evaluation_context_policy": "full_student_history_legacy"
+      },
+      {
+        "name": "DKT-64-window_200",
+        "test_prediction_rows": 24306,
+        "roc_auc": 0.7660975684496951,
+        "student_cluster_bootstrap_95_ci": [
+          0.7483600518921119,
+          0.7843569050482438
+        ],
+        "bootstrap_replicates": 1000,
+        "brier_score": 0.18158154477364152,
+        "ece_10": 0.02186126474652489,
+        "calibration_bins_10": [
+          {
+            "bin": 0,
+            "lower_inclusive": 0.0,
+            "upper_exclusive": 0.1,
+            "count": 418,
+            "mean_prediction": 0.06230985350086929,
+            "empirical_accuracy": 0.03827751196172249
+          },
+          {
+            "bin": 1,
+            "lower_inclusive": 0.1,
+            "upper_exclusive": 0.2,
+            "count": 778,
+            "mean_prediction": 0.15038867561017333,
+            "empirical_accuracy": 0.12082262210796915
+          },
+          {
+            "bin": 2,
+            "lower_inclusive": 0.2,
+            "upper_exclusive": 0.3,
+            "count": 915,
+            "mean_prediction": 0.25251173176726355,
+            "empirical_accuracy": 0.2360655737704918
+          },
+          {
+            "bin": 3,
+            "lower_inclusive": 0.3,
+            "upper_exclusive": 0.4,
+            "count": 1337,
+            "mean_prediction": 0.35277033202132807,
+            "empirical_accuracy": 0.33507853403141363
+          },
+          {
+            "bin": 4,
+            "lower_inclusive": 0.4,
+            "upper_exclusive": 0.5,
+            "count": 1775,
+            "mean_prediction": 0.4514364475599477,
+            "empirical_accuracy": 0.4292957746478873
+          },
+          {
+            "bin": 5,
+            "lower_inclusive": 0.5,
+            "upper_exclusive": 0.6,
+            "count": 2549,
+            "mean_prediction": 0.5531804833565567,
+            "empirical_accuracy": 0.5288348371910553
+          },
+          {
+            "bin": 6,
+            "lower_inclusive": 0.6,
+            "upper_exclusive": 0.7,
+            "count": 3525,
+            "mean_prediction": 0.651925318900575,
+            "empirical_accuracy": 0.624113475177305
+          },
+          {
+            "bin": 7,
+            "lower_inclusive": 0.7,
+            "upper_exclusive": 0.8,
+            "count": 4957,
+            "mean_prediction": 0.7530291153703074,
+            "empirical_accuracy": 0.7256405083719992
+          },
+          {
+            "bin": 8,
+            "lower_inclusive": 0.8,
+            "upper_exclusive": 0.9,
+            "count": 5749,
+            "mean_prediction": 0.8483594543395986,
+            "empirical_accuracy": 0.8335362671769003
+          },
+          {
+            "bin": 9,
+            "lower_inclusive": 0.9,
+            "upper_exclusive": 1.0,
+            "count": 2303,
+            "mean_prediction": 0.9341000870834264,
+            "empirical_accuracy": 0.9170646982197134
+          }
+        ],
+        "specification": {
+          "name": "DKT-64-window_200",
+          "embedding_dim": 64,
+          "hidden_dim": 64,
+          "dropout": 0.0,
+          "learning_rate": 0.002,
+          "weight_decay": 0.0,
+          "epochs": 8,
+          "seed": 20260823
+        },
+        "selected_validation_auc": 0.7648162880787577,
+        "training_history": [
+          {
+            "epoch": 1,
+            "training_bce": 0.6014748700607397,
+            "validation_auc": 0.7258706479281702
+          },
+          {
+            "epoch": 2,
+            "training_bce": 0.5557522378311505,
+            "validation_auc": 0.7455054658948705
+          },
+          {
+            "epoch": 3,
+            "training_bce": 0.5436698935469466,
+            "validation_auc": 0.7542483898039282
+          },
+          {
+            "epoch": 4,
+            "training_bce": 0.5366858882183856,
+            "validation_auc": 0.7595721880676081
+          },
+          {
+            "epoch": 5,
+            "training_bce": 0.5315191089147022,
+            "validation_auc": 0.7624197497530738
+          },
+          {
+            "epoch": 6,
+            "training_bce": 0.5275584496037239,
+            "validation_auc": 0.7641173822804394
+          },
+          {
+            "epoch": 7,
+            "training_bce": 0.524163484919057,
+            "validation_auc": 0.7634371886168672
+          },
+          {
+            "epoch": 8,
+            "training_bce": 0.521854772562832,
+            "validation_auc": 0.7648162880787577
+          }
+        ],
+        "selected_epoch": 8,
+        "training_sequence_chunk_length": 200,
+        "batch_size": 64,
+        "evaluation_context_policy": "full_student_history_legacy"
+      },
+      {
+        "name": "DKT-64-window_200",
+        "test_prediction_rows": 24306,
+        "roc_auc": 0.7641087669929802,
+        "student_cluster_bootstrap_95_ci": [
+          0.7469883467296868,
+          0.7830529191530375
+        ],
+        "bootstrap_replicates": 1000,
+        "brier_score": 0.18199554429507608,
+        "ece_10": 0.009096279600018266,
+        "calibration_bins_10": [
+          {
+            "bin": 0,
+            "lower_inclusive": 0.0,
+            "upper_exclusive": 0.1,
+            "count": 466,
+            "mean_prediction": 0.06262259785277777,
+            "empirical_accuracy": 0.034334763948497854
+          },
+          {
+            "bin": 1,
+            "lower_inclusive": 0.1,
+            "upper_exclusive": 0.2,
+            "count": 872,
+            "mean_prediction": 0.15364428998372698,
+            "empirical_accuracy": 0.1559633027522936
+          },
+          {
+            "bin": 2,
+            "lower_inclusive": 0.2,
+            "upper_exclusive": 0.3,
+            "count": 1144,
+            "mean_prediction": 0.25172207495393034,
+            "empirical_accuracy": 0.25961538461538464
+          },
+          {
+            "bin": 3,
+            "lower_inclusive": 0.3,
+            "upper_exclusive": 0.4,
+            "count": 1449,
+            "mean_prediction": 0.3530899355788326,
+            "empirical_accuracy": 0.3830227743271222
+          },
+          {
+            "bin": 4,
+            "lower_inclusive": 0.4,
+            "upper_exclusive": 0.5,
+            "count": 1924,
+            "mean_prediction": 0.4524910147311534,
+            "empirical_accuracy": 0.4516632016632017
+          },
+          {
+            "bin": 5,
+            "lower_inclusive": 0.5,
+            "upper_exclusive": 0.6,
+            "count": 2685,
+            "mean_prediction": 0.5537502519023263,
+            "empirical_accuracy": 0.5471135940409684
+          },
+          {
+            "bin": 6,
+            "lower_inclusive": 0.6,
+            "upper_exclusive": 0.7,
+            "count": 3594,
+            "mean_prediction": 0.6519618401211636,
+            "empirical_accuracy": 0.6410684474123539
+          },
+          {
+            "bin": 7,
+            "lower_inclusive": 0.7,
+            "upper_exclusive": 0.8,
+            "count": 4923,
+            "mean_prediction": 0.7516563872411536,
+            "empirical_accuracy": 0.7536055250863295
+          },
+          {
+            "bin": 8,
+            "lower_inclusive": 0.8,
+            "upper_exclusive": 0.9,
+            "count": 5245,
+            "mean_prediction": 0.8472095201763229,
+            "empirical_accuracy": 0.836606291706387
+          },
+          {
+            "bin": 9,
+            "lower_inclusive": 0.9,
+            "upper_exclusive": 1.0,
+            "count": 2004,
+            "mean_prediction": 0.9334903700563484,
+            "empirical_accuracy": 0.9186626746506986
+          }
+        ],
+        "specification": {
+          "name": "DKT-64-window_200",
+          "embedding_dim": 64,
+          "hidden_dim": 64,
+          "dropout": 0.0,
+          "learning_rate": 0.002,
+          "weight_decay": 0.0,
+          "epochs": 8,
+          "seed": 20260824
+        },
+        "selected_validation_auc": 0.7649640995880995,
+        "training_history": [
+          {
+            "epoch": 1,
+            "training_bce": 0.5995698673390869,
+            "validation_auc": 0.726947567558663
+          },
+          {
+            "epoch": 2,
+            "training_bce": 0.5548630362368735,
+            "validation_auc": 0.7487782465842827
+          },
+          {
+            "epoch": 3,
+            "training_bce": 0.5427930790159821,
+            "validation_auc": 0.7568447208086255
+          },
+          {
+            "epoch": 4,
+            "training_bce": 0.5364170533823993,
+            "validation_auc": 0.7613573715036777
+          },
+          {
+            "epoch": 5,
+            "training_bce": 0.5309224365178241,
+            "validation_auc": 0.763319111671219
+          },
+          {
+            "epoch": 6,
+            "training_bce": 0.5274804972016855,
+            "validation_auc": 0.7630235313300148
+          },
+          {
+            "epoch": 7,
+            "training_bce": 0.5243514505282886,
+            "validation_auc": 0.7649640995880995
+          },
+          {
+            "epoch": 8,
+            "training_bce": 0.5214511556452345,
+            "validation_auc": 0.7644454712214855
+          }
+        ],
+        "selected_epoch": 7,
+        "training_sequence_chunk_length": 200,
+        "batch_size": 64,
+        "evaluation_context_policy": "full_student_history_legacy"
+      }
+    ],
+    "window_500": [
+      {
+        "name": "DKT-64-window_500",
+        "test_prediction_rows": 24306,
+        "roc_auc": 0.7657199403296657,
+        "student_cluster_bootstrap_95_ci": [
+          0.7484996428612175,
+          0.7858015257728587
+        ],
+        "bootstrap_replicates": 1000,
+        "brier_score": 0.18108229305907764,
+        "ece_10": 0.010845816297930057,
+        "calibration_bins_10": [
+          {
+            "bin": 0,
+            "lower_inclusive": 0.0,
+            "upper_exclusive": 0.1,
+            "count": 521,
+            "mean_prediction": 0.0627643784611788,
+            "empirical_accuracy": 0.044145873320537425
+          },
+          {
+            "bin": 1,
+            "lower_inclusive": 0.1,
+            "upper_exclusive": 0.2,
+            "count": 762,
+            "mean_prediction": 0.1508649302025636,
+            "empirical_accuracy": 0.1377952755905512
+          },
+          {
+            "bin": 2,
+            "lower_inclusive": 0.2,
+            "upper_exclusive": 0.3,
+            "count": 1075,
+            "mean_prediction": 0.25296867437140885,
+            "empirical_accuracy": 0.2567441860465116
+          },
+          {
+            "bin": 3,
+            "lower_inclusive": 0.3,
+            "upper_exclusive": 0.4,
+            "count": 1396,
+            "mean_prediction": 0.3520057002418704,
+            "empirical_accuracy": 0.33954154727793695
+          },
+          {
+            "bin": 4,
+            "lower_inclusive": 0.4,
+            "upper_exclusive": 0.5,
+            "count": 1903,
+            "mean_prediction": 0.4524303380120007,
+            "empirical_accuracy": 0.44981607987388333
+          },
+          {
+            "bin": 5,
+            "lower_inclusive": 0.5,
+            "upper_exclusive": 0.6,
+            "count": 2630,
+            "mean_prediction": 0.553508307385354,
+            "empirical_accuracy": 0.5501901140684411
+          },
+          {
+            "bin": 6,
+            "lower_inclusive": 0.6,
+            "upper_exclusive": 0.7,
+            "count": 3616,
+            "mean_prediction": 0.6529515867937455,
+            "empirical_accuracy": 0.6479535398230089
+          },
+          {
+            "bin": 7,
+            "lower_inclusive": 0.7,
+            "upper_exclusive": 0.8,
+            "count": 4719,
+            "mean_prediction": 0.7520713537243064,
+            "empirical_accuracy": 0.7293918203009112
+          },
+          {
+            "bin": 8,
+            "lower_inclusive": 0.8,
+            "upper_exclusive": 0.9,
+            "count": 5501,
+            "mean_prediction": 0.8483092791382735,
+            "empirical_accuracy": 0.8396655153608434
+          },
+          {
+            "bin": 9,
+            "lower_inclusive": 0.9,
+            "upper_exclusive": 1.0,
+            "count": 2183,
+            "mean_prediction": 0.9327309565209927,
+            "empirical_accuracy": 0.9161704076958315
+          }
+        ],
+        "specification": {
+          "name": "DKT-64-window_500",
+          "embedding_dim": 64,
+          "hidden_dim": 64,
+          "dropout": 0.0,
+          "learning_rate": 0.002,
+          "weight_decay": 0.0,
+          "epochs": 8,
+          "seed": 20260822
+        },
+        "selected_validation_auc": 0.7660921080409717,
+        "training_history": [
+          {
+            "epoch": 1,
+            "training_bce": 0.6024362670989027,
+            "validation_auc": 0.7265618950588566
+          },
+          {
+            "epoch": 2,
+            "training_bce": 0.555186697204874,
+            "validation_auc": 0.748503624765139
+          },
+          {
+            "epoch": 3,
+            "training_bce": 0.542468026180565,
+            "validation_auc": 0.7573174165683022
+          },
+          {
+            "epoch": 4,
+            "training_bce": 0.5365429955158196,
+            "validation_auc": 0.7598950237989411
+          },
+          {
+            "epoch": 5,
+            "training_bce": 0.5320503528029265,
+            "validation_auc": 0.7639159794965285
+          },
+          {
+            "epoch": 6,
+            "training_bce": 0.5284469733702057,
+            "validation_auc": 0.7643799341325098
+          },
+          {
+            "epoch": 7,
+            "training_bce": 0.5255402977880517,
+            "validation_auc": 0.7656597231002898
+          },
+          {
+            "epoch": 8,
+            "training_bce": 0.5227519583684338,
+            "validation_auc": 0.7660921080409717
+          }
+        ],
+        "selected_epoch": 8,
+        "training_sequence_chunk_length": 500,
+        "batch_size": 64,
+        "evaluation_context_policy": "full_student_history_legacy"
+      },
+      {
+        "name": "DKT-64-window_500",
+        "test_prediction_rows": 24306,
+        "roc_auc": 0.7647367210753256,
+        "student_cluster_bootstrap_95_ci": [
+          0.7466234799464537,
+          0.7831907034213373
+        ],
+        "bootstrap_replicates": 1000,
+        "brier_score": 0.18171747234495986,
+        "ece_10": 0.010444057966107104,
+        "calibration_bins_10": [
+          {
+            "bin": 0,
+            "lower_inclusive": 0.0,
+            "upper_exclusive": 0.1,
+            "count": 393,
+            "mean_prediction": 0.06294487870319654,
+            "empirical_accuracy": 0.04834605597964377
+          },
+          {
+            "bin": 1,
+            "lower_inclusive": 0.1,
+            "upper_exclusive": 0.2,
+            "count": 854,
+            "mean_prediction": 0.15075782272938543,
+            "empirical_accuracy": 0.13700234192037472
+          },
+          {
+            "bin": 2,
+            "lower_inclusive": 0.2,
+            "upper_exclusive": 0.3,
+            "count": 1079,
+            "mean_prediction": 0.2542660792079427,
+            "empirical_accuracy": 0.24467099165894346
+          },
+          {
+            "bin": 3,
+            "lower_inclusive": 0.3,
+            "upper_exclusive": 0.4,
+            "count": 1552,
+            "mean_prediction": 0.3518750071525574,
+            "empirical_accuracy": 0.3537371134020619
+          },
+          {
+            "bin": 4,
+            "lower_inclusive": 0.4,
+            "upper_exclusive": 0.5,
+            "count": 1841,
+            "mean_prediction": 0.45248893643124866,
+            "empirical_accuracy": 0.45029875067897884
+          },
+          {
+            "bin": 5,
+            "lower_inclusive": 0.5,
+            "upper_exclusive": 0.6,
+            "count": 2652,
+            "mean_prediction": 0.5525452629023907,
+            "empirical_accuracy": 0.555052790346908
+          },
+          {
+            "bin": 6,
+            "lower_inclusive": 0.6,
+            "upper_exclusive": 0.7,
+            "count": 3540,
+            "mean_prediction": 0.6523571835567722,
+            "empirical_accuracy": 0.6432203389830509
+          },
+          {
+            "bin": 7,
+            "lower_inclusive": 0.7,
+            "upper_exclusive": 0.8,
+            "count": 4710,
+            "mean_prediction": 0.7528681428062941,
+            "empirical_accuracy": 0.7301486199575371
+          },
+          {
+            "bin": 8,
+            "lower_inclusive": 0.8,
+            "upper_exclusive": 0.9,
+            "count": 5670,
+            "mean_prediction": 0.8487965486037037,
+            "empirical_accuracy": 0.8400352733686067
+          },
+          {
+            "bin": 9,
+            "lower_inclusive": 0.9,
+            "upper_exclusive": 1.0,
+            "count": 2015,
+            "mean_prediction": 0.9327115428654786,
+            "empirical_accuracy": 0.9210918114143921
+          }
+        ],
+        "specification": {
+          "name": "DKT-64-window_500",
+          "embedding_dim": 64,
+          "hidden_dim": 64,
+          "dropout": 0.0,
+          "learning_rate": 0.002,
+          "weight_decay": 0.0,
+          "epochs": 8,
+          "seed": 20260823
+        },
+        "selected_validation_auc": 0.7650190526622324,
+        "training_history": [
+          {
+            "epoch": 1,
+            "training_bce": 0.6019062473022059,
+            "validation_auc": 0.722933758398957
+          },
+          {
+            "epoch": 2,
+            "training_bce": 0.5574917492498059,
+            "validation_auc": 0.7429188187981819
+          },
+          {
+            "epoch": 3,
+            "training_bce": 0.5454655328937681,
+            "validation_auc": 0.7521088862961847
+          },
+          {
+            "epoch": 4,
+            "training_bce": 0.5381220305479971,
+            "validation_auc": 0.758540335855156
+          },
+          {
+            "epoch": 5,
+            "training_bce": 0.5332707086247894,
+            "validation_auc": 0.7607815514351579
+          },
+          {
+            "epoch": 6,
+            "training_bce": 0.5288434951876525,
+            "validation_auc": 0.7627991525432081
+          },
+          {
+            "epoch": 7,
+            "training_bce": 0.5253532714947644,
+            "validation_auc": 0.7650190526622324
+          },
+          {
+            "epoch": 8,
+            "training_bce": 0.5233517406329579,
+            "validation_auc": 0.7639138223439432
+          }
+        ],
+        "selected_epoch": 7,
+        "training_sequence_chunk_length": 500,
+        "batch_size": 64,
+        "evaluation_context_policy": "full_student_history_legacy"
+      },
+      {
+        "name": "DKT-64-window_500",
+        "test_prediction_rows": 24306,
+        "roc_auc": 0.7648414395617142,
+        "student_cluster_bootstrap_95_ci": [
+          0.7477909861355386,
+          0.7836416806891318
+        ],
+        "bootstrap_replicates": 1000,
+        "brier_score": 0.18171517574333,
+        "ece_10": 0.011780853105907749,
+        "calibration_bins_10": [
+          {
+            "bin": 0,
+            "lower_inclusive": 0.0,
+            "upper_exclusive": 0.1,
+            "count": 462,
+            "mean_prediction": 0.06406409701421148,
+            "empirical_accuracy": 0.030303030303030304
+          },
+          {
+            "bin": 1,
+            "lower_inclusive": 0.1,
+            "upper_exclusive": 0.2,
+            "count": 825,
+            "mean_prediction": 0.15192739603194325,
+            "empirical_accuracy": 0.15393939393939393
+          },
+          {
+            "bin": 2,
+            "lower_inclusive": 0.2,
+            "upper_exclusive": 0.3,
+            "count": 1075,
+            "mean_prediction": 0.2515456547986629,
+            "empirical_accuracy": 0.25116279069767444
+          },
+          {
+            "bin": 3,
+            "lower_inclusive": 0.3,
+            "upper_exclusive": 0.4,
+            "count": 1433,
+            "mean_prediction": 0.3524479085094681,
+            "empirical_accuracy": 0.3656664340544313
+          },
+          {
+            "bin": 4,
+            "lower_inclusive": 0.4,
+            "upper_exclusive": 0.5,
+            "count": 1888,
+            "mean_prediction": 0.45128050841138523,
+            "empirical_accuracy": 0.4465042372881356
+          },
+          {
+            "bin": 5,
+            "lower_inclusive": 0.5,
+            "upper_exclusive": 0.6,
+            "count": 2628,
+            "mean_prediction": 0.5531270787959048,
+            "empirical_accuracy": 0.5471841704718418
+          },
+          {
+            "bin": 6,
+            "lower_inclusive": 0.6,
+            "upper_exclusive": 0.7,
+            "count": 3611,
+            "mean_prediction": 0.6525474639026058,
+            "empirical_accuracy": 0.6327887011908059
+          },
+          {
+            "bin": 7,
+            "lower_inclusive": 0.7,
+            "upper_exclusive": 0.8,
+            "count": 4803,
+            "mean_prediction": 0.7525610071953054,
+            "empirical_accuracy": 0.7405788049135956
+          },
+          {
+            "bin": 8,
+            "lower_inclusive": 0.8,
+            "upper_exclusive": 0.9,
+            "count": 5367,
+            "mean_prediction": 0.8492972810596688,
+            "empirical_accuracy": 0.8386435625116453
+          },
+          {
+            "bin": 9,
+            "lower_inclusive": 0.9,
+            "upper_exclusive": 1.0,
+            "count": 2214,
+            "mean_prediction": 0.9327103425332202,
+            "empirical_accuracy": 0.9150858175248419
+          }
+        ],
+        "specification": {
+          "name": "DKT-64-window_500",
+          "embedding_dim": 64,
+          "hidden_dim": 64,
+          "dropout": 0.0,
+          "learning_rate": 0.002,
+          "weight_decay": 0.0,
+          "epochs": 8,
+          "seed": 20260824
+        },
+        "selected_validation_auc": 0.7646970239232334,
+        "training_history": [
+          {
+            "epoch": 1,
+            "training_bce": 0.6019233230576421,
+            "validation_auc": 0.7251976008024794
+          },
+          {
+            "epoch": 2,
+            "training_bce": 0.5576667097416803,
+            "validation_auc": 0.7454899584508359
+          },
+          {
+            "epoch": 3,
+            "training_bce": 0.5439710474480091,
+            "validation_auc": 0.7552105496928382
+          },
+          {
+            "epoch": 4,
+            "training_bce": 0.5371472335860034,
+            "validation_auc": 0.7583928851645021
+          },
+          {
+            "epoch": 5,
+            "training_bce": 0.533195183880689,
+            "validation_auc": 0.7621897142603872
+          },
+          {
+            "epoch": 6,
+            "training_bce": 0.528736914993643,
+            "validation_auc": 0.7634744033787342
+          },
+          {
+            "epoch": 7,
+            "training_bce": 0.5257706854755758,
+            "validation_auc": 0.7641804673542463
+          },
+          {
+            "epoch": 8,
+            "training_bce": 0.5227152291764736,
+            "validation_auc": 0.7646970239232334
+          }
+        ],
+        "selected_epoch": 8,
+        "training_sequence_chunk_length": 500,
+        "batch_size": 64,
+        "evaluation_context_policy": "full_student_history_legacy"
+      }
+    ],
+    "full_available_history": [
+      {
+        "name": "DKT-64-full_available_history",
+        "test_prediction_rows": 24306,
+        "roc_auc": 0.7652852294880284,
+        "student_cluster_bootstrap_95_ci": [
+          0.7480768516053824,
+          0.7849328204485988
+        ],
+        "bootstrap_replicates": 1000,
+        "brier_score": 0.1814799822855412,
+        "ece_10": 0.01596227922331764,
+        "calibration_bins_10": [
+          {
+            "bin": 0,
+            "lower_inclusive": 0.0,
+            "upper_exclusive": 0.1,
+            "count": 436,
+            "mean_prediction": 0.06468577137421988,
+            "empirical_accuracy": 0.0389908256880734
+          },
+          {
+            "bin": 1,
+            "lower_inclusive": 0.1,
+            "upper_exclusive": 0.2,
+            "count": 703,
+            "mean_prediction": 0.1532000449418513,
+            "empirical_accuracy": 0.112375533428165
+          },
+          {
+            "bin": 2,
+            "lower_inclusive": 0.2,
+            "upper_exclusive": 0.3,
+            "count": 1011,
+            "mean_prediction": 0.2520925678113802,
+            "empirical_accuracy": 0.24925816023738873
+          },
+          {
+            "bin": 3,
+            "lower_inclusive": 0.3,
+            "upper_exclusive": 0.4,
+            "count": 1415,
+            "mean_prediction": 0.3525391443668743,
+            "empirical_accuracy": 0.33286219081272084
+          },
+          {
+            "bin": 4,
+            "lower_inclusive": 0.4,
+            "upper_exclusive": 0.5,
+            "count": 1847,
+            "mean_prediction": 0.45187489408445025,
+            "empirical_accuracy": 0.4331348132106118
+          },
+          {
+            "bin": 5,
+            "lower_inclusive": 0.5,
+            "upper_exclusive": 0.6,
+            "count": 2640,
+            "mean_prediction": 0.5526587053004539,
+            "empirical_accuracy": 0.5412878787878788
+          },
+          {
+            "bin": 6,
+            "lower_inclusive": 0.6,
+            "upper_exclusive": 0.7,
+            "count": 3561,
+            "mean_prediction": 0.6522823721798107,
+            "empirical_accuracy": 0.6391463072170739
+          },
+          {
+            "bin": 7,
+            "lower_inclusive": 0.7,
+            "upper_exclusive": 0.8,
+            "count": 4965,
+            "mean_prediction": 0.7526106592151454,
+            "empirical_accuracy": 0.7305135951661631
+          },
+          {
+            "bin": 8,
+            "lower_inclusive": 0.8,
+            "upper_exclusive": 0.9,
+            "count": 5662,
+            "mean_prediction": 0.8483258556431151,
+            "empirical_accuracy": 0.8350406216884493
+          },
+          {
+            "bin": 9,
+            "lower_inclusive": 0.9,
+            "upper_exclusive": 1.0,
+            "count": 2066,
+            "mean_prediction": 0.9327326714415518,
+            "empirical_accuracy": 0.9225556631171346
+          }
+        ],
+        "specification": {
+          "name": "DKT-64-full_available_history",
+          "embedding_dim": 64,
+          "hidden_dim": 64,
+          "dropout": 0.0,
+          "learning_rate": 0.002,
+          "weight_decay": 0.0,
+          "epochs": 8,
+          "seed": 20260822
+        },
+        "selected_validation_auc": 0.7660719681505577,
+        "training_history": [
+          {
+            "epoch": 1,
+            "training_bce": 0.6038102636957711,
+            "validation_auc": 0.722623023672864
+          },
+          {
+            "epoch": 2,
+            "training_bce": 0.555564251023346,
+            "validation_auc": 0.7497679528461343
+          },
+          {
+            "epoch": 3,
+            "training_bce": 0.542598574092231,
+            "validation_auc": 0.7575303228727445
+          },
+          {
+            "epoch": 4,
+            "training_bce": 0.5364105381220293,
+            "validation_auc": 0.7596889963281928
+          },
+          {
+            "epoch": 5,
+            "training_bce": 0.5317508983666442,
+            "validation_auc": 0.7638306633358265
+          },
+          {
+            "epoch": 6,
+            "training_bce": 0.5281604953862615,
+            "validation_auc": 0.7636976880701648
+          },
+          {
+            "epoch": 7,
+            "training_bce": 0.5252649544025193,
+            "validation_auc": 0.7654109677133152
+          },
+          {
+            "epoch": 8,
+            "training_bce": 0.5224208963902346,
+            "validation_auc": 0.7660719681505577
+          }
+        ],
+        "selected_epoch": 8,
+        "training_sequence_chunk_length": 1028,
+        "batch_size": 64,
+        "evaluation_context_policy": "full_student_history_legacy"
+      },
+      {
+        "name": "DKT-64-full_available_history",
+        "test_prediction_rows": 24306,
+        "roc_auc": 0.765107230869241,
+        "student_cluster_bootstrap_95_ci": [
+          0.7469195463903415,
+          0.7835788268264713
+        ],
+        "bootstrap_replicates": 1000,
+        "brier_score": 0.1817075734380346,
+        "ece_10": 0.011317097300066303,
+        "calibration_bins_10": [
+          {
+            "bin": 0,
+            "lower_inclusive": 0.0,
+            "upper_exclusive": 0.1,
+            "count": 472,
+            "mean_prediction": 0.06394174227380525,
+            "empirical_accuracy": 0.04449152542372881
+          },
+          {
+            "bin": 1,
+            "lower_inclusive": 0.1,
+            "upper_exclusive": 0.2,
+            "count": 856,
+            "mean_prediction": 0.14899707995529207,
+            "empirical_accuracy": 0.14485981308411214
+          },
+          {
+            "bin": 2,
+            "lower_inclusive": 0.2,
+            "upper_exclusive": 0.3,
+            "count": 1040,
+            "mean_prediction": 0.2521817439307387,
+            "empirical_accuracy": 0.2644230769230769
+          },
+          {
+            "bin": 3,
+            "lower_inclusive": 0.3,
+            "upper_exclusive": 0.4,
+            "count": 1417,
+            "mean_prediction": 0.35107928977184255,
+            "empirical_accuracy": 0.35356386732533523
+          },
+          {
+            "bin": 4,
+            "lower_inclusive": 0.4,
+            "upper_exclusive": 0.5,
+            "count": 1882,
+            "mean_prediction": 0.4517121339230684,
+            "empirical_accuracy": 0.4505844845908608
+          },
+          {
+            "bin": 5,
+            "lower_inclusive": 0.5,
+            "upper_exclusive": 0.6,
+            "count": 2548,
+            "mean_prediction": 0.5522928206802724,
+            "empirical_accuracy": 0.5396389324960753
+          },
+          {
+            "bin": 6,
+            "lower_inclusive": 0.6,
+            "upper_exclusive": 0.7,
+            "count": 3681,
+            "mean_prediction": 0.6516841448898129,
+            "empirical_accuracy": 0.6400434664493344
+          },
+          {
+            "bin": 7,
+            "lower_inclusive": 0.7,
+            "upper_exclusive": 0.8,
+            "count": 4707,
+            "mean_prediction": 0.7515926987774842,
+            "empirical_accuracy": 0.7374123645634162
+          },
+          {
+            "bin": 8,
+            "lower_inclusive": 0.8,
+            "upper_exclusive": 0.9,
+            "count": 5601,
+            "mean_prediction": 0.849248486998847,
+            "empirical_accuracy": 0.8359221567577219
+          },
+          {
+            "bin": 9,
+            "lower_inclusive": 0.9,
+            "upper_exclusive": 1.0,
+            "count": 2102,
+            "mean_prediction": 0.9322066803867765,
+            "empirical_accuracy": 0.9191246431969553
+          }
+        ],
+        "specification": {
+          "name": "DKT-64-full_available_history",
+          "embedding_dim": 64,
+          "hidden_dim": 64,
+          "dropout": 0.0,
+          "learning_rate": 0.002,
+          "weight_decay": 0.0,
+          "epochs": 8,
+          "seed": 20260823
+        },
+        "selected_validation_auc": 0.7646782225537583,
+        "training_history": [
+          {
+            "epoch": 1,
+            "training_bce": 0.6064065862640186,
+            "validation_auc": 0.7208561488753736
+          },
+          {
+            "epoch": 2,
+            "training_bce": 0.5586833794108698,
+            "validation_auc": 0.7423888653804952
+          },
+          {
+            "epoch": 3,
+            "training_bce": 0.5458185744759544,
+            "validation_auc": 0.7503573365934996
+          },
+          {
+            "epoch": 4,
+            "training_bce": 0.53811256476587,
+            "validation_auc": 0.7562638182403095
+          },
+          {
+            "epoch": 5,
+            "training_bce": 0.5331836247787369,
+            "validation_auc": 0.7609660539373035
+          },
+          {
+            "epoch": 6,
+            "training_bce": 0.5286622578636614,
+            "validation_auc": 0.7617725923381774
+          },
+          {
+            "epoch": 7,
+            "training_bce": 0.5256879179240578,
+            "validation_auc": 0.7643078208319656
+          },
+          {
+            "epoch": 8,
+            "training_bce": 0.522987370562741,
+            "validation_auc": 0.7646782225537583
+          }
+        ],
+        "selected_epoch": 8,
+        "training_sequence_chunk_length": 1028,
+        "batch_size": 64,
+        "evaluation_context_policy": "full_student_history_legacy"
+      },
+      {
+        "name": "DKT-64-full_available_history",
+        "test_prediction_rows": 24306,
+        "roc_auc": 0.764922275788086,
+        "student_cluster_bootstrap_95_ci": [
+          0.7477326555176254,
+          0.7838607434869621
+        ],
+        "bootstrap_replicates": 1000,
+        "brier_score": 0.18174929236259996,
+        "ece_10": 0.006845621910630683,
+        "calibration_bins_10": [
+          {
+            "bin": 0,
+            "lower_inclusive": 0.0,
+            "upper_exclusive": 0.1,
+            "count": 481,
+            "mean_prediction": 0.061520723567930924,
+            "empirical_accuracy": 0.0395010395010395
+          },
+          {
+            "bin": 1,
+            "lower_inclusive": 0.1,
+            "upper_exclusive": 0.2,
+            "count": 842,
+            "mean_prediction": 0.15511918576730685,
+            "empirical_accuracy": 0.15914489311163896
+          },
+          {
+            "bin": 2,
+            "lower_inclusive": 0.2,
+            "upper_exclusive": 0.3,
+            "count": 1093,
+            "mean_prediction": 0.25378062529020756,
+            "empirical_accuracy": 0.252516010978957
+          },
+          {
+            "bin": 3,
+            "lower_inclusive": 0.3,
+            "upper_exclusive": 0.4,
+            "count": 1501,
+            "mean_prediction": 0.3519738770023653,
+            "empirical_accuracy": 0.3810792804796802
+          },
+          {
+            "bin": 4,
+            "lower_inclusive": 0.4,
+            "upper_exclusive": 0.5,
+            "count": 1980,
+            "mean_prediction": 0.4525610266159279,
+            "empirical_accuracy": 0.44747474747474747
+          },
+          {
+            "bin": 5,
+            "lower_inclusive": 0.5,
+            "upper_exclusive": 0.6,
+            "count": 2784,
+            "mean_prediction": 0.5520507410896578,
+            "empirical_accuracy": 0.5488505747126436
+          },
+          {
+            "bin": 6,
+            "lower_inclusive": 0.6,
+            "upper_exclusive": 0.7,
+            "count": 3624,
+            "mean_prediction": 0.6525195674358087,
+            "empirical_accuracy": 0.6476269315673289
+          },
+          {
+            "bin": 7,
+            "lower_inclusive": 0.7,
+            "upper_exclusive": 0.8,
+            "count": 4816,
+            "mean_prediction": 0.7513605286537413,
+            "empirical_accuracy": 0.7441860465116279
+          },
+          {
+            "bin": 8,
+            "lower_inclusive": 0.8,
+            "upper_exclusive": 0.9,
+            "count": 5147,
+            "mean_prediction": 0.848192993890945,
+            "empirical_accuracy": 0.8494268505925782
+          },
+          {
+            "bin": 9,
+            "lower_inclusive": 0.9,
+            "upper_exclusive": 1.0,
+            "count": 2038,
+            "mean_prediction": 0.9306796681834156,
+            "empirical_accuracy": 0.9160942100098135
+          }
+        ],
+        "specification": {
+          "name": "DKT-64-full_available_history",
+          "embedding_dim": 64,
+          "hidden_dim": 64,
+          "dropout": 0.0,
+          "learning_rate": 0.002,
+          "weight_decay": 0.0,
+          "epochs": 8,
+          "seed": 20260824
+        },
+        "selected_validation_auc": 0.7666954162858703,
+        "training_history": [
+          {
+            "epoch": 1,
+            "training_bce": 0.6045503319225611,
+            "validation_auc": 0.7246850481569959
+          },
+          {
+            "epoch": 2,
+            "training_bce": 0.5570293647268386,
+            "validation_auc": 0.745765755840543
+          },
+          {
+            "epoch": 3,
+            "training_bce": 0.5440239506305885,
+            "validation_auc": 0.7563152562420644
+          },
+          {
+            "epoch": 4,
+            "training_bce": 0.53677286009367,
+            "validation_auc": 0.758414115270521
+          },
+          {
+            "epoch": 5,
+            "training_bce": 0.5323461130667997,
+            "validation_auc": 0.7614469670516126
+          },
+          {
+            "epoch": 6,
+            "training_bce": 0.5285684280537984,
+            "validation_auc": 0.7641843122071457
+          },
+          {
+            "epoch": 7,
+            "training_bce": 0.5255211199459979,
+            "validation_auc": 0.7635761658880135
+          },
+          {
+            "epoch": 8,
+            "training_bce": 0.5225429901036795,
+            "validation_auc": 0.7666954162858703
+          }
+        ],
+        "selected_epoch": 8,
+        "training_sequence_chunk_length": 1028,
+        "batch_size": 64,
+        "evaluation_context_policy": "full_student_history_legacy"
+      }
+    ]
+  },
+  "aggregate": {
+    "window_200": {
+      "seed_count": 3,
+      "test_prediction_rows_per_seed": 24306,
+      "mean_roc_auc": 0.7653960853081293,
+      "standard_deviation_roc_auc": 0.00111634893582303,
+      "mean_brier_score": 0.1815545566540945,
+      "standard_deviation_brier_score": 0.0004550822840638538,
+      "mean_ece_10": 0.012923502448250709,
+      "standard_deviation_ece_10": 0.0077668797821556605,
+      "mean_calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "mean_count_across_seeds": 454.0,
+          "mean_prediction_across_seeds": 0.06237136118652817,
+          "empirical_accuracy_across_seeds": 0.0395457935042436
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "mean_count_across_seeds": 829.3333333333334,
+          "mean_prediction_across_seeds": 0.1513559972664324,
+          "empirical_accuracy_across_seeds": 0.1372102645317821
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "mean_count_across_seeds": 1066.3333333333333,
+          "mean_prediction_across_seeds": 0.2525474576520404,
+          "empirical_accuracy_across_seeds": 0.25470067033915184
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "mean_count_across_seeds": 1433.3333333333333,
+          "mean_prediction_across_seeds": 0.3526928055288164,
+          "empirical_accuracy_across_seeds": 0.3595784634202605
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "mean_count_across_seeds": 1890.3333333333333,
+          "mean_prediction_across_seeds": 0.4522814163687546,
+          "empirical_accuracy_across_seeds": 0.44341634572100536
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "mean_count_across_seeds": 2652.0,
+          "mean_prediction_across_seeds": 0.5528819733090434,
+          "empirical_accuracy_across_seeds": 0.5455218748240961
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "mean_count_across_seeds": 3576.3333333333335,
+          "mean_prediction_across_seeds": 0.6522827299380234,
+          "empirical_accuracy_across_seeds": 0.640102192109757
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "mean_count_across_seeds": 4879.333333333333,
+          "mean_prediction_across_seeds": 0.7521312387992901,
+          "empirical_accuracy_across_seeds": 0.740384799439171
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "mean_count_across_seeds": 5393.666666666667,
+          "mean_prediction_across_seeds": 0.8477310127573464,
+          "empirical_accuracy_across_seeds": 0.8379300464576577
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "mean_count_across_seeds": 2131.3333333333335,
+          "mean_prediction_across_seeds": 0.9336859102272385,
+          "empirical_accuracy_across_seeds": 0.917770807727288
+        }
+      ]
+    },
+    "window_500": {
+      "seed_count": 3,
+      "test_prediction_rows_per_seed": 24306,
+      "mean_roc_auc": 0.7650993669889018,
+      "standard_deviation_roc_auc": 0.0005399767993145536,
+      "mean_brier_score": 0.1815049803824558,
+      "standard_deviation_brier_score": 0.0003660597609724752,
+      "mean_ece_10": 0.011023575789981636,
+      "standard_deviation_ece_10": 0.0006858965951289474,
+      "mean_calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "mean_count_across_seeds": 458.6666666666667,
+          "mean_prediction_across_seeds": 0.0632577847261956,
+          "empirical_accuracy_across_seeds": 0.0409316532010705
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "mean_count_across_seeds": 813.6666666666666,
+          "mean_prediction_across_seeds": 0.1511833829879641,
+          "empirical_accuracy_across_seeds": 0.14291233715010662
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "mean_count_across_seeds": 1076.3333333333333,
+          "mean_prediction_across_seeds": 0.2529268027926715,
+          "empirical_accuracy_across_seeds": 0.25085932280104317
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "mean_count_across_seeds": 1460.3333333333333,
+          "mean_prediction_across_seeds": 0.35210953863463196,
+          "empirical_accuracy_across_seeds": 0.35298169824481
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "mean_count_across_seeds": 1877.3333333333333,
+          "mean_prediction_across_seeds": 0.4520665942848782,
+          "empirical_accuracy_across_seeds": 0.4488730226136659
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "mean_count_across_seeds": 2636.6666666666665,
+          "mean_prediction_across_seeds": 0.5530602163612165,
+          "empirical_accuracy_across_seeds": 0.550809024962397
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "mean_count_across_seeds": 3589.0,
+          "mean_prediction_across_seeds": 0.6526187447510412,
+          "empirical_accuracy_across_seeds": 0.6413208599989552
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "mean_count_across_seeds": 4744.0,
+          "mean_prediction_across_seeds": 0.7525001679086353,
+          "empirical_accuracy_across_seeds": 0.7333730817240146
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "mean_count_across_seeds": 5512.666666666667,
+          "mean_prediction_across_seeds": 0.8488010362672154,
+          "empirical_accuracy_across_seeds": 0.8394481170803653
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "mean_count_across_seeds": 2137.3333333333335,
+          "mean_prediction_across_seeds": 0.9327176139732304,
+          "empirical_accuracy_across_seeds": 0.9174493455450219
+        }
+      ]
+    },
+    "full_available_history": {
+      "seed_count": 3,
+      "test_prediction_rows_per_seed": 24306,
+      "mean_roc_auc": 0.7651049120484519,
+      "standard_deviation_roc_auc": 0.0001814879604074203,
+      "mean_brier_score": 0.18164561602872528,
+      "standard_deviation_brier_score": 0.00014495178449260344,
+      "mean_ece_10": 0.011374999478004875,
+      "standard_deviation_ece_10": 0.004558604461444278,
+      "mean_calibration_bins_10": [
+        {
+          "bin": 0,
+          "lower_inclusive": 0.0,
+          "upper_exclusive": 0.1,
+          "mean_count_across_seeds": 463.0,
+          "mean_prediction_across_seeds": 0.06338274573865202,
+          "empirical_accuracy_across_seeds": 0.04099446353761391
+        },
+        {
+          "bin": 1,
+          "lower_inclusive": 0.1,
+          "upper_exclusive": 0.2,
+          "mean_count_across_seeds": 800.3333333333334,
+          "mean_prediction_across_seeds": 0.15243877022148342,
+          "empirical_accuracy_across_seeds": 0.13879341320797203
+        },
+        {
+          "bin": 2,
+          "lower_inclusive": 0.2,
+          "upper_exclusive": 0.3,
+          "mean_count_across_seeds": 1048.0,
+          "mean_prediction_across_seeds": 0.25268497901077547,
+          "empirical_accuracy_across_seeds": 0.2553990827131409
+        },
+        {
+          "bin": 3,
+          "lower_inclusive": 0.3,
+          "upper_exclusive": 0.4,
+          "mean_count_across_seeds": 1444.3333333333333,
+          "mean_prediction_across_seeds": 0.35186410371369403,
+          "empirical_accuracy_across_seeds": 0.35583511287257874
+        },
+        {
+          "bin": 4,
+          "lower_inclusive": 0.4,
+          "upper_exclusive": 0.5,
+          "mean_count_across_seeds": 1903.0,
+          "mean_prediction_across_seeds": 0.45204935154114884,
+          "empirical_accuracy_across_seeds": 0.4437313484254067
+        },
+        {
+          "bin": 5,
+          "lower_inclusive": 0.5,
+          "upper_exclusive": 0.6,
+          "mean_count_across_seeds": 2657.3333333333335,
+          "mean_prediction_across_seeds": 0.5523340890234614,
+          "empirical_accuracy_across_seeds": 0.5432591286655325
+        },
+        {
+          "bin": 6,
+          "lower_inclusive": 0.6,
+          "upper_exclusive": 0.7,
+          "mean_count_across_seeds": 3622.0,
+          "mean_prediction_across_seeds": 0.6521620281684775,
+          "empirical_accuracy_across_seeds": 0.6422722350779124
+        },
+        {
+          "bin": 7,
+          "lower_inclusive": 0.7,
+          "upper_exclusive": 0.8,
+          "mean_count_across_seeds": 4829.333333333333,
+          "mean_prediction_across_seeds": 0.7518546288821236,
+          "empirical_accuracy_across_seeds": 0.737370668747069
+        },
+        {
+          "bin": 8,
+          "lower_inclusive": 0.8,
+          "upper_exclusive": 0.9,
+          "mean_count_across_seeds": 5470.0,
+          "mean_prediction_across_seeds": 0.8485891121776358,
+          "empirical_accuracy_across_seeds": 0.8401298763462498
+        },
+        {
+          "bin": 9,
+          "lower_inclusive": 0.9,
+          "upper_exclusive": 1.0,
+          "mean_count_across_seeds": 2068.6666666666665,
+          "mean_prediction_across_seeds": 0.9318730066705814,
+          "empirical_accuracy_across_seeds": 0.9192581721079677
+        }
+      ]
+    }
+  },
+  "paired_roc_auc_difference_vs_window_200": {
+    "window_500": {
+      "candidate_minus_200_per_seed": [
+        -0.00026198015204670355,
+        -0.0013608473743694782,
+        0.0007326725687339941
+      ],
+      "mean_difference": -0.0002967183192273959,
+      "standard_deviation_difference": 0.0010471921949849019
+    },
+    "full_available_history": {
+      "candidate_minus_200_per_seed": [
+        -0.0006966909936840793,
+        -0.0009903375804540815,
+        0.0008135087951057773
+      ],
+      "mean_difference": -0.00029117325967746116,
+      "standard_deviation_difference": 0.00096788372808954
+    }
+  },
+  "interpretation_limit": "This analysis isolates a training-window length choice under one source file, one student-disjoint split and an eight-epoch resource cap. It does not establish a global optimum, cross-dataset generality or a definitive null effect.",
+  "privacy": "Only aggregate per-seed metrics and settings are written. Raw interactions, student IDs, split memberships, sequences, predictions and checkpoints remain in the controlled data root."
+}

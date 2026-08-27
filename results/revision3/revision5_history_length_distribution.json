@@ -1,0 +1,117 @@
+{
+  "experiment": "revision5_history_length_distribution",
+  "analysis_label": "Aggregate-only history-length profile for the pre-specified student-disjoint split; it is descriptive and does not alter the archived Revision 3 result.",
+  "source_sha256": "162ef8d2d28bcbfea6591a282994062bd8d5eaa00636544292a0d268dca6e5da",
+  "student_level_split": {
+    "seed": 20260822,
+    "train_validation_test": [
+      0.8,
+      0.1,
+      0.1
+    ]
+  },
+  "inclusion_rule": "Students with fewer than two valid chronological interactions are excluded before splitting.",
+  "train_fitted_label_support": {
+    "vocabulary_fit": "The atomic skill_id vocabulary is fitted on training students only after student-level splitting.",
+    "train_unique_skill_labels": 149,
+    "validation_unique_skill_labels": 132,
+    "test_unique_skill_labels": 135,
+    "validation_labels_not_seen_in_train": 0,
+    "test_labels_not_seen_in_train": 0,
+    "validation_label_coverage_by_train": 1.0,
+    "test_label_coverage_by_train": 1.0
+  },
+  "pre_specified_context_thresholds": [
+    200,
+    500,
+    1000
+  ],
+  "split_history_length_summary": {
+    "train": {
+      "student_count": 3221,
+      "history_length_unit": "interactions per student after the minimum-two-interaction inclusion rule",
+      "minimum": 2,
+      "maximum": 1029,
+      "mean": 72.73051847252407,
+      "quantiles": {
+        "p25": 9.0,
+        "p50": 22.0,
+        "p75": 64.0,
+        "p90": 175.0,
+        "p99": 700.2000000000007
+      },
+      "students_strictly_over_threshold": {
+        "200": {
+          "count": 275,
+          "proportion": 0.08537721204594846
+        },
+        "500": {
+          "count": 113,
+          "proportion": 0.03508227258615337
+        },
+        "1000": {
+          "count": 1,
+          "proportion": 0.0003104625892579944
+        }
+      }
+    },
+    "validation": {
+      "student_count": 403,
+      "history_length_unit": "interactions per student after the minimum-two-interaction inclusion rule",
+      "minimum": 2,
+      "maximum": 1014,
+      "mean": 59.540942928039705,
+      "quantiles": {
+        "p25": 9.0,
+        "p50": 18.0,
+        "p75": 56.5,
+        "p90": 142.0,
+        "p99": 600.900000000001
+      },
+      "students_strictly_over_threshold": {
+        "200": {
+          "count": 22,
+          "proportion": 0.05459057071960298
+        },
+        "500": {
+          "count": 7,
+          "proportion": 0.017369727047146403
+        },
+        "1000": {
+          "count": 1,
+          "proportion": 0.0024813895781637717
+        }
+      }
+    },
+    "test": {
+      "student_count": 403,
+      "history_length_unit": "interactions per student after the minimum-two-interaction inclusion rule",
+      "minimum": 2,
+      "maximum": 1061,
+      "mean": 61.312655086848636,
+      "quantiles": {
+        "p25": 9.5,
+        "p50": 21.0,
+        "p75": 56.5,
+        "p90": 138.20000000000005,
+        "p99": 685.98
+      },
+      "students_strictly_over_threshold": {
+        "200": {
+          "count": 22,
+          "proportion": 0.05459057071960298
+        },
+        "500": {
+          "count": 9,
+          "proportion": 0.022332506203473945
+        },
+        "1000": {
+          "count": 1,
+          "proportion": 0.0024813895781637717
+        }
+      }
+    }
+  },
+  "interpretation_limit": "These are aggregate descriptions of the fixed split. They do not by themselves quantify the performance impact of truncated training windows; that question is addressed separately by the prospective context-window sensitivity audit.",
+  "privacy": "No user identifiers, split memberships, raw sequences, predictions or checkpoints are written. Only aggregate length statistics are emitted."
+}

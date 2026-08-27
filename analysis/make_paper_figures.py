@@ -58,14 +58,15 @@ def main() -> None:
     main_result = load("revision3_main_eight_epoch_probability_quality.json")
     extended = load("revision3_exploratory_extended_budget.json")
     sensitivity = load("revision3_training_label_inversion_sensitivity.json")
-    seed_uncertainty = load("revision4_descriptive_seed_uncertainty.json")
+    seed_ranges = load("revision5_three_seed_observed_ranges.json")
     plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 8})
     TABLES.mkdir(parents=True, exist_ok=True)
 
     # Figure 1 — comparable main-analysis baselines only.
     prior = main_result["single_run_references"]["Skill-prior"]
     bkt = main_result["single_run_references"]["BKT-per-skill-EM"]
-    dkt_seed1 = main_result["clean_dkt_runs"]["DKT-64-Adam"][0]
+    dkt_seed_rows = main_result["clean_dkt_runs"]["DKT-64-Adam"]
+    dkt_seed1 = dkt_seed_rows[0]
     records = [prior, bkt, dkt_seed1]
     labels = ["Skill-prior", "Per-skill BKT", "DKT-64\nAdam"]
     aucs = [record["roc_auc"] for record in records]
@@ -79,7 +80,10 @@ def main() -> None:
     style_axes(ax)
     for bar, auc, upper in zip(bars, aucs, ci_high):
         ax.text(bar.get_x() + bar.get_width() / 2, auc + upper + 0.006, f"{auc:.4f}", ha="center", va="bottom", fontsize=8)
-    fig.text(0.01, -0.06, "24,306 shared second-and-later test interactions; fixed 80/10/10 student split; 1,000 student-cluster bootstrap replicates. DKT shown for seed 20260822.", fontsize=6.5)
+    dkt_values = np.asarray([row["roc_auc"] for row in dkt_seed_rows])
+    dkt_jitter = np.asarray([-0.075, 0.0, 0.075])
+    ax.scatter(2 + dkt_jitter, dkt_values, s=22, marker="o", facecolor="white", edgecolor="#17252D", linewidth=0.7, zorder=5, label="DKT seed estimates")
+    fig.text(0.01, -0.06, "24,306 shared second-and-later test interactions; fixed 80/10/10 student split; 1,000 student-cluster bootstrap replicates. The DKT bar and error bar are for seed 20260822; the three open circles show all seed-level AUC estimates (SD reported in Table 1).", fontsize=6.2)
     save(fig, "fig1_student_disjoint_baselines.png")
 
     # Figure 2 — three seed ablation without a truncated near-value scale.
@@ -92,10 +96,8 @@ def main() -> None:
     rng = np.random.default_rng(20260822)
     for index, (label, key, rows, color) in enumerate(groups):
         values = [row["roc_auc"] for row in rows]
-        reference_range = seed_uncertainty["configurations"][key]["roc_auc"]["descriptive_t_reference_range_95"]
         jitter = rng.uniform(-0.06, 0.06, size=len(values))
         ax.scatter(np.full(len(values), index) + jitter, values, s=34, color=color, edgecolor="#1A2730", linewidth=0.5, zorder=3)
-        ax.vlines(index, reference_range[0], reference_range[1], color="#56666F", linewidth=1.0, zorder=2)
         ax.hlines(np.mean(values), index - 0.20, index + 0.20, color="#1A2730", linewidth=1.4, zorder=4)
         ax.text(index, 0.751, f"mean {np.mean(values):.4f}", ha="center", va="bottom", fontsize=7)
     ax.set_xlim(-0.5, 2.5)
@@ -104,7 +106,7 @@ def main() -> None:
     ax.set_ylabel("Test ROC-AUC")
     ax.set_title("Main analysis: three paired-seed ablations")
     style_axes(ax)
-    fig.text(0.01, -0.06, "Identical split, seed set, validation rule, eight-epoch budget and 24,306 targets. The y-axis begins at 0.70; horizontal bars are means and thin lines are post hoc t-reference ranges across 3 seeds. This display is descriptive, not an equivalence test or population interval.", fontsize=6.0)
+    fig.text(0.01, -0.06, "Identical split, seed set, validation rule, eight-epoch budget and 24,306 targets. The y-axis begins at 0.70; horizontal bars are means and points are the three observed seed estimates. This display is descriptive, not an equivalence test or population interval.", fontsize=6.1)
     save(fig, "fig2_clean_ablation.png")
 
     # Figure 3 — a genuine three-level sensitivity curve plus its clean reference.
@@ -194,10 +196,10 @@ def main() -> None:
     # Compact safe table for manuscript generation/inspection.
     with (TABLES / "revision3_aggregate_results.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.writer(handle)
-        writer.writerow(["analysis", "method", "test_prediction_rows", "mean_roc_auc", "sd_roc_auc", "descriptive_t_reference_low", "descriptive_t_reference_high", "mean_brier_score", "mean_ece_10", "scope"])
+        writer.writerow(["analysis", "method", "test_prediction_rows", "mean_roc_auc", "sd_roc_auc", "observed_seed_minimum", "observed_seed_maximum", "mean_brier_score", "mean_ece_10", "scope"])
         for name, values in aggregate.items():
-            reference_range = seed_uncertainty["configurations"][name]["roc_auc"]["descriptive_t_reference_range_95"]
-            writer.writerow(["main_8_epoch", name, values["test_prediction_rows_per_seed"], f"{values['mean_roc_auc']:.6f}", f"{values['standard_deviation_roc_auc']:.6f}", f"{reference_range[0]:.6f}", f"{reference_range[1]:.6f}", f"{values['mean_brier_score']:.6f}", f"{values['mean_ece_10']:.6f}", "three-seed; primary budget-conditional analysis; post hoc descriptive t-reference range"])
+            observed_range = seed_ranges["configurations"][name]["roc_auc"]["observed_range_min_max"]
+            writer.writerow(["main_8_epoch", name, values["test_prediction_rows_per_seed"], f"{values['mean_roc_auc']:.6f}", f"{values['standard_deviation_roc_auc']:.6f}", f"{observed_range[0]:.6f}", f"{observed_range[1]:.6f}", f"{values['mean_brier_score']:.6f}", f"{values['mean_ece_10']:.6f}", "three-seed; primary budget-conditional analysis; descriptive observed min-max range"])
         writer.writerow(["exploratory_20_epoch", "DKT-64 Adam", extended["aggregate"]["test_prediction_rows_per_seed"], f"{extended['aggregate']['mean_roc_auc']:.6f}", f"{extended['aggregate']['standard_deviation_roc_auc']:.6f}", "", "", f"{extended['aggregate']['mean_brier_score']:.6f}", f"{extended['aggregate']['mean_ece_10']:.6f}", "post hoc exploratory extension"])
         for rate, methods in sensitivity["aggregate_by_rate_and_method"].items():
             for name, values in methods.items():
