@@ -15,7 +15,7 @@ FIGURES = ROOT / "research_artifacts" / "figures" if (ROOT / "research_artifacts
 
 
 def main() -> None:
-    audit = json.loads((RESULTS / "revision6_statistical_and_bkt_audits.json").read_text(encoding="utf-8"))
+    audit = json.loads((RESULTS / "revision6-statistical-and-bkt-audits.json").read_text(encoding="utf-8"))
     diagnostics = audit["bkt_diagnostics"]
     sensitivity = audit["bkt_iteration_sensitivity"]
     quantiles = diagnostics["parameter_quantiles_across_skills"]
@@ -62,7 +62,7 @@ def main() -> None:
     figure.tight_layout()
     FIGURES.mkdir(parents=True, exist_ok=True)
     for suffix in ("png", "pdf"):
-        figure.savefig(FIGURES / f"figA2_bkt_fit_diagnostics.{suffix}", dpi=220, bbox_inches="tight")
+        figure.savefig(FIGURES / f"figA2-bkt-fit-diagnostics.{suffix}", dpi=220, bbox_inches="tight")
 
 
 if __name__ == "__main__":

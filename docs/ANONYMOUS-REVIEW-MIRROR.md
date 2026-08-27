@@ -33,10 +33,10 @@ python analysis/analyze_revision3_paired_metrics.py
 python analysis/summarize_seed_observed_ranges.py
 python analysis/profile_history_length_distribution.py
 python experiments/run_window_length_sensitivity.py
-python analysis/run_revision6_statistical_and_bkt_audits.py
+python analysis/run-revision6-statistical-and-bkt-audits.py
 python analysis/make_paper_figures.py
 python analysis/make_revision5_window_figure.py
-python analysis/make_revision6_bkt_diagnostic_figure.py
+python analysis/make-revision6-bkt-diagnostic-figure.py
 ```
 
 其中涉及官方原始数据的命令需要已获许可的用户将文件仅放入仓库外的 `KT_AUDIT_DATA_ROOT`。所有提交到 GitHub 的结果必须先通过敏感路径扫描。

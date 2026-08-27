@@ -34,8 +34,8 @@ python analysis/profile-history-length-distribution.py
 python experiments/run-window-length-sensitivity.py
 python analysis/make-paper-figures.py
 python analysis/make-revision5-window-figure.py
-python analysis/run_revision6_statistical_and_bkt_audits.py
-python analysis/make_revision6_bkt_diagnostic_figure.py
+python analysis/run-revision6-statistical-and-bkt-audits.py
+python analysis/make-revision6-bkt-diagnostic-figure.py
 
 # A prospective context-availability sensitivity audit. It is not part of the
 # archived Revision 3 primary result and must be reported as a separate audit.
@@ -70,7 +70,7 @@ The public artifact set also reports a 5%/10%/20% synthetic training-label inver
 
 ## Double-blind review mirror
 
-This is an identified development repository and must **not** be cited in a blinded manuscript. Before resubmission, create and independently inspect a fixed-commit, read-only anonymous mirror containing only code and aggregate-safe outputs; the complete identity-redaction, expiry, access and privacy checklist is in [ANONYMOUS_REVIEW_MIRROR.md](docs/ANONYMOUS_REVIEW_MIRROR.md). Until that external release gate is closed, `[ANONYMOUS_REVIEW_CODE_URL]` is an intentional placeholder, not an actual review link.
+This is an identified development repository and must **not** be cited in a blinded manuscript. Before resubmission, create and independently inspect a fixed-commit, read-only anonymous mirror containing only code and aggregate-safe outputs; the complete identity-redaction, expiry, access and privacy checklist is in [ANONYMOUS-REVIEW-MIRROR.md](docs/ANONYMOUS-REVIEW-MIRROR.md). Until that external release gate is closed, `[ANONYMOUS_REVIEW_CODE_URL]` is an intentional placeholder, not an actual review link.
 
 ## Citation and source data
 

@@ -264,8 +264,8 @@ def main() -> None:
         "privacy": "The public file contains only aggregate-safe statistics. Detailed source records, student membership, predictions, per-skill values and checkpoints remain in KT_AUDIT_DATA_ROOT.",
     }
     payload = {"provenance": common, "paired_effects": paired_effects, "bkt_diagnostics": bkt_diagnostics, "bkt_iteration_sensitivity": bkt_iteration_sensitivity, "dkt_bkt_paired_bootstrap": dkt_bkt_bootstrap}
-    (RESULTS / "revision6_statistical_and_bkt_audits.json").write_text(json.dumps(payload, indent=2), encoding="utf-8")
-    controlled_summary = {"provenance": common, "public_result": "revision6_statistical_and_bkt_audits.json", "status": "completed; no private raw outputs written by this script"}
+    (RESULTS / "revision6-statistical-and-bkt-audits.json").write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    controlled_summary = {"provenance": common, "public_result": "revision6-statistical-and-bkt-audits.json", "status": "completed; no private raw outputs written by this script"}
     (CONTROLLED_RESULTS / "revision6_statistical_and_bkt_audits_private.json").write_text(json.dumps(controlled_summary, indent=2), encoding="utf-8")
     print(json.dumps(payload, indent=2))
 
