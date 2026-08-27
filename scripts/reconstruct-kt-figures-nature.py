@@ -23,7 +23,7 @@ from PIL import Image
 HERE = Path(__file__).resolve()
 ROOT = HERE.parents[2] if HERE.parents[1].name == "code" else HERE.parents[1]
 RESULTS = ROOT / "results" / "revision3" if (ROOT / "results" / "revision3").exists() else ROOT / "artifacts" / "revision3"
-DATA = ROOT / "data" / "figure_data_kt_nature_v31.json" if (ROOT / "data").exists() else ROOT / "artifacts" / "figure_data" / "figure_data_kt_nature_v31.json"
+DATA = ROOT / "data" / "figure-data-kt-nature-v31.json" if (ROOT / "data").exists() else ROOT / "artifacts" / "figure_data" / "figure-data-kt-nature-v31.json"
 OUT = ROOT / "figures" / "nature-kt-v31"
 OUT.mkdir(parents=True, exist_ok=True)
 
@@ -299,7 +299,7 @@ def main() -> None:
     data, sources = collect_data()
     figures = [fig1(data, sources), fig2(data, sources), fig3(data, sources), fig4(data, sources), figs1(data, sources), figs2(data, sources), figs3(data, sources)]
     manifest = {"revision": "nature-kt-v31", "style": "compact Nature-style scientific figures", "figure_count": len(figures), "figures": figures}
-    (OUT / "figure_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    (OUT / "figure-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"out": str(OUT), "figure_count": len(figures)}, indent=2))
 
 

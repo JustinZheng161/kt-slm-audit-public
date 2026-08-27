@@ -22,6 +22,6 @@
 
 ## 技术交付物
 
-每个前缀输出同一数据映射下的 `.pdf`（首选矢量提交文件）、`.svg`（可编辑矢量源）、`.png`（600 dpi，用于 DOCX 嵌入）和 `.tif`（600 dpi，印刷交付）。`figure_manifest.json` 为每幅图记录聚合输入、SHA-256、轴/误差条解释、像素和 DPI。`
+每个前缀输出同一数据映射下的 `.pdf`（首选矢量提交文件）、`.svg`（可编辑矢量源）、`.png`（600 dpi，用于 DOCX 嵌入）和 `.tif`（600 dpi，印刷交付）。`figure-manifest.json` 为每幅图记录聚合输入、SHA-256、轴/误差条解释、像素和 DPI。`
 
-源文件 `scripts/reconstruct_kt_figures_nature.py` 及其生成的 `data/figure_data_kt_nature_v31.json` 均上传公开仓库；私密层保留一份相同逻辑的源码、主稿/补充信息插图与审计记录。
+源文件 `scripts/reconstruct-kt-figures-nature.py` 及其生成的 `data/figure-data-kt-nature-v31.json` 均上传公开仓库；私密层保留一份相同逻辑的源码、主稿/补充信息插图与审计记录。

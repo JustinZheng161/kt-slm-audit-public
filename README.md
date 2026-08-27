@@ -122,13 +122,13 @@ The output uses a restrained palette, compact sans-serif typography, thin axes, 
 
 ## Nature-style KT manuscript figures (v31)
 
-The seven figures used by the student-disjoint KT manuscript are reconstructed separately from the unrelated `nature-v30` audit figures. The reproducible source is `scripts/reconstruct_kt_figures_nature.py`; its aggregate-only plotting data are written to `data/figure_data_kt_nature_v31.json`; and the outputs are in `figures/nature-kt-v31/`.
+The seven figures used by the student-disjoint KT manuscript are reconstructed separately from the unrelated `nature-v30` audit figures. The reproducible source is `scripts/reconstruct-kt-figures-nature.py`; its aggregate-only plotting data are written to `data/figure-data-kt-nature-v31.json`; and the outputs are in `figures/nature-kt-v31/`.
 
 ```bash
-python3 scripts/reconstruct_kt_figures_nature.py
-python3 scripts/build_nature_kt_contact_sheet.py
+python3 scripts/reconstruct-kt-figures-nature.py
+python3 scripts/build-nature-kt-contact-sheet.py
 ```
 
-The semantic names are `figure-01-student-disjoint-baselines`, `figure-02-training-window-sensitivity`, `figure-03-primary-ablation`, `figure-04-label-inversion-sensitivity`, `figure-s01-probability-quality`, `figure-s02-exploratory-budget`, and `figure-s03-bkt-diagnostics`. Each has a PDF vector source, editable SVG, 600-dpi PNG for DOCX insertion, and 600-dpi TIFF print derivative. `figures/nature-kt-v31/figure_manifest.json` records aggregate inputs, input hashes, output paths, DPI, uncertainty meanings and the privacy scope. The contact sheet is a visual-QA artifact only, not a submission figure.
+The semantic names are `figure-01-student-disjoint-baselines`, `figure-02-training-window-sensitivity`, `figure-03-primary-ablation`, `figure-04-label-inversion-sensitivity`, `figure-s01-probability-quality`, `figure-s02-exploratory-budget`, and `figure-s03-bkt-diagnostics`. Each has a PDF vector source, editable SVG, 600-dpi PNG for DOCX insertion, and 600-dpi TIFF print derivative. `figures/nature-kt-v31/figure-manifest.json` records aggregate inputs, input hashes, output paths, DPI, uncertainty meanings and the privacy scope. The contact sheet is a visual-QA artifact only, not a submission figure.
 
 The reconstruction reads only the tracked aggregate JSON files. It does not access or deposit raw student records, student-level split memberships, sequences, predictions, per-skill parameter vectors, bootstrap replicate values or model checkpoints.
