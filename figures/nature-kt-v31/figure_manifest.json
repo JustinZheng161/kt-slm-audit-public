@@ -73,7 +73,7 @@
         "tif": "figures/nature-kt-v31/figure-03-primary-ablation.tif"
       },
       "tiff_pixel_dimensions": [
-        3710,
+        4299,
         1753
       ],
       "tiff_dpi": [
@@ -81,7 +81,7 @@
         600
       ],
       "description": "Primary DKT ablation observations.",
-      "uncertainty_definition": "Points are three seed estimates; capped vertical bars are across-seed SDs, not confidence intervals.",
+      "uncertainty_definition": "Points are three seed estimates; horizontal underscore markers show configuration means; capped vertical error bars are across-seed SDs, not confidence intervals.",
       "privacy_scope": "Aggregate-only. No raw records, student identifiers, memberships, sequences, predictions, per-skill parameter vectors, bootstrap replicates or checkpoints."
     },
     {

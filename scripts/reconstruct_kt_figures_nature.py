@@ -196,9 +196,9 @@ def fig3(data: dict, sources: list[Path]) -> dict:
     ax.set_ylabel("Test ROC-AUC")
     ax.set_title("Primary ablation: paired seed observations", loc="left", pad=8)
     clean_axes(ax)
-    fig.text(0.01, 0.01, "Points are all three seed-level AUCs; horizontal marks are means and capped vertical bars are across-seed SDs. Descriptive comparison only.", fontsize=6.1)
+    fig.text(0.01, 0.01, "Points are all three seed-level AUCs; horizontal underscore markers show means and capped vertical error bars show across-seed SDs. Descriptive comparison only.", fontsize=6.1)
     fig.tight_layout(rect=(0, 0.08, 1, 1))
-    return finish(fig, "figure-03-primary-ablation", sources[:1], "Primary DKT ablation observations.", "Points are three seed estimates; capped vertical bars are across-seed SDs, not confidence intervals.")
+    return finish(fig, "figure-03-primary-ablation", sources[:1], "Primary DKT ablation observations.", "Points are three seed estimates; horizontal underscore markers show configuration means; capped vertical error bars are across-seed SDs, not confidence intervals.")
 
 
 def fig4(data: dict, sources: list[Path]) -> dict:
